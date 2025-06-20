@@ -8,6 +8,7 @@ import BlogPage from './components/BlogPage';
 function App() {
   return (
     <div className="min-h-screen bg-gray-100">
+      {/* one more header */}
       {/* Header */}
       {/* new header */}
       {/* new header */}
