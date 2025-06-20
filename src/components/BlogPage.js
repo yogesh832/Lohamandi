@@ -13,6 +13,7 @@ const BlogPage = () => {
           />
         </div>
 
+        {/* blog page */}
         {/* Right Side - Text Content */}
         <div className="space-y-6">
           <h2 className="text-[#A01F16] text-2xl font-semibold">About Loha Mandi</h2>
