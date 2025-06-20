@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaCogs, FaClipboardCheck, FaWarehouse, FaCut } from 'react-icons/fa';
+
 
 const HomeAbout = () => {
   return (
@@ -25,19 +25,19 @@ const HomeAbout = () => {
           {/* Subheadings with icons */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
             <div className="flex items-center gap-3">
-              <FaWarehouse className="text-gradient-to-r from-[#F17556] to-[#D61349] text-xl" />
+            <img src="/image1.png" alt="CTL Process"></img>
               <span className="font-medium text-gray-800">Material Selection</span>
             </div>
             <div className="flex items-center gap-3">
-              <FaClipboardCheck className="text-gradient-to-r from-[#F17556] to-[#D61349] text-xl" />
+                <img src="/image2.png"  alt="CTL Process"></img>
               <span className="font-medium text-gray-800">Material Preparation</span>
             </div>
             <div className="flex items-center gap-3">
-              <FaCut className="text-gradient-to-r from-[#F17556] to-[#D61349] text-xl" />
+                 <img src="/image3.png"  alt="CTL Process"></img>
               <span className="font-medium text-gray-800">Cutting</span>
             </div>
             <div className="flex items-center gap-3">
-              <FaCogs className="text-gradient-to-r from-[#F17556] to-[#D61349] text-xl" />
+                 <img src="/image4.png"  alt="CTL Process"></img>
               <span className="font-medium text-gray-800">Quality Control</span>
             </div>
           </div>
