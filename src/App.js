@@ -10,6 +10,7 @@ function App() {
     <div className="min-h-screen bg-gray-100">
       {/* Header */}
       {/* new header */}
+      {/* new header */}
       <header className="sticky top-0 z-50 flex flex-col sm:flex-row items-center justify-between px-4 
       sm:px-6 py-2 bg-white shadow-md text-black text-sm sm:text-base  sm:gap-0">
         <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 font-medium">
