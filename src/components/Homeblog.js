@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BlogPage = () => {
+const Homeblog = () => {
   return (
     <div className="bg-[#E7F0DD] min-h-screen py-12 px-4 sm:px-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
@@ -32,4 +32,4 @@ const BlogPage = () => {
   );
 };
 
-export default BlogPage;
+export default Homeblog;

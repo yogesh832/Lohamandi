@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaCogs, FaClipboardCheck, FaWarehouse, FaCut } from 'react-icons/fa';
 
-const AboutPage = () => {
+const HomeAbout = () => {
   return (
     <section className="bg-white py-10 px-4 sm:px-8 md:px-16">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -57,4 +57,4 @@ const AboutPage = () => {
   );
 };
 
-export default AboutPage;
+export default HomeAbout;

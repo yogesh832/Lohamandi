@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaBoxOpen, FaRecycle, FaClock, FaShoppingCart,FaWhatsapp } from 'react-icons/fa';
 
-const HomePage = () => {
+const HomeBanner = () => {
   return (
     <div>
       {/* Hero Section */}
@@ -76,4 +76,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default HomeBanner;

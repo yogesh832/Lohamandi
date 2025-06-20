@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ProductPage = () => {
+const HomeProducts = () => {
   const products = [
     {
       name: 'TMT ProMax 500D',
@@ -74,5 +74,5 @@ const ProductPage = () => {
   );
 };
 
-export default ProductPage;
+export default HomeProducts;
 

@@ -1,8 +1,16 @@
 import React from 'react'
-
+import HomeBanner from "../components/HomeBanner";
+import HomeAbout from "../components/HomeAbout";
+import HomeProducts from "../components/HomeProducts";
+import Homeblog from "../components/Homeblog";
 const LandingPage = () => {
   return (
-    <div>LandingPage</div>
+    <>
+      <HomeBanner/>
+      <HomeAbout/>
+      <HomeProducts/>
+      <Homeblog/>
+    </>
   )
 }
 
