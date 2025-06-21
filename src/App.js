@@ -4,6 +4,7 @@ import { FaInstagram, FaTelegramPlane,  FaPhoneAlt, FaFacebookF, FaYoutube } fro
 import LandingPage from './Pages/LandingPage'
 import ContactPage from './Pages/ContactPage';
 import ProductsPage from './Pages/ProductsPage';
+import BlogPage from './Pages/BlogPage';
 function App() {
   return (
     <div className="min-h-screen bg-gray-100">
@@ -48,6 +49,7 @@ function App() {
           <Route path="/" element={<LandingPage/>} />
  <Route path="/contact" element={<ContactPage/>} />
   <Route path="/products" element={<ProductsPage/>} />
+    <Route path="/blog" element={<BlogPage/>} />
 
         </Routes>
       </Router>
