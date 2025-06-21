@@ -35,14 +35,14 @@ const TextSection = () => {
           </button>
         </div>
 
-        {/* Right Image */}
-        <div className="flex justify-center">
-          <img
-            src="/blogcontent.png" // replace with actual path
-            alt="Lohamandi Truck"
-            className="rounded-2xl w-full h-[70vh] max-w-6xl"
-          />
-        </div>
+      <div className="flex justify-center md:justify-end">
+  <img
+    src="/blogcontent.png" // replace with actual path
+    alt="Lohamandi Truck"
+    className="rounded-2xl w-full max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl object-cover"
+  />
+</div>
+
       </div>
     </section>
   );

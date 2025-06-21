@@ -6,8 +6,8 @@ export default function Footer() {
       {/* Top Section */}
       <div className="flex flex-col md:flex-row justify-between gap-10 mb-8">
         {/* Logo & Contact Info */}
-        <div className="flex flex-col sm:flex-row gap-6 w-full md:w-1/3">
-          <img src="/logo.png" alt="Lohamandi Logo" className="w-36" />
+        <div className="flex flex-col sm:flex-row gap-6 full md:w-1/4 items-center">
+            <img src="/logo.png" alt="Lohamandi Logo" className="w-32" />
           <div className="text-sm">
             <p>Office No - 305, C 102, RDC Raj Nagar, Ghaziabad</p>
             <p>📞 +91 9811795184</p>

@@ -22,12 +22,12 @@ const BlogLatest = () => {
             alt="Custom Length TMT Bars"
             className="w-full h-full object-cover"
           />
-          <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent text-white">
+          <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent text-white ">
               <button className="text-white font-semibold px-3 py-0 rounded-full hover:opacity-90 
                  transition duration-300 border border-white mt-4 mb-2">
         Construction Tips
         </button>
-            <h2 className="text-2xl sm:text-3xl font-semibold leading-tight">
+            <h2 className="text-lg sm:text-xl font-semibold leading-tight">
               5 Reasons Why Custom-Length TMT Bars Save You Time & Money
             </h2>
             <button className="mt-4 px-6 py-3 bg-white text-black text-sm font-semibold rounded-md">
