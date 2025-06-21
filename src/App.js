@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { FaInstagram, FaTelegramPlane,  FaPhoneAlt, FaFacebookF, FaYoutube } from 'react-icons/fa';
 import LandingPage from './Pages/LandingPage'
+import ContactPage from './Pages/ContactPage';
 function App() {
   return (
     <div className="min-h-screen bg-gray-100">
@@ -44,6 +45,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<LandingPage/>} />
+ <Route path="/contact" element={<ContactPage/>} />
 
         </Routes>
       </Router>

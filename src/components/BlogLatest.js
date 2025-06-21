@@ -18,7 +18,7 @@ const BlogLatest = () => {
         {/* Large Left Image with Text */}
         <div className="col-span-1 lg:col-span-2 relative rounded-xl overflow-hidden shadow-md">
           <img
-            src="/blog.png" // Replace with actual image path
+            src="/bloglatest.png" // Replace with actual image path
             alt="Custom Length TMT Bars"
             className="w-full h-full object-cover"
           />

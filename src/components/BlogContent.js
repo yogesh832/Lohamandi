@@ -1,5 +1,5 @@
 import React from "react";
-import {  FaTruck, FaCertificate } from "react-icons/fa";
+
 
 const BlogContent = () => {
   return (
@@ -19,7 +19,7 @@ const BlogContent = () => {
           <div className="space-y-6">
             <div className="border rounded-xl p-6 bg-white border-black shadow-md">
               <div className="flex items-center gap-4">
-                   <img src="/image1.png"  alt="CTL Process"></img>
+                   <img src="/symbol1.png"  alt="CTL Process"></img>
                 <div>
                   <h3 className="text-xl font-semibold text-black">Cut-to-Length TMT Bars</h3>
                   <p className="text-gray-600">Less waste, less cost, faster build</p>
@@ -29,7 +29,7 @@ const BlogContent = () => {
 
             <div className="border rounded-xl p-6 bg-white border-black shadow-md">
               <div className="flex items-center gap-4">
-                <FaTruck className="text-[#A61349] text-3xl" />
+                   <img src="/symbol2.png"  alt="CTL Process"></img>
                 <div>
                   <h3 className="text-xl font-semibold text-black">Ready-Made TMT Columns</h3>
                   <p className="text-gray-600">Delivered pre-tied to your specs</p>
@@ -38,7 +38,7 @@ const BlogContent = () => {
             </div>
             <div className="border rounded-xl p-6 bg-white border-black shadow-md">
               <div className="flex items-center gap-4">
-                <FaCertificate className="text-[#A61349] text-3xl" />
+                  <img src="/symbol3.png"  alt="CTL Process"></img>
                 <div>
                   <h3 className="text-xl font-semibold text-black">Home Delivery</h3>
                   <p className="text-gray-600">Direct to your site, no middleman</p>
@@ -47,7 +47,7 @@ const BlogContent = () => {
             </div>
             <div className="border rounded-xl p-6 bg-white border-black shadow-md">
               <div className="flex items-center gap-4">
-                <FaCertificate className="text-[#A61349] text-3xl" />
+                 <img src="/symbol4.png"  alt="CTL Process"></img>
                 <div>
                   <h3 className="text-xl font-semibold text-black">Free TMT tying services</h3>
                   <p className="text-gray-600">We bring the tools - and the skills</p>
@@ -68,7 +68,7 @@ const BlogContent = () => {
           <div className="space-y-6">
             <div className="border rounded-xl p-6 bg-white border-black shadow-md">
               <div className="flex items-center gap-4">
-                  <img src="/image3.png"  alt="CTL Process"></img>
+                 <img src="/symbol5.png"  alt="CTL Process"></img>
                 <div>
                   <h3 className="text-xl font-semibold text-black">Free Engineer Consultation</h3>
                   <p className="text-gray-600">Advice on design, savings & best practices</p>
@@ -78,7 +78,7 @@ const BlogContent = () => {
 
             <div className="border rounded-xl p-6 bg-white border-black shadow-md">
               <div className="flex items-center gap-4">
-                  <img src="/image2.png"  alt="CTL Process"></img>
+                    <img src="/symbol6.png"  alt="CTL Process"></img>
                 <div>
                   <h3 className="text-xl font-semibold text-black">Certified Quality</h3>
                   <p className="text-gray-600">Only the top brands, ISI-certified & trusted</p>
@@ -87,7 +87,7 @@ const BlogContent = () => {
             </div>
             <div className="border rounded-xl p-6 bg-white border-black shadow-md">
               <div className="flex items-center gap-4">
-                <FaCertificate className="text-[#A61349] text-3xl" />
+                   <img src="/symbol7.png"  alt="CTL Process"></img>
                 <div>
                   <h3 className="text-xl font-semibold text-black">Live Order Tracking </h3>
                   <p className="text-gray-600">Know exactly when your steel arrives</p>
@@ -96,7 +96,7 @@ const BlogContent = () => {
             </div>
             <div className="border rounded-xl p-6 bg-white border-black shadow-md">
               <div className="flex items-center gap-4">
-                <FaCertificate className="text-[#A61349] text-3xl" />
+                  <img src="/symbol8.png"  alt="CTL Process"></img>
                 <div>
                   <h3 className="text-xl font-semibold text-black">Best Market Prices</h3>
                   <p className="text-gray-600">Transparent,Honest,Unbeatable</p>
