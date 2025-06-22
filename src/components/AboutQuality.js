@@ -40,7 +40,7 @@ export default function AboutQuality() {
       </div>
 
       <button className="bg-gradient-to-r from-[#F17556] to-[#D61349]  text-white font-semibold py-3 px-6 rounded-xl shadow transition duration-300">
-        Request Quote
+         <a href="/enquiry">Request Quote</a>
       </button>
     </section>
   );

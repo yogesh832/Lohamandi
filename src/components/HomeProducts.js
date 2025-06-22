@@ -58,7 +58,7 @@ const HomeProducts = () => {
               <h3 className="text-xl font-semibold mb-2">{product.name}</h3>
               <button className="mt-2 w-full bg-gradient-to-r from-[#F17556] to-[#D61349] text-white 
               font-bold py-3 rounded-md hover:opacity-90 transition duration-300">
-                Request Quote
+                 <a href="/productenquiry">Request Quote</a>
               </button>
             </div>
           </div>

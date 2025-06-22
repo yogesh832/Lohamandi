@@ -31,7 +31,7 @@ const TextSection = () => {
             </li>
           </ul>
           <button className="bg-gradient-to-r from-[#F17556] to-[#D61349] text-white text-lg px-8 py-4 rounded-md hover:opacity-90 transition duration-300">
-            Request Quote
+            <a href="/enquiry">Request Quote</a>
           </button>
         </div>
 

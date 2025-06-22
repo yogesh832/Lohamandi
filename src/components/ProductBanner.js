@@ -23,7 +23,7 @@ const ProductBanner = () => {
           {/* Buttons aligned with text */}
           <div className="flex flex-col sm:flex-row gap-4 mt-4">
             <button className="flex items-center justify-center gap-3 bg-gradient-to-r from-[#F17556] to-[#D61349] text-white py-3 px-6 rounded-lg hover:opacity-90 transition duration-300">
-              Request Quote
+             <a href="/enquiry">Request Quote</a>
             </button>
             <button className="flex items-center justify-center gap-2 bg-white text-black py-3 px-6 rounded-lg hover:opacity-90 transition duration-300">
               Explore Products

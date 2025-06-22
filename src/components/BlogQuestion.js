@@ -53,7 +53,7 @@ export default function BlogQuestion() {
         <h3 className="font-semibold text-gray-800 mb-2">Cannot find your question</h3>
         <p className="text-gray-500 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
         <button className=" bg-gradient-to-r from-[#F17556] to-[#D61349] text-white px-5 py-2 rounded-md hover:bg-[#c2163f] transition">
-          Request Quote
+         <a href="/enquiry">Request Quote</a>
         </button>
       </div>
     </div>

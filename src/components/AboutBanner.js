@@ -19,7 +19,7 @@ const AboutBanner = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 w-full">
             <button className="flex items-center justify-center gap-2 bg-gradient-to-r from-[#F17556] to-[#D61349] text-white py-4 px-6 rounded-lg hover:opacity-90 transition duration-300">
-              Request Quote
+              <a href="/enquiry">Request Quote</a>
             </button>
      
           </div>

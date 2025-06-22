@@ -1,13 +1,23 @@
 // src/pages/EnquireForm.jsx
+// src/pages/ProductEnquiry.jsx
 import React from "react";
 
-const EnquireForm = () => {
+const ProductEnquiry = () => {
   return (
     <section className="min-h-[100vh] bg-[#F5F5F5] flex items-center justify-center p-4">
-      <div className="shadow-lg rounded-xl w-full max-w-2xl p-8 space-y-6 bg-[#FFF4F4] ">
+      <div className="shadow-lg rounded-xl w-full max-w-2xl p-8 space-y-6 bg-[#FFF4F4]">
+        
+        {/* Image */}
+        <div className="flex items-center justify-center">
+          <img src="/enquire.png" alt="enquire" className="h-20 w-20" />
+        </div>
+
+        {/* Heading */}
         <h2 className="text-3xl font-bold text-center text-black">Quick Enquire</h2>
 
-        <form className="space-y-4 text-lg ">
+        {/* Form */}
+        <form className="space-y-4 text-lg">
+          
           {/* Name */}
           <div>
             <label className="block font-semibold mb-1">Name</label>
@@ -38,6 +48,16 @@ const EnquireForm = () => {
             />
           </div>
 
+          {/* Product */}
+          <div>
+            <label className="block font-semibold mb-1">Product</label>
+            <input
+              type="text"
+              placeholder="e.g. TMT Bars 25 MM"
+              className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#A01F16]"
+            />
+          </div>
+
           {/* Message */}
           <div>
             <label className="block font-semibold mb-1">Message</label>
@@ -52,7 +72,8 @@ const EnquireForm = () => {
           <div className="flex items-start gap-2">
             <input type="checkbox" className="mt-1" />
             <label className="text-sm text-gray-600">
-              I have read and accepted the <span className="underline cursor-pointer">Privacy Policy</span>.
+              I have read and accepted the{" "}
+              <span className="underline cursor-pointer">Privacy Policy</span>.
             </label>
           </div>
 
@@ -71,4 +92,4 @@ const EnquireForm = () => {
   );
 };
 
-export default EnquireForm;
+export default ProductEnquiry;

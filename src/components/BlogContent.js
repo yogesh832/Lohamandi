@@ -109,7 +109,7 @@ const BlogContent = () => {
       </div>
        <div className="flex flex-col justify-center mt-10 sm:flex-row gap-4">
             <button className="bg-gradient-to-r from-[#F17556] to-[#D61349] text-white text-lg px-8 py-4 rounded-md hover:opacity-90 transition duration-300">
-              Request Quote
+               <a href="/enquiry">Request Quote</a>
             </button>
             <button className="bg-white border border-black text-black text-lg px-8 py-4 rounded-md hover:opacity-90 transition duration-300">
               Learn More

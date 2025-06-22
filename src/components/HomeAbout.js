@@ -45,7 +45,7 @@ const HomeAbout = () => {
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 mt-6">
             <button className="bg-gradient-to-r from-[#F17556] to-[#D61349] text-white py-3 px-6 rounded-lg hover:opacity-90 transition duration-300">
-              Request Quote
+               <a href="/enquiry">Request Quote</a>
             </button>
             <button className="bg-white text-black border border-black py-3 px-6 rounded-lg hover:bg-gray-100 transition duration-300">
               Learn More
