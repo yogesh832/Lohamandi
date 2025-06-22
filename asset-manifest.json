@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Lohamandi/static/css/main.833569d4.css",
+    "main.js": "/Lohamandi/static/js/main.bb324c20.js",
+    "static/js/453.670e15c7.chunk.js": "/Lohamandi/static/js/453.670e15c7.chunk.js",
+    "index.html": "/Lohamandi/index.html",
+    "main.833569d4.css.map": "/Lohamandi/static/css/main.833569d4.css.map",
+    "main.bb324c20.js.map": "/Lohamandi/static/js/main.bb324c20.js.map",
+    "453.670e15c7.chunk.js.map": "/Lohamandi/static/js/453.670e15c7.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.833569d4.css",
+    "static/js/main.bb324c20.js"
+  ]
+}
