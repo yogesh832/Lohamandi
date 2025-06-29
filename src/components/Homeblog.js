@@ -16,10 +16,10 @@ const Homeblog = () => {
         {/* blog page */}
         {/* Right Side - Text Content */}
         <div className="space-y-6">
-          <h2 className="text-[#A01F16] text-2xl font-semibold">About Loha Mandi</h2>
+          <h2 className="text-[#A01F16] text-2xl font-semibold">About Lohamandi</h2>
           <h1 className="text-3xl sm:text-5xl font-semibold text-black">India's trusted Online Steel Platform</h1>
           <p className="text-gray-700 text-xl">
-           Loha Mandi is a B2B & B2C steel marketplace, connecting buyers with verified suppliers across India.
+           Lohamandi is a B2B & B2C steel marketplace, connecting buyers with verified suppliers across India.
            From TMT Bars to structural steel, we ensure quality, custom sizing and doorstep delievery- all with just a few clicks
           </p>
                  <button className="bg-[#E7F0DD] text-black font-semibold px-6 py-4 rounded-md hover:opacity-90 

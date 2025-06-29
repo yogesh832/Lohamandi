@@ -13,7 +13,7 @@ const BlogReview = () => {
             What Our Clients Say
           </h2>
           <p className="text-gray-600 mb-6 text-base sm:text-lg">
-            From on-time delivery to zero wastage — hear how Loha Mandi is helping builders,
+            From on-time delivery to zero wastage — hear how Lohamandi is helping builders,
             contractors, and suppliers work smarter every day.
           </p>
           <div className="flex space-x-4">
@@ -52,7 +52,7 @@ const BlogReview = () => {
           <div className="min-w-[280px] sm:min-w-[320px] bg-white border border-black shadow-md rounded-lg p-6">
             <div className="text-black text-xl mb-2">★★★★★</div>
             <p className="text-gray-700 mb-4 text-base">
-              "I’m extremely pleased with Loha Mandi Service. From inquiry to delivery, everything
+              "I’m extremely pleased with Lohamandi Service. From inquiry to delivery, everything
               was seamless. The products are high quality..."
             </p>
             <div className="flex items-center space-x-3 mt-4">

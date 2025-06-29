@@ -7,10 +7,14 @@ const faqData = [
     answer:
       "Lorem ipsum dolor sit amet consectetur. Velit orci mi tristique tincidunt at ipsum. Vitae vestibulum amet suspendisse amet vitae natoque sem feugiat sed. Facilisis enim donec amet sit mi duis massa at. Sit adipiscing varius viverra malesuada orci arcu nunc sit viverra.",
   },
-  { question: "Do you offer custom-length TMT bars?", answer: "" },
-  { question: "How long does delivery take?", answer: "" },
-  { question: "Is delivery available across India?", answer: "" },
-  { question: "Are the products certified?", answer: "" },
+  { question: "Do you offer custom-length TMT bars?",  answer:
+      "Lorem ipsum dolor sit amet consectetur. Velit orci mi tristique tincidunt at ipsum. Vitae vestibulum amet suspendisse amet vitae natoque sem feugiat sed. Facilisis enim donec amet sit mi duis massa at. Sit adipiscing varius viverra malesuada orci arcu nunc sit viverra.", },
+  { question: "How long does delivery take?",  answer:
+      "Lorem ipsum dolor sit amet consectetur. Velit orci mi tristique tincidunt at ipsum. Vitae vestibulum amet suspendisse amet vitae natoque sem feugiat sed. Facilisis enim donec amet sit mi duis massa at. Sit adipiscing varius viverra malesuada orci arcu nunc sit viverra.", },
+  { question: "Is delivery available across India?", answer:
+      "Lorem ipsum dolor sit amet consectetur. Velit orci mi tristique tincidunt at ipsum. Vitae vestibulum amet suspendisse amet vitae natoque sem feugiat sed. Facilisis enim donec amet sit mi duis massa at. Sit adipiscing varius viverra malesuada orci arcu nunc sit viverra.", },
+  { question: "Are the products certified?", answer:
+      "Lorem ipsum dolor sit amet consectetur. Velit orci mi tristique tincidunt at ipsum. Vitae vestibulum amet suspendisse amet vitae natoque sem feugiat sed. Facilisis enim donec amet sit mi duis massa at. Sit adipiscing varius viverra malesuada orci arcu nunc sit viverra.", },
 ];
 
 export default function BlogQuestion() {
