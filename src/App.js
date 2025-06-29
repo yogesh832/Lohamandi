@@ -42,7 +42,7 @@ function App() {
 
   {/* Main Navbar */}
   <nav className="flex items-center justify-between px-4 sm:px-6 py-3">
-    <img src="/logo.png" alt="Lohamandi Logo" className="h-10 w-auto" />
+    <a href="/" className="hover:text-gray-600"><img src="/logo.png" alt="Lohamandi Logo" className="h-10 w-auto" /></a>
 
     {/* Desktop Links */}
     <ul className="hidden sm:flex flex-wrap gap-6 text-base font-medium items-center">
@@ -84,7 +84,7 @@ function App() {
             <span> +91-9811795184</span>
           </div>
           </div>
-          <div className="flex gap-3 text-lg mt-2">
+          <div className="flex justify-center gap-3 text-lg mt-2">
             <FaFacebookF />
             <FaYoutube />
             <FaInstagram />

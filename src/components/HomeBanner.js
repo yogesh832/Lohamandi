@@ -15,28 +15,49 @@ const HomeBanner = () => {
     <hr className="my-6 border-t-4 border-red-500" />
 
     <p className="text-white text-lg">Get free lowest price quotation now!</p>
-    <div className="flex flex-row gap-3 w-full max-w-s">
+    {/* <div className="flex flex-row gap-3 w-full max-w-s">
       <a
         href="tel:+919876543210"
         className="flex items-center justify-center 
-        gap-2 bg-blue-500 text-white px-5 py-3 rounded-lg font-semibold text-sm shadow-md"
+        gap-2 bg-blue-500 text-white px-5 py-3 rounded-lg font-semibold text-sm shadow-md min-w-s"
       >
-        <FaPhoneAlt /> Call us now
+        <FaPhoneAlt className="text-2xl mb-2" /> Call us now
       </a>
       <a
         href="https://wa.me/919876543210"
         target="_blank"
         rel="noopener noreferrer"
         className="flex items-center justify-center gap-2 bg-[#25D366] 
-        text-white px-5 py-3 rounded-lg font-semibold text-sm shadow-md"
+        text-white px-5 py-3 rounded-lg font-semibold text-smshadow-md"
       >
-       <FaWhatsapp />  WhatsApp now
+       <FaWhatsapp className="text-2xl mb-2" />  WhatsApp now
       </a>
-    </div>
+    </div> */}
+     <div className="flex flex-row gap-3 w-full max-w-xs">
+  <a
+    href="tel:+919876543210"
+    className="flex items-center justify-center gap-2 bg-blue-500 text-white px-5 py-3 rounded-lg font-semibold text-sm shadow-md min-w-[140px]"
+  >
+    <FaPhoneAlt className="text-xl" /> Call us now
+  </a>
+  <a
+    href="https://wa.me/919876543210"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex items-center justify-center gap-2 bg-[#25D366] text-white px-5 py-3 rounded-lg font-semibold text-sm shadow-md min-w-[140px]"
+  >
+    <FaWhatsapp className="text-xl" /> WhatsApp now
+  </a>
+</div>
   </div>
 
+ 
+
+
   {/* Desktop Hero Section */}
-  <div className="hidden md:grid grid-cols-2 min-h-[80vh] bg-black/50 text-white">
+  {/* <div className="hidden md:grid grid-cols-2 min-h-[80vh] bg-black/50 text-white"> */}
+  <div className="hidden md:flex flex-col md:grid md:grid-cols-2 min-h-[80vh] bg-black/50 text-white">
+
     {/* Left Content */}
     <div className="flex flex-col justify-center items-start p-10 gap-6">
       <h1 className="text-4xl md:text-5xl font-bold leading-tight">Smart Steel Solutions</h1>
@@ -71,7 +92,7 @@ const HomeBanner = () => {
           </button>
           <div className="text-center text-sm text-gray-500">or</div>
           <button className="flex items-center justify-center gap-2 bg-[#25D366] text-white py-4 px-6 rounded-lg hover:bg-green-600 transition duration-300">
-            <FaWhatsapp /> Chat on Whatsapp
+            <FaWhatsapp  /> Chat on Whatsapp
           </button>
         </form>
       </div>
