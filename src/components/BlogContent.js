@@ -15,7 +15,9 @@ const BlogContent = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
+
+
           <div className="space-y-6">
             <div className="border rounded-xl p-6 bg-white border-black shadow-md">
               <div className="flex items-center gap-4">
@@ -57,13 +59,15 @@ const BlogContent = () => {
 
           </div>
 
-          <div className="hidden md:flex justify-center items-center">
-            <img
-              src="/blog.png" // replace with actual image path
-              alt="Warehouse"
-              className="rounded-xl w-full max-w-lg  h-[70vh]"
-            />
-          </div>
+    <div className="order-first lg:order-none col-span-full flex justify-center">
+  <img
+    src="/blog.png"
+    alt="Warehouse"
+    className="rounded-xl w-full max-w-lg max-h-[400px] object-cover"
+  />
+</div>
+
+
 
           <div className="space-y-6">
             <div className="border rounded-xl p-6 bg-white border-black shadow-md">
