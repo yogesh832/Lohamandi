@@ -16,20 +16,36 @@ const HomeBanner = () => {
         className="w-full min-h-[80vh] bg-cover bg-center relative"
         style={{ backgroundImage: "url('/lohamandi.png')" }}
       >
-        {/* ===== Mobile View CTA Fixed Bottom ===== */}
-       {/* ===== Mobile View CTA Fixed Bottom (Improved) ===== */}
-<div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-300 shadow-xl">
-  <div className="text-center py-3 px-4">
-    <h2 className="text-lg font-bold text-black leading-tight">TMT Bars of Construction</h2>
-    <p className="text-[#A01F16]  font-bold text-base mt-1">Get free lowest price quotation now!</p>
+  {/* ===== Mobile Hero Paragraph Over Background ===== */}
+<div className="md:hidden absolute top-[1%] left-0 right-0 z-30 px-4 py-20 bg-black/50 text-white">
+  <div className=" text-white rounded-lg p-4 space-y-2">
+    <p className="text-lg font-medium leading-relaxed">
+      At Lohamandi, we simplify your steel sourcing — from order to delivery.
+    </p>
+    <p className="text-lg text-gray-200 leading-relaxed">
+      Buy top-brand TMT bars at competitive prices, ensure no wastage with custom lengths, and
+      track your order in real-time. Whether you're building homes or highways, Lohamandi ensures you get what you need, when you need it.
+    </p>
+    <p className="text-lg text-gray-200 leading-relaxed">
+      Trusted by contractors, engineers, and suppliers across India.
+    </p>
   </div>
-  <div className="flex justify-between px-4 pb-4 gap-3">
-    <button className="flex items-center justify-center gap-2 bg-[#0AC1F5] 
-    text-white font-semibold text-base px-5 py-3 rounded-lg w-1/2">
-     <FaPhoneAlt className="text-xl mb-1"/>Call us now
+</div>
+
+{/* ===== Mobile View CTA Fixed Bottom ===== */}
+<div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-300 shadow-xl">
+  <div className="text-center py-2 px-3">
+    <h2 className="text-base font-semibold text-black leading-tight">TMT Bars for Construction</h2>
+    <p className="text-[#A01F16] text-sm font-semibold mt-1">Get free lowest price quote today!</p>
+  </div>
+  <div className="flex justify-between px-3 pb-3 gap-2">
+    <button className="flex items-center justify-center gap-1 bg-[#0AC1F5] 
+      text-white text-sm font-semibold px-3 py-2 rounded-md w-1/2">
+      <FaPhoneAlt className="text-lg" /> Call
     </button>
-    <button className="flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold font-lg text-base px-5 py-3 rounded-lg w-1/2">
-      <FaWhatsapp className="text-xl mb-1"/>WhatsApp now
+    <button className="flex items-center justify-center gap-1 bg-[#25D366] 
+      text-white text-sm font-semibold px-3 py-2 rounded-md w-1/2">
+      <FaWhatsapp className="text-lg" /> WhatsApp
     </button>
   </div>
 </div>

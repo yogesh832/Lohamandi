@@ -7,7 +7,7 @@ const AboutBanner = () => {
   style={{ backgroundImage: "url('/aboutpage.png')" }}
 >
   {/* Overlay for backdrop blur (only on mobile) */}
-  <div className="absolute inset-0 bg-white/60 backdrop-blur-[8px] sm:backdrop-blur-0 sm:bg-transparent z-0" />
+  <div className="absolute inset-0 bg-white/80 backdrop-blur-[8px] sm:backdrop-blur-0 sm:bg-transparent z-0" />
 
   {/* Content Layer */}
   <div className="relative z-10 flex flex-col justify-center items-start w-full px-4 py-10 sm:p-10 text-black gap-4 sm:gap-6">
