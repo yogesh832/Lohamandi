@@ -1,11 +1,11 @@
 import React from 'react';
 import {
   FaBoxOpen,
-  FaPhoneAlt,
   FaRecycle,
   FaClock,
   FaShoppingCart,
   FaWhatsapp,
+  FaPhoneAlt,
 } from 'react-icons/fa';
 
 const HomeBanner = () => {
@@ -16,37 +16,26 @@ const HomeBanner = () => {
         className="w-full min-h-[80vh] bg-cover bg-center relative"
         style={{ backgroundImage: "url('/lohamandi.png')" }}
       >
-        {/* Mobile View CTA */}
-        <div className="md:hidden absolute inset-0 bg-black/60 flex flex-col justify-center items-center px-6 py-8 text-center space-y-4">
-          <h3 className="text-white text-3xl sm:text-4xl font-bold">
-            TMT Bars for Construction
-          </h3>
-        
-          <p className="text-white text-base sm:text-lg">
-            Get free lowest price quotation now!
-          </p>
+        {/* ===== Mobile View CTA Fixed Bottom ===== */}
+       {/* ===== Mobile View CTA Fixed Bottom (Improved) ===== */}
+<div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-300 shadow-xl">
+  <div className="text-center py-3 px-4">
+    <h2 className="text-lg font-bold text-black leading-tight">TMT Bars of Construction</h2>
+    <p className="text-[#A01F16]  font-bold text-base mt-1">Get free lowest price quotation now!</p>
+  </div>
+  <div className="flex justify-between px-4 pb-4 gap-3">
+    <button className="flex items-center justify-center gap-2 bg-[#0AC1F5] 
+    text-white font-semibold text-base px-5 py-3 rounded-lg w-1/2">
+     <FaPhoneAlt className="text-xl mb-1"/>Call us now
+    </button>
+    <button className="flex items-center justify-center gap-2 bg-[#25D366] text-white font-semibold font-lg text-base px-5 py-3 rounded-lg w-1/2">
+      <FaWhatsapp className="text-xl mb-1"/>WhatsApp now
+    </button>
+  </div>
+</div>
 
-          <div className="flex flex-col sm:flex-row gap-4 w-full max-w-xs mt-2">
-            <a
-              href="tel:+919876543210"
-              className="flex items-center justify-center gap-2 bg-blue-500 
-              text-white px-1 py-3 rounded-lg font-semibold text-xl shadow-md"
-            >
-              <FaPhoneAlt className="text-xl" /> Call us now
-            </a>
-            <a
-              href="https://wa.me/919876543210"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 bg-[#25D366] text-white px-3 py-3 
-              rounded-lg font-semibold text-xl shadow-md"
-            >
-              <FaWhatsapp className="text-xl" /> WhatsApp now
-            </a>
-          </div>
-        </div>
 
-        {/* Desktop View */}
+        {/* ===== Desktop View ===== */}
         <div className="hidden md:grid grid-cols-2 min-h-[80vh] bg-black/50 text-white">
           {/* Left Content */}
           <div className="flex flex-col justify-center items-start p-10 gap-6">
@@ -70,7 +59,7 @@ const HomeBanner = () => {
             </div>
           </div>
 
-          {/* Right Form Card */}
+          {/* Right Form Card - Hidden on mobile */}
           <div className="flex justify-center items-center p-10">
             <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-sm text-black space-y-6">
               <h2 className="text-2xl font-semibold">Special Discounts on</h2>

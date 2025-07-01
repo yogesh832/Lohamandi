@@ -3,7 +3,8 @@ import { FaCheckCircle } from "react-icons/fa";
 
 const TextSection = () => {
   return (
-    <section className="bg-[#FFF4F4] min-h-screen py-8 px-4 sm:px-6 md:px-12">
+    <section className="bg-[#FFF4F4] py-10 px-4 sm:px-10 md:px-16 lg:px-24 xl:px-32">
+
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row-reverse items-center lg:items-start gap-10 lg:gap-16 h-full">
         
         {/* Image First on Mobile/Tablet, Right on Desktop */}

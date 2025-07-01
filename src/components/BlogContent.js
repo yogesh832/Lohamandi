@@ -15,100 +15,98 @@ const BlogContent = () => {
           </p>
         </div>
 
-       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 items-start">
+   <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+  {/* Left 4 Cards */}
+  <div className="space-y-6">
+    <div className="border rounded-xl p-6 bg-white border-black shadow-md">
+      <div className="flex items-center gap-4">
+        <img src="/symbol1.png" alt="CTL Process" />
+        <div>
+          <h3 className="text-xl font-semibold text-black">Cut-to-Length TMT Bars</h3>
+          <p className="text-gray-600">Less waste, less cost, faster build</p>
+        </div>
+      </div>
+    </div>
+    <div className="border rounded-xl p-6 bg-white border-black shadow-md">
+      <div className="flex items-center gap-4">
+        <img src="/symbol2.png" alt="CTL Process" />
+        <div>
+          <h3 className="text-xl font-semibold text-black">Ready-Made TMT Columns</h3>
+          <p className="text-gray-600">Delivered pre-tied to your specs</p>
+        </div>
+      </div>
+    </div>
+    <div className="border rounded-xl p-6 bg-white border-black shadow-md">
+      <div className="flex items-center gap-4">
+        <img src="/symbol3.png" alt="CTL Process" />
+        <div>
+          <h3 className="text-xl font-semibold text-black">Home Delivery</h3>
+          <p className="text-gray-600">Direct to your site, no middleman</p>
+        </div>
+      </div>
+    </div>
+    <div className="border rounded-xl p-6 bg-white border-black shadow-md">
+      <div className="flex items-center gap-4">
+        <img src="/symbol4.png" alt="CTL Process" />
+        <div>
+          <h3 className="text-xl font-semibold text-black">Free TMT tying services</h3>
+          <p className="text-gray-600">We bring the tools - and the skills</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  {/* Center Image */}
+  <div className="flex justify-center items-stretch h-full">
+    <img
+      src="/blog.png"
+      alt="Warehouse"
+      className="rounded-xl w-full max-w-sm max-h-[1100px] object-cover"
+    />
+  </div>
 
-          <div className="space-y-6">
-            <div className="border rounded-xl p-6 bg-white border-black shadow-md">
-              <div className="flex items-center gap-4">
-                   <img src="/symbol1.png"  alt="CTL Process"></img>
-                <div>
-                  <h3 className="text-xl font-semibold text-black">Cut-to-Length TMT Bars</h3>
-                  <p className="text-gray-600">Less waste, less cost, faster build</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="border rounded-xl p-6 bg-white border-black shadow-md">
-              <div className="flex items-center gap-4">
-                   <img src="/symbol2.png"  alt="CTL Process"></img>
-                <div>
-                  <h3 className="text-xl font-semibold text-black">Ready-Made TMT Columns</h3>
-                  <p className="text-gray-600">Delivered pre-tied to your specs</p>
-                </div>
-              </div>
-            </div>
-            <div className="border rounded-xl p-6 bg-white border-black shadow-md">
-              <div className="flex items-center gap-4">
-                  <img src="/symbol3.png"  alt="CTL Process"></img>
-                <div>
-                  <h3 className="text-xl font-semibold text-black">Home Delivery</h3>
-                  <p className="text-gray-600">Direct to your site, no middleman</p>
-                </div>
-              </div>
-            </div>
-            <div className="border rounded-xl p-6 bg-white border-black shadow-md">
-              <div className="flex items-center gap-4">
-                 <img src="/symbol4.png"  alt="CTL Process"></img>
-                <div>
-                  <h3 className="text-xl font-semibold text-black">Free TMT tying services</h3>
-                  <p className="text-gray-600">We bring the tools - and the skills</p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-    <div className="order-first lg:order-none col-span-full flex justify-center">
-  <img
-    src="/blog.png"
-    alt="Warehouse"
-    className="rounded-xl w-full max-w-lg max-h-[400px] object-cover"
-  />
+  {/* Right 4 Cards */}
+  <div className="space-y-6">
+    <div className="border rounded-xl p-6 bg-white border-black shadow-md">
+      <div className="flex items-center gap-4">
+        <img src="/symbol5.png" alt="CTL Process" />
+        <div>
+          <h3 className="text-xl font-semibold text-black">Free Engineer Consultation</h3>
+          <p className="text-gray-600">Advice on design, savings & best practices</p>
+        </div>
+      </div>
+    </div>
+    <div className="border rounded-xl p-6 bg-white border-black shadow-md">
+      <div className="flex items-center gap-4">
+        <img src="/symbol6.png" alt="CTL Process" />
+        <div>
+          <h3 className="text-xl font-semibold text-black">Certified Quality</h3>
+          <p className="text-gray-600">Only the top brands, ISI-certified & trusted</p>
+        </div>
+      </div>
+    </div>
+    <div className="border rounded-xl p-6 bg-white border-black shadow-md">
+      <div className="flex items-center gap-4">
+        <img src="/symbol7.png" alt="CTL Process" />
+        <div>
+          <h3 className="text-xl font-semibold text-black">Live Order Tracking</h3>
+          <p className="text-gray-600">Know exactly when your steel arrives</p>
+        </div>
+      </div>
+    </div>
+    <div className="border rounded-xl p-6 bg-white border-black shadow-md">
+      <div className="flex items-center gap-4">
+        <img src="/symbol8.png" alt="CTL Process" />
+        <div>
+          <h3 className="text-xl font-semibold text-black">Best Market Prices</h3>
+          <p className="text-gray-600">Transparent, Honest, Unbeatable</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 
-
-          <div className="space-y-6">
-            <div className="border rounded-xl p-6 bg-white border-black shadow-md">
-              <div className="flex items-center gap-4">
-                 <img src="/symbol5.png"  alt="CTL Process"></img>
-                <div>
-                  <h3 className="text-xl font-semibold text-black">Free Engineer Consultation</h3>
-                  <p className="text-gray-600">Advice on design, savings & best practices</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="border rounded-xl p-6 bg-white border-black shadow-md">
-              <div className="flex items-center gap-4">
-                    <img src="/symbol6.png"  alt="CTL Process"></img>
-                <div>
-                  <h3 className="text-xl font-semibold text-black">Certified Quality</h3>
-                  <p className="text-gray-600">Only the top brands, ISI-certified & trusted</p>
-                </div>
-              </div>
-            </div>
-            <div className="border rounded-xl p-6 bg-white border-black shadow-md">
-              <div className="flex items-center gap-4">
-                   <img src="/symbol7.png"  alt="CTL Process"></img>
-                <div>
-                  <h3 className="text-xl font-semibold text-black">Live Order Tracking </h3>
-                  <p className="text-gray-600">Know exactly when your steel arrives</p>
-                </div>
-              </div>
-            </div>
-            <div className="border rounded-xl p-6 bg-white border-black shadow-md">
-              <div className="flex items-center gap-4">
-                  <img src="/symbol8.png"  alt="CTL Process"></img>
-                <div>
-                  <h3 className="text-xl font-semibold text-black">Best Market Prices</h3>
-                  <p className="text-gray-600">Transparent,Honest,Unbeatable</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
        
       </div>
        <div className="flex flex-col justify-center mt-10 sm:flex-row gap-4">
