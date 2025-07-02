@@ -22,14 +22,14 @@ const Footer = () => {
             <Phone className="text-white mt-1" size={18} />
             <div>
               <h5 className="font-semibold text-sm uppercase">Call Us</h5>
-              <p className="text-sm text-gray-400">080 6221 2000</p>
+              <p className="text-sm text-gray-400">9876543210</p>
             </div>
           </div>
           <div className="flex items-start gap-2">
             <MessageSquare className="text-white mt-1" size={18} />
             <div>
               <h5 className="font-semibold text-sm uppercase">WhatsApp Us</h5>
-              <p className="text-sm text-gray-400">62810 99718</p>
+              <p className="text-sm text-gray-400">9876543210</p>
             </div>
           </div>
           <div className="flex items-start gap-2">
@@ -122,11 +122,11 @@ const Footer = () => {
   <div>
     <h4 className="font-semibold text-sm mb-2">PAYMENT OPTIONS</h4>
     <div className="flex flex-wrap gap-3 lg:justify-center">
-      <img src="/visa.jpg" alt="Visa" className="h-6" />
-      <img src="/mastercard.png" alt="Mastercard" className="h-6" />
-      {/* <img src="/americanexpress.png" alt="Amex" className="h-6" /> */}
-      <img src="/rupay.png" alt="RuPay" className="h-6" />
-      <img src="/banktransfer.png" alt="Bank Transfer" className="h-6" />
+      <img src="/visalogo.png" alt="Visa" className="h-6" />
+      <img src="/mastercardlogo.png" alt="Mastercard" className="h-6" />
+      <img src="/americanExp.png" alt="Amex" className="h-6" />
+      <img src="/rupaylogo.png" alt="RuPay" className="h-6" />
+      {/* <img src="/banktransfer.png" alt="Bank Transfer" className="h-6" /> */}
     </div>
   </div>
 
