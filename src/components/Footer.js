@@ -121,10 +121,10 @@ const Footer = () => {
   {/* Payment Options */}
   <div>
     <h4 className="font-semibold text-sm mb-2">PAYMENT OPTIONS</h4>
-    <div className="flex flex-wrap gap-2">
+    <div className="flex flex-wrap gap-3 lg:justify-center">
       <img src="/visa.jpg" alt="Visa" className="h-6" />
       <img src="/mastercard.png" alt="Mastercard" className="h-6" />
-      <img src="/americanexpress.png" alt="Amex" className="h-6" />
+      {/* <img src="/americanexpress.png" alt="Amex" className="h-6" /> */}
       <img src="/rupay.png" alt="RuPay" className="h-6" />
       <img src="/banktransfer.png" alt="Bank Transfer" className="h-6" />
     </div>
