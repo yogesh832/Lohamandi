@@ -1,5 +1,5 @@
 import React from "react";
-import { FaFacebook ,FaTwitter,FaLinkedin} from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaLinkedin } from "react-icons/fa";
 
 const IndBanner = () => {
   return (
@@ -26,7 +26,10 @@ const IndBanner = () => {
         <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-600 gap-4 pt-4 px-2">
           {/* Author & Date */}
           <div className="flex items-center gap-2">
-            <img src="/logo.png" alt="Lohamandi Logo" className="w-10 h-12" />
+            <img
+              src="/Lohamandilogo.png"
+              alt="Lohamandi Logo"
+className="h-10 sm:h-[100px] w-[200px] object-contain"            />
             <span className="font-medium">Lohamandi Services</span>
             <span className="hidden sm:inline text-gray-400">|</span>
             <span>June 09, 2025</span>
@@ -34,9 +37,15 @@ const IndBanner = () => {
 
           {/* Social Icons */}
           <div className="flex gap-4 text-xl">
-            <span className="cursor-pointer hover:text-black"><FaFacebook/></span>
-            <span className="cursor-pointer hover:text-black"><FaLinkedin/></span>
-            <span className="cursor-pointer hover:text-black"><FaTwitter/></span>
+            <span className="cursor-pointer hover:text-black">
+              <FaFacebook />
+            </span>
+            <span className="cursor-pointer hover:text-black">
+              <FaLinkedin />
+            </span>
+            <span className="cursor-pointer hover:text-black">
+              <FaTwitter />
+            </span>
           </div>
         </div>
       </div>
@@ -45,4 +54,3 @@ const IndBanner = () => {
 };
 
 export default IndBanner;
-

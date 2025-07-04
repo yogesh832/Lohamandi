@@ -1,5 +1,5 @@
 // components/Header.jsx
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   FaInstagram,
   FaTelegramPlane,
@@ -8,13 +8,13 @@ import {
   FaYoutube,
   FaTimes,
   FaBars,
-} from 'react-icons/fa';
+} from "react-icons/fa";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white shadow-md text-black text-sm sm:text-base">
+    <header className="sticky top-0 z-50 w-full bg-white shadow-md  text-black text-sm sm:text-base">
       {/* Top Contact Header (Desktop Only) */}
       <div className="hidden sm:flex items-center justify-between px-6 py-2">
         <div className="flex items-center gap-4 font-medium">
@@ -39,18 +39,46 @@ const Header = () => {
       {/* Main Navbar */}
       <nav className="flex items-center justify-between px-4 sm:px-6 py-3">
         <a href="/" className="hover:text-gray-600">
-          <img src="/logo.png" alt="Lohamandi Logo" className="h-10 w-auto" />
+       <img
+  src="/Lohamandilogo.png"
+  alt="Lohamandi Logo"
+  className="h-10 sm:h-[100px] w-[150px] object-contain"
+/>
+
         </a>
 
         {/* Desktop Links */}
         <ul className="hidden sm:flex flex-wrap gap-6 text-base font-medium items-center">
-          <li><a href="/" className="hover:text-gray-600">Home</a></li>
-          <li><a href="/about" className="hover:text-gray-600">About Us</a></li>
-          <li><a href="/products" className="hover:text-gray-600">Products</a></li>
-          <li><a href="/blog" className="hover:text-gray-600">Blog</a></li>
-          <li><a href="/contact" className="hover:text-gray-600">Contact</a></li>
           <li>
-            <a href="/enquiry" className="bg-gradient-to-r from-[#F17556] to-[#D61349] text-white px-4 py-2 rounded-lg">
+            <a href="/" className="hover:text-gray-600">
+              Home
+            </a>
+          </li>
+          <li>
+            <a href="/about" className="hover:text-gray-600">
+              About Us
+            </a>
+          </li>
+          <li>
+            <a href="/products" className="hover:text-gray-600">
+              Products
+            </a>
+          </li>
+          <li>
+            <a href="/blog" className="hover:text-gray-600">
+              Blog
+            </a>
+          </li>
+          <li>
+            <a href="/contact" className="hover:text-gray-600">
+              Contact
+            </a>
+          </li>
+          <li>
+            <a
+              href="/enquiry"
+              className="bg-gradient-to-r from-[#F17556] to-[#D61349] text-white px-4 py-2 rounded-lg"
+            >
               Enquire Now
             </a>
           </li>
@@ -67,7 +95,7 @@ const Header = () => {
         <div className="sm:hidden px-4 pb-6 space-y-4 text-base font-medium bg-white shadow-inner">
           <div className="border-t pt-4">
             <div className="flex flex-col gap-2 text-sm">
-              <div className='flex flex-row'>
+              <div className="flex flex-row">
                 <div className="flex items-center gap-2">
                   <FaTelegramPlane />
                   <span>info@lohamandi.com </span>
@@ -86,11 +114,21 @@ const Header = () => {
               </div>
             </div>
           </div>
-          <a href="/" className="block hover:text-gray-600">Home</a>
-          <a href="/about" className="block hover:text-gray-600">About Us</a>
-          <a href="/products" className="block hover:text-gray-600">Products</a>
-          <a href="/contact" className="block hover:text-gray-600">Contact</a>
-          <a href="/blog" className="block hover:text-gray-600">Blog</a>
+          <a href="/" className="block hover:text-gray-600">
+            Home
+          </a>
+          <a href="/about" className="block hover:text-gray-600">
+            About Us
+          </a>
+          <a href="/products" className="block hover:text-gray-600">
+            Products
+          </a>
+          <a href="/contact" className="block hover:text-gray-600">
+            Contact
+          </a>
+          <a href="/blog" className="block hover:text-gray-600">
+            Blog
+          </a>
           <a
             href="/enquiry"
             className="block bg-gradient-to-r from-[#F17556] to-[#D61349] text-white px-4 py-2 rounded-lg text-center"
