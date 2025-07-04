@@ -1,18 +1,19 @@
 // App.jsx
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Layout from './Layout';
+import Layout from "./Layout";
 
-import LandingPage from './Pages/LandingPage';
-import ContactPage from './Pages/ContactPage';
-import ProductsPage from './Pages/ProductsPage';
-import BlogPage from './Pages/BlogPage';
-import AboutPage from './Pages/AboutPage';
-import IndPage from './Pages/IndPage';
-import EnquirePage from './Pages/EnquirePage';
-import MoreProducts from './components/MoreProducts';
-import ProductEnquiry from './components/EnquireForm';
+import LandingPage from "./Pages/LandingPage";
+import ContactPage from "./Pages/ContactPage";
+import ProductsPage from "./Pages/ProductsPage";
+import BlogPage from "./Pages/BlogPage";
+import AboutPage from "./Pages/AboutPage";
+import IndPage from "./Pages/IndPage";
+import EnquirePage from "./Pages/EnquirePage";
+import MoreProducts from "./components/MoreProducts";
+import ProductEnquiry from "./components/EnquireForm";
+import Dashboard from "./Pages/dashboard/dashboard";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/enquiry" element={<EnquirePage />} />
           <Route path="/moreproducts" element={<MoreProducts />} />
           <Route path="/productenquiry" element={<ProductEnquiry />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Route>
       </Routes>
     </Router>
