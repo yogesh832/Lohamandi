@@ -7,7 +7,7 @@ const nodemailer = require("nodemailer");
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "upadhayayyogesh832@gmail.com",
+    user: "info@lohamandi.com",
     pass: "exzl urpm udfq kzsq", // ⚠️ Avoid committing real passwords to public repos!
   },
 });
@@ -25,8 +25,8 @@ router.post("/", async (req, res) => {
     await newMessage.save();
 
     await transporter.sendMail({
-      from: `"Website Contact" <upadhayayyogesh832@gmail.com>`,
-      to: "upadhayayyogesh832@gmail.com",
+      from: `"Website Contact" <info@lohamandi.com>`,
+      to: "info@lohamandi.com",
       replyTo: email,
       subject: `New Contact Message from ${name}`,
       html: `
