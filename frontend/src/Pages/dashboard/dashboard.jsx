@@ -8,8 +8,12 @@ const Dashboard = () => {
   const [selectedSlug, setSelectedSlug] = useState(null);
 
   const fetchPages = async () => {
-    const res = await axios.get("http://localhost:8000/api/seo");
-    setPages(res.data);
+    try {
+      const res = await axios.get("https://lohamandi-3.onrender.com/api/seo");
+      setPages(res.data);
+    } catch (err) {
+      console.error("Failed to fetch pages:", err);
+    }
   };
 
   useEffect(() => {
@@ -19,6 +23,20 @@ const Dashboard = () => {
   const handleAddNew = () => {
     const newSlug = prompt("Enter new page slug (e.g. /about)");
     if (newSlug) setSelectedSlug(newSlug);
+  };
+
+  const handleDelete = async (slug) => {
+    const confirmDelete = window.confirm(`Are you sure you want to delete "${slug}"?`);
+    if (!confirmDelete) return;
+
+    try {
+      await axios.delete(`https://lohamandi-3.onrender.com/api/seo/${slug}`);
+      fetchPages(); // Refresh the list
+      if (selectedSlug === slug) setSelectedSlug(null); // Reset form if deleted page was selected
+    } catch (err) {
+      console.error("Delete failed:", err);
+      alert("Failed to delete page.");
+    }
   };
 
   return (
@@ -35,14 +53,33 @@ const Dashboard = () => {
           {pages.map((page) => (
             <li
               key={page.slug}
-              className="border p-2 rounded hover:bg-gray-100 cursor-pointer"
-              onClick={() => setSelectedSlug(page.slug)}
+              className="border p-2 rounded flex justify-between items-center hover:bg-gray-100"
             >
-              {page.slug}
+              <span
+                onClick={() => setSelectedSlug(page.slug)}
+                className="cursor-pointer flex-1"
+              >
+                {page.slug}
+              </span>
+              <div className="space-x-2 ml-2">
+                <button
+                  onClick={() => setSelectedSlug(page.slug)}
+                  className="bg-blue-500 text-white px-2 py-1 rounded text-sm"
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={() => handleDelete(page.slug)}
+                  className="bg-red-500 text-white px-2 py-1 rounded text-sm"
+                >
+                  Delete
+                </button>
+              </div>
             </li>
           ))}
         </ul>
       </div>
+
       <div className="w-2/3">
         {selectedSlug && (
           <>

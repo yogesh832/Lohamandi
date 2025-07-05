@@ -62,4 +62,17 @@ router.put("/:slug", async (req, res) => {
   }
 });
 
+// ✅ DELETE SEO page by slug
+router.delete("/:slug", async (req, res) => {
+  try {
+    const slug = req.params.slug.startsWith("/") ? req.params.slug : `/${req.params.slug}`;
+    const deleted = await SeoPage.findOneAndDelete({ slug });
+
+    if (!deleted) return res.status(404).json({ message: "SEO page not found to delete" });
+    res.json({ message: "SEO page deleted successfully", slug });
+  } catch (error) {
+    res.status(500).json({ message: "Failed to delete SEO page" });
+  }
+});
+
 module.exports = router;

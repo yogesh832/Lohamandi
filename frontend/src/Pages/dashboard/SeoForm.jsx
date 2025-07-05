@@ -14,7 +14,9 @@ const SeoForm = ({ slug }) => {
 
   const isNewPage = async () => {
     try {
-      const res = await axios.get(`http://localhost:8000/api/seo/${slug}`);
+      const res = await axios.get(
+        `https://lohamandi-3.onrender.com/api/seo/${slug}`
+      );
       return !!res.data;
     } catch (err) {
       return false;
@@ -24,7 +26,7 @@ const SeoForm = ({ slug }) => {
   useEffect(() => {
     if (!slug) return;
     axios
-      .get(`http://localhost:8000/api/seo/${slug}`)
+      .get(`https://lohamandi-3.onrender.com/api/seo/${slug}`)
       .then((res) => {
         if (res.data) {
           setSeo(res.data);
@@ -55,32 +57,44 @@ const SeoForm = ({ slug }) => {
     setSeo({ ...seo, [e.target.name]: e.target.value });
   };
 
- const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  if (!slug || slug === "/") {
-    alert("Slug is missing or invalid.");
-    return;
-  }
-
-  try {
-    const res = await axios.get(`http://localhost:8000/api/seo/${encodeURIComponent(slug)}`);
-
-    // If found: update
-    if (res?.data) {
-      await axios.put(`http://localhost:8000/api/seo/${encodeURIComponent(slug)}`, seo);
-    } else {
-      // If not found: create
-      await axios.post("http://localhost:8000/api/seo", { slug, ...seo });
+    if (!slug || slug === "/") {
+      alert("Slug is missing or invalid.");
+      return;
     }
-  } catch (err) {
-    // If GET failed, treat as new
-    await axios.post("http://localhost:8000/api/seo", { slug, ...seo });
-  }
 
-  alert("SEO saved!");
-};
+    try {
+      const res = await axios.get(
+        `https://lohamandi-3.onrender.com/api/seo/${encodeURIComponent(slug)}`
+      );
 
+      // If found: update
+      if (res?.data) {
+        await axios.put(
+          `https://lohamandi-3.onrender.com/api/seo/${encodeURIComponent(
+            slug
+          )}`,
+          seo
+        );
+      } else {
+        // If not found: create
+        await axios.post("https://lohamandi-3.onrender.com/api/seo", {
+          slug,
+          ...seo,
+        });
+      }
+    } catch (err) {
+      // If GET failed, treat as new
+      await axios.post("https://lohamandi-3.onrender.com/api/seo", {
+        slug,
+        ...seo,
+      });
+    }
+
+    alert("SEO saved!");
+  };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4 max-w-xl">
@@ -105,7 +119,10 @@ const SeoForm = ({ slug }) => {
         </div>
       ))}
 
-      <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">
+      <button
+        type="submit"
+        className="bg-blue-600 text-white px-4 py-2 rounded"
+      >
         Save SEO
       </button>
     </form>

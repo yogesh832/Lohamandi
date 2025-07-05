@@ -15,7 +15,7 @@ const ContactForm = () => {
     setStatus("");
 
     try {
-      const res = await fetch("http://localhost:8000/api/contact", {
+      const res = await fetch("https://lohamandi-3.onrender.com/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
@@ -42,13 +42,21 @@ const ContactForm = () => {
       <div className="flex flex-col-reverse md:flex-row gap-10 h-full">
         {/* Contact Form */}
         <div className="w-full md:w-1/2 flex-1">
-          <p className="text-[#A01F16] text-lg sm:text-xl font-semibold mb-2">Contact Us</p>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-4">Get in Touch</h2>
-          <p className="text-base sm:text-lg mb-6 text-gray-700">We usually respond within 24 hours on business days.</p>
+          <p className="text-[#A01F16] text-lg sm:text-xl font-semibold mb-2">
+            Contact Us
+          </p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-4">
+            Get in Touch
+          </h2>
+          <p className="text-base sm:text-lg mb-6 text-gray-700">
+            We usually respond within 24 hours on business days.
+          </p>
 
           <form className="space-y-5" onSubmit={handleSubmit}>
             <div>
-              <label className="block text-base sm:text-lg font-medium mb-1">Name</label>
+              <label className="block text-base sm:text-lg font-medium mb-1">
+                Name
+              </label>
               <input
                 type="text"
                 name="name"
@@ -60,7 +68,9 @@ const ContactForm = () => {
               />
             </div>
             <div>
-              <label className="block text-base sm:text-lg font-medium mb-1">Email</label>
+              <label className="block text-base sm:text-lg font-medium mb-1">
+                Email
+              </label>
               <input
                 type="email"
                 name="email"
@@ -72,7 +82,9 @@ const ContactForm = () => {
               />
             </div>
             <div>
-              <label className="block text-base sm:text-lg font-medium mb-1">Message</label>
+              <label className="block text-base sm:text-lg font-medium mb-1">
+                Message
+              </label>
               <textarea
                 name="message"
                 value={form.message}
@@ -92,7 +104,11 @@ const ContactForm = () => {
             </button>
 
             {status && (
-              <p className={`mt-4 text-center font-medium ${status.startsWith("✅") ? "text-green-600" : "text-red-600"}`}>
+              <p
+                className={`mt-4 text-center font-medium ${
+                  status.startsWith("✅") ? "text-green-600" : "text-red-600"
+                }`}
+              >
                 {status}
               </p>
             )}
