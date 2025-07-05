@@ -1,78 +1,101 @@
-const express = require("express");
-const router = express.Router();
-const SeoPage = require("../models/SeoPage");
+// src/components/Dashboard.jsx
+import { useEffect, useState } from "react";
+import axios from "axios";
+import SeoForm from "./SeoForm";
 
-// ✅ GET all SEO pages
-router.get("/", async (req, res) => {
-  try {
-    const pages = await SeoPage.find();
-    res.json(pages);
-  } catch (error) {
-    res.status(500).json({ message: "Failed to fetch SEO pages" });
-  }
-});
+const Dashboard = () => {
+  const [pages, setPages] = useState([]);
+  const [selectedSlug, setSelectedSlug] = useState(null);
 
-// ✅ GET one by slug
-router.get("/:slug", async (req, res) => {
-  const requestedSlug = "/" + req.params.slug;
-  console.log("Fetching SEO for:", requestedSlug);
-
-  try {
-    const page = await SeoPage.findOne({ slug: requestedSlug });
-    if (!page) {
-      return res.status(404).json({ message: "SEO page not found" });
+  const fetchPages = async () => {
+    try {
+      const res = await axios.get("https://lohamandi-3.onrender.com/api/seo");
+      setPages(res.data);
+    } catch (err) {
+      console.error("Failed to fetch pages:", err);
     }
-    res.json(page);
-  } catch (error) {
-    res.status(500).json({ message: "Failed to fetch SEO page" });
-  }
-});
+  };
 
-// ✅ CREATE new SEO page (auto-fix slug)
-router.post("/", async (req, res) => {
-  try {
-    let { slug } = req.body;
-    if (!slug) return res.status(400).json({ message: "Slug is required" });
+  useEffect(() => {
+    fetchPages();
+  }, []);
 
-    // Ensure slug starts with "/"
-    slug = slug.startsWith("/") ? slug : `/${slug}`;
-    req.body.slug = slug;
+  const handleAddNew = () => {
+    const newSlug = prompt("Enter new page slug (e.g. /about)");
+    if (newSlug) {
+      const formatted = newSlug.startsWith("/") ? newSlug : `/${newSlug}`;
+      setSelectedSlug(formatted);
+    }
+  };
 
-    const existing = await SeoPage.findOne({ slug });
-    if (existing) return res.status(409).json({ message: "Slug already exists" });
+  const handleDelete = async (slug) => {
+    const confirmDelete = window.confirm(`Are you sure you want to delete "${slug}"?`);
+    if (!confirmDelete) return;
 
-    const newPage = new SeoPage(req.body);
-    await newPage.save();
-    res.json(newPage);
-  } catch (error) {
-    res.status(500).json({ message: "Failed to create SEO page" });
-  }
-});
+    try {
+      const safeSlug = slug.replace(/^\//, ""); // remove leading slash
+      await axios.delete(`https://lohamandi-3.onrender.com/api/seo/${safeSlug}`);
+      fetchPages(); // refresh
+      if (selectedSlug === slug) setSelectedSlug(null);
+    } catch (err) {
+      console.error("Delete failed:", err);
+      alert("Failed to delete page.");
+    }
+  };
 
-// ✅ UPDATE existing SEO page
-router.put("/:slug", async (req, res) => {
-  try {
-    const slug = req.params.slug.startsWith("/") ? req.params.slug : `/${req.params.slug}`;
-    const updated = await SeoPage.findOneAndUpdate({ slug }, req.body, { new: true });
+  return (
+    <div className="p-6 flex gap-6">
+      <div className="w-1/3 space-y-4">
+        <h2 className="text-xl font-bold">Pages</h2>
+        <button
+          onClick={handleAddNew}
+          className="bg-green-600 text-white px-3 py-2 rounded"
+        >
+          + Add New SEO Page
+        </button>
+        <ul className="space-y-2">
+          {pages.map((page) => (
+            <li
+              key={page.slug}
+              className="border p-2 rounded flex justify-between items-center hover:bg-gray-100"
+            >
+              <span
+                onClick={() => setSelectedSlug(page.slug)}
+                className="cursor-pointer flex-1"
+              >
+                {page.slug}
+              </span>
+              <div className="space-x-2 ml-2">
+                <button
+                  onClick={() => setSelectedSlug(page.slug)}
+                  className="bg-blue-500 text-white px-2 py-1 rounded text-sm"
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={() => handleDelete(page.slug)}
+                  className="bg-red-500 text-white px-2 py-1 rounded text-sm"
+                >
+                  Delete
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-    if (!updated) return res.status(404).json({ message: "SEO page not found to update" });
-    res.json(updated);
-  } catch (error) {
-    res.status(500).json({ message: "Failed to update SEO page" });
-  }
-});
+      <div className="w-2/3">
+        {selectedSlug && (
+          <>
+            <h2 className="text-xl font-bold mb-4">
+              Edit SEO for: {selectedSlug}
+            </h2>
+            <SeoForm slug={selectedSlug} />
+          </>
+        )}
+      </div>
+    </div>
+  );
+};
 
-// ✅ DELETE SEO page by slug
-router.delete("/:slug", async (req, res) => {
-  try {
-    const slug = req.params.slug.startsWith("/") ? req.params.slug : `/${req.params.slug}`;
-    const deleted = await SeoPage.findOneAndDelete({ slug });
-
-    if (!deleted) return res.status(404).json({ message: "SEO page not found to delete" });
-    res.json({ message: "SEO page deleted successfully", slug });
-  } catch (error) {
-    res.status(500).json({ message: "Failed to delete SEO page" });
-  }
-});
-
-module.exports = router;
+export default Dashboard;

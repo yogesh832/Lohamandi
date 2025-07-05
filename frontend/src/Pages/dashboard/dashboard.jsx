@@ -22,7 +22,10 @@ const Dashboard = () => {
 
   const handleAddNew = () => {
     const newSlug = prompt("Enter new page slug (e.g. /about)");
-    if (newSlug) setSelectedSlug(newSlug);
+    if (newSlug) {
+      const formatted = newSlug.startsWith("/") ? newSlug : `/${newSlug}`;
+      setSelectedSlug(formatted);
+    }
   };
 
   const handleDelete = async (slug) => {
@@ -30,10 +33,10 @@ const Dashboard = () => {
     if (!confirmDelete) return;
 
     try {
-const safeSlug = slug.replace(/^\//, "");
-await axios.delete(`https://lohamandi-3.onrender.com/api/seo/${safeSlug}`);
-      fetchPages(); // Refresh the list
-      if (selectedSlug === slug) setSelectedSlug(null); // Reset form if deleted page was selected
+      const safeSlug = slug.replace(/^\//, ""); // remove leading slash
+      await axios.delete(`https://lohamandi-3.onrender.com/api/seo/${safeSlug}`);
+      fetchPages(); // refresh
+      if (selectedSlug === slug) setSelectedSlug(null);
     } catch (err) {
       console.error("Delete failed:", err);
       alert("Failed to delete page.");
