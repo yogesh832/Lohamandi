@@ -14,9 +14,7 @@ const SeoForm = ({ slug }) => {
 
   const isNewPage = async () => {
     try {
-      const res = await axios.get(
-        `https://lohamandi-3.onrender.com/api/seo/${slug}`
-      );
+      const res = await axios.get(`http://localhost:8000/api/seo/${slug}`);
       return !!res.data;
     } catch (err) {
       return false;
@@ -26,7 +24,7 @@ const SeoForm = ({ slug }) => {
   useEffect(() => {
     if (!slug) return;
     axios
-      .get(`https://lohamandi-3.onrender.com/api/seo/${slug}`)
+      .get(`http://localhost:8000/api/seo/${slug}`)
       .then((res) => {
         if (res.data) {
           setSeo(res.data);
@@ -67,27 +65,25 @@ const SeoForm = ({ slug }) => {
 
     try {
       const res = await axios.get(
-        `https://lohamandi-3.onrender.com/api/seo/${encodeURIComponent(slug)}`
+        `http://localhost:8000/api/seo/${encodeURIComponent(slug)}`
       );
 
       // If found: update
       if (res?.data) {
         await axios.put(
-          `https://lohamandi-3.onrender.com/api/seo/${encodeURIComponent(
-            slug
-          )}`,
+          `http://localhost:8000/api/seo/${encodeURIComponent(slug)}`,
           seo
         );
       } else {
         // If not found: create
-        await axios.post("https://lohamandi-3.onrender.com/api/seo", {
+        await axios.post("http://localhost:8000/api/seo", {
           slug,
           ...seo,
         });
       }
     } catch (err) {
       // If GET failed, treat as new
-      await axios.post("https://lohamandi-3.onrender.com/api/seo", {
+      await axios.post("http://localhost:8000/api/seo", {
         slug,
         ...seo,
       });

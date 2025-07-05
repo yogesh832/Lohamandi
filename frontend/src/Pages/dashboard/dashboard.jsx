@@ -10,7 +10,7 @@ const Dashboard = () => {
 
   const fetchPages = async () => {
     try {
-      const res = await axios.get("https://lohamandi-3.onrender.com/api/seo");
+      const res = await axios.get("http://localhost:8000/api/seo");
       setPages(res.data);
     } catch (err) {
       console.error("Failed to fetch pages:", err);
@@ -19,7 +19,7 @@ const Dashboard = () => {
 
   const fetchMessages = async () => {
     try {
-      const res = await axios.get("https://lohamandi-3.onrender.com/api/contact");
+      const res = await axios.get("http://localhost:8000/api/contact");
       setMessages(res.data);
     } catch (err) {
       console.error("Failed to fetch messages:", err);
@@ -40,12 +40,14 @@ const Dashboard = () => {
   };
 
   const handleDelete = async (slug) => {
-    const confirmDelete = window.confirm(`Are you sure you want to delete "${slug}"?`);
+    const confirmDelete = window.confirm(
+      `Are you sure you want to delete "${slug}"?`
+    );
     if (!confirmDelete) return;
 
     try {
       const safeSlug = slug.replace(/^\//, "");
-      await axios.delete(`https://lohamandi-3.onrender.com/api/seo/${safeSlug}`);
+      await axios.delete(`http://localhost:8000/api/seo/${safeSlug}`);
       fetchPages();
       if (selectedSlug === slug) setSelectedSlug(null);
     } catch (err) {
@@ -133,9 +135,15 @@ const Dashboard = () => {
 
         {selectedMessage && (
           <div className="border rounded p-4 space-y-2 bg-white shadow">
-            <h2 className="text-xl font-bold mb-2">Message from {selectedMessage.name}</h2>
-            <p><strong>Email:</strong> {selectedMessage.email}</p>
-            <p><strong>Message:</strong></p>
+            <h2 className="text-xl font-bold mb-2">
+              Message from {selectedMessage.name}
+            </h2>
+            <p>
+              <strong>Email:</strong> {selectedMessage.email}
+            </p>
+            <p>
+              <strong>Message:</strong>
+            </p>
             <p>{selectedMessage.message}</p>
           </div>
         )}

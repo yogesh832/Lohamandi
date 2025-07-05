@@ -17,7 +17,7 @@ const ProductsPage = () => {
 
   useEffect(() => {
     axios
-      .get("https://lohamandi-3.onrender.com/api/seo/product")
+      .get("http://localhost:8000/api/seo/product")
       .then((res) => setSeo(res.data))
       .catch((err) => console.warn("SEO for /product not found:", err));
   }, []);
