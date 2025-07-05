@@ -3,15 +3,16 @@ const router = express.Router();
 const ContactMessage = require("../models/ContactMessage");
 const nodemailer = require("nodemailer");
 
-// Gmail & App Password (HARD-CODED for now - only use for local testing)
+// 📩 Gmail & App Password - OK for testing only
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "upadhayayyogesh832@gmail.com", // ✅ Your Gmail
-    pass: "exzl urpm udfq kzsq", // ✅ Your Gmail App Password (not your login password)
+    user: "upadhayayyogesh832@gmail.com",
+    pass: "exzl urpm udfq kzsq",
   },
 });
 
+// ✅ POST - Save & Email
 router.post("/", async (req, res) => {
   const { name, email, message } = req.body;
 
@@ -20,15 +21,13 @@ router.post("/", async (req, res) => {
   }
 
   try {
-    // 1. Save to MongoDB
     const newMessage = new ContactMessage({ name, email, message });
     await newMessage.save();
 
-    // 2. Send Email to Admin
     await transporter.sendMail({
-      from: `"Website Contact" <upadhayayyogesh832@gmail.com>`, // must match your Gmail
-      to: "upadhayayyogesh832@gmail.com", // admin will receive this
-      replyTo: email, // 👈 user’s email (for direct reply)
+      from: `"Website Contact" <upadhayayyogesh832@gmail.com>`,
+      to: "upadhayayyogesh832@gmail.com",
+      replyTo: email,
       subject: `New Contact Message from ${name}`,
       html: `
         <h3>New Contact Message</h3>
@@ -43,6 +42,27 @@ router.post("/", async (req, res) => {
   } catch (error) {
     console.error("Error sending email:", error);
     res.status(500).json({ message: "Something went wrong." });
+  }
+});
+
+// ✅ GET all messages
+router.get("/", async (req, res) => {
+  try {
+    const messages = await ContactMessage.find().sort({ createdAt: -1 });
+    res.json(messages);
+  } catch (err) {
+    res.status(500).json({ message: "Failed to fetch messages" });
+  }
+});
+
+// ✅ GET one message
+router.get("/:id", async (req, res) => {
+  try {
+    const message = await ContactMessage.findById(req.params.id);
+    if (!message) return res.status(404).json({ message: "Message not found" });
+    res.json(message);
+  } catch (err) {
+    res.status(500).json({ message: "Failed to fetch message" });
   }
 });
 
