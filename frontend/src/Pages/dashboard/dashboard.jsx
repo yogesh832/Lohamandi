@@ -10,7 +10,7 @@ const Dashboard = () => {
 
   const fetchPages = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/api/seo");
+      const res = await axios.get("https://lohamandi-3.onrender.com/api/seo");
       setPages(res.data);
     } catch (err) {
       console.error("Failed to fetch pages:", err);
@@ -19,7 +19,9 @@ const Dashboard = () => {
 
   const fetchMessages = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/api/contact");
+      const res = await axios.get(
+        "https://lohamandi-3.onrender.com/api/contact"
+      );
       setMessages(res.data);
     } catch (err) {
       console.error("Failed to fetch messages:", err);
@@ -47,7 +49,9 @@ const Dashboard = () => {
 
     try {
       const safeSlug = slug.replace(/^\//, "");
-      await axios.delete(`http://localhost:8000/api/seo/${safeSlug}`);
+      await axios.delete(
+        `https://lohamandi-3.onrender.com/api/seo/${safeSlug}`
+      );
       fetchPages();
       if (selectedSlug === slug) setSelectedSlug(null);
     } catch (err) {
