@@ -12,36 +12,45 @@ import ProductBlog from "../components/ProductBlog";
 import Footer from "../components/Footer";
 
 const AboutPage = () => {
-  const [seo, setSeo] = useState({});
-
-  useEffect(() => {
-    console.log("SEO Loaded:", seo);
-  }, [seo]);
+  const [seo, setSeo] = useState(null);
 
   useEffect(() => {
     axios
-      .get("https://lohamandi-3.onrender.com/api/seo/about")
-      .then((res) => setSeo(res.data))
-      .catch((err) => console.warn("SEO for /about not found:", err));
+      .get("http://localhost:8000/api/seo/about")
+      .then((res) => {
+        setSeo(res.data);
+        console.log("SEO Loaded:", res.data);
+      })
+      .catch((err) => {
+        console.warn("SEO for /about not found:", err);
+        setSeo(null);
+      });
   }, []);
+
+  if (!seo) {
+    return (
+      <>
+        <Helmet>
+          <title>About | Default Title</title>
+          <meta name="description" content="Default About description" />
+        </Helmet>
+        <p className="text-center py-10">Loading...</p>
+      </>
+    );
+  }
+
+  // ✅ Move log outside JSX
+  console.log("Helmet rendered...");
 
   return (
     <>
       <Helmet>
-        <title>{seo?.title || "Default Page Title"}</title>
-        <meta
-          name="description"
-          content={seo?.description || "Default description"}
-        />
-        <meta name="keywords" content={seo?.keywords || ""} />
-        <meta name="robots" content={seo?.robots || "index,follow"} />
-        <meta property="og:image" content={seo?.ogImage || ""} />
-        <meta
-          name="description"
-          content={seo?.description || "Default Description"}
-        />
-
-        <link rel="canonical" href={seo?.canonical || window.location.href} />
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
+        <meta name="keywords" content={seo.keywords} />
+        <meta name="robots" content={seo.robots || "index,follow"} />
+        <meta property="og:image" content={seo.ogImage} />
+        <link rel="canonical" href={seo.canonical || window.location.href} />
       </Helmet>
 
       <AboutBanner />

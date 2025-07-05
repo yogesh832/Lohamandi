@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import SeoForm from "./SeoForm";
+import SeoForm from "./SeoForm"; // Ensure this is correctly implemented
 
 const Dashboard = () => {
   const [pages, setPages] = useState([]);
@@ -10,7 +10,7 @@ const Dashboard = () => {
 
   const fetchPages = async () => {
     try {
-      const res = await axios.get("https://lohamandi-3.onrender.com/api/seo");
+      const res = await axios.get("http://localhost:8000/api/seo");
       setPages(res.data);
     } catch (err) {
       console.error("Failed to fetch pages:", err);
@@ -19,9 +19,7 @@ const Dashboard = () => {
 
   const fetchMessages = async () => {
     try {
-      const res = await axios.get(
-        "https://lohamandi-3.onrender.com/api/contact"
-      );
+      const res = await axios.get("http://localhost:8000/api/contact");
       setMessages(res.data);
     } catch (err) {
       console.error("Failed to fetch messages:", err);
@@ -38,6 +36,7 @@ const Dashboard = () => {
     if (newSlug) {
       const formatted = newSlug.startsWith("/") ? newSlug : `/${newSlug}`;
       setSelectedSlug(formatted);
+      setSelectedMessage(null);
     }
   };
 
@@ -48,10 +47,7 @@ const Dashboard = () => {
     if (!confirmDelete) return;
 
     try {
-      const safeSlug = slug.replace(/^\//, "");
-      await axios.delete(
-        `https://lohamandi-3.onrender.com/api/seo/${safeSlug}`
-      );
+      await axios.delete(`http://localhost:8000/api/seo${slug}`);
       fetchPages();
       if (selectedSlug === slug) setSelectedSlug(null);
     } catch (err) {
@@ -61,13 +57,13 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="p-6 grid grid-cols-3 gap-6">
-      {/* Pages Section */}
+    <div className="p-6 grid grid-cols-4 gap-6">
+      {/* Sidebar - SEO Pages */}
       <div className="space-y-4 col-span-1">
         <h2 className="text-xl font-bold">SEO Pages</h2>
         <button
           onClick={handleAddNew}
-          className="bg-green-600 text-white px-3 py-2 rounded"
+          className="bg-green-600 text-white px-3 py-2 rounded w-full"
         >
           + Add New SEO Page
         </button>
@@ -79,8 +75,8 @@ const Dashboard = () => {
             >
               <span
                 onClick={() => {
-                  setSelectedMessage(null);
                   setSelectedSlug(page.slug);
+                  setSelectedMessage(null);
                 }}
                 className="cursor-pointer flex-1"
               >
@@ -88,7 +84,10 @@ const Dashboard = () => {
               </span>
               <div className="space-x-2 ml-2">
                 <button
-                  onClick={() => setSelectedSlug(page.slug)}
+                  onClick={() => {
+                    setSelectedSlug(page.slug);
+                    setSelectedMessage(null);
+                  }}
                   className="bg-blue-500 text-white px-2 py-1 rounded text-sm"
                 >
                   Edit
@@ -105,52 +104,53 @@ const Dashboard = () => {
         </ul>
       </div>
 
-      {/* Contact Messages Section */}
-      <div className="space-y-4 col-span-1">
-        <h2 className="text-xl font-bold">Contact Messages</h2>
-        <ul className="space-y-2 max-h-[500px] overflow-auto">
-          {messages.map((msg) => (
-            <li
-              key={msg._id}
-              onClick={() => {
-                setSelectedSlug(null);
-                setSelectedMessage(msg);
-              }}
-              className="border p-2 rounded cursor-pointer hover:bg-gray-100"
-            >
-              <p className="font-semibold">{msg.name}</p>
-              <p className="text-sm text-gray-500">{msg.email}</p>
-              <p className="text-sm">{msg.message.slice(0, 50)}...</p>
-            </li>
-          ))}
-        </ul>
-      </div>
+      {/* Main Content - Form or Message Detail */}
+      <div className="space-y-6 col-span-3">
+        {/* Contact Messages */}
+        <div className="space-y-4">
+          <h2 className="text-xl font-bold">Contact Messages</h2>
+          <ul className="space-y-2 max-h-[300px] overflow-auto border p-3 rounded bg-white shadow-sm">
+            {messages.map((msg) => (
+              <li
+                key={msg._id}
+                onClick={() => {
+                  setSelectedMessage(msg);
+                  setSelectedSlug(null);
+                }}
+                className="border p-2 rounded cursor-pointer hover:bg-gray-100"
+              >
+                <p className="font-semibold">{msg.name}</p>
+                <p className="text-sm text-gray-500">{msg.email}</p>
+                <p className="text-sm">{msg.message.slice(0, 50)}...</p>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-      {/* Details / Form Section */}
-      <div className="col-span-1">
-        {selectedSlug && (
-          <>
-            <h2 className="text-xl font-bold mb-4">
-              Edit SEO for: {selectedSlug}
-            </h2>
-            <SeoForm slug={selectedSlug} />
-          </>
-        )}
-{/* kjlaskdjlk */}
-        {selectedMessage && (
-          <div className="border rounded p-4 space-y-2 bg-white shadow">
-            <h2 className="text-xl font-bold mb-2">
-              Message from {selectedMessage.name}
-            </h2>
-            <p>
-              <strong>Email:</strong> {selectedMessage.email}
-            </p>
-            <p>
-              <strong>Message:</strong>
-            </p>
-            <p>{selectedMessage.message}</p>
-          </div>
-        )}
+        {/* SEO Form or Message Detail */}
+        <div className="bg-white p-4 rounded shadow">
+          {selectedSlug && (
+            <>
+              <h2 className="text-xl font-bold mb-4">Edit SEO for: {selectedSlug}</h2>
+              <SeoForm slug={selectedSlug} onSave={fetchPages} />
+            </>
+          )}
+
+          {selectedMessage && (
+            <div className="space-y-2">
+              <h2 className="text-xl font-bold mb-2">
+                Message from {selectedMessage.name}
+              </h2>
+              <p>
+                <strong>Email:</strong> {selectedMessage.email}
+              </p>
+              <p>
+                <strong>Message:</strong>
+              </p>
+              <p>{selectedMessage.message}</p>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

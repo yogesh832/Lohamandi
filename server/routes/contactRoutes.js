@@ -3,16 +3,16 @@ const router = express.Router();
 const ContactMessage = require("../models/ContactMessage");
 const nodemailer = require("nodemailer");
 
-// 📩 Gmail & App Password - OK for testing only
+// Gmail SMTP (Testing Only)
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
     user: "upadhayayyogesh832@gmail.com",
-    pass: "exzl urpm udfq kzsq",
+    pass: "exzl urpm udfq kzsq", // ⚠️ Avoid committing real passwords to public repos!
   },
 });
 
-// ✅ POST - Save & Email
+// Save and Email Message
 router.post("/", async (req, res) => {
   const { name, email, message } = req.body;
 
@@ -45,7 +45,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// ✅ GET all messages
+// Get All Messages
 router.get("/", async (req, res) => {
   try {
     const messages = await ContactMessage.find().sort({ createdAt: -1 });
@@ -55,7 +55,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// ✅ GET one message
+// Get Single Message by ID
 router.get("/:id", async (req, res) => {
   try {
     const message = await ContactMessage.findById(req.params.id);

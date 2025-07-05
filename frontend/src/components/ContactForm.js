@@ -15,7 +15,7 @@ const ContactForm = () => {
     setStatus("");
 
     try {
-      const res = await fetch("https://lohamandi-3.onrender.com/api/contact", {
+      const res = await fetch("http://localhost:8000/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),

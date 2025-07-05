@@ -14,7 +14,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white shadow-md  text-black text-sm sm:text-base">
+    <header className="sticky top-0 z-50 w-full  bg-white shadow-md  text-black text-sm sm:text-base">
       {/* Top Contact Header (Desktop Only) */}
       <div className="hidden sm:flex items-center justify-between px-6 py-2">
         <div className="flex items-center gap-4 font-medium">

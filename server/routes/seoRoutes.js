@@ -1,8 +1,9 @@
+// routes/seoRoutes.js
 const express = require("express");
 const router = express.Router();
 const SeoPage = require("../models/SeoPage");
 
-// GET all SEO pages
+// Get all SEO pages
 router.get("/", async (req, res) => {
   try {
     const pages = await SeoPage.find();
@@ -12,24 +13,13 @@ router.get("/", async (req, res) => {
   }
 });
 
-// GET one by slug
-router.get("/:slug", async (req, res) => {
-  const requestedSlug = "/" + req.params.slug.replace(/^\//, "");
-  const page = await SeoPage.findOne({ slug: requestedSlug });
-
-  if (!page) return res.status(404).json({ message: "SEO page not found" });
-  res.json(page);
-});
-
-
-// CREATE new SEO page
+// Create a new SEO page
 router.post("/", async (req, res) => {
   try {
     let { slug } = req.body;
     if (!slug) return res.status(400).json({ message: "Slug is required" });
 
-    // Ensure slug starts with "/"
-    slug = slug.startsWith("/") ? slug : `/${slug}`;
+    slug = "/" + slug.replace(/^\/+/, "");
     req.body.slug = slug;
 
     const existing = await SeoPage.findOne({ slug });
@@ -37,16 +27,30 @@ router.post("/", async (req, res) => {
 
     const newPage = new SeoPage(req.body);
     await newPage.save();
-    res.json(newPage);
+
+    res.status(201).json(newPage);
   } catch (error) {
     res.status(500).json({ message: "Failed to create SEO page" });
   }
 });
 
-// UPDATE existing SEO page
+// Get SEO page by slug
+router.get("/:slug", async (req, res) => {
+  try {
+    const slug = "/" + req.params.slug.replace(/^\/+/, "");
+    const page = await SeoPage.findOne({ slug });
+
+    if (!page) return res.status(404).json({ message: "SEO page not found" });
+    res.json(page);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch SEO page" });
+  }
+});
+
+// Update SEO page by slug
 router.put("/:slug", async (req, res) => {
   try {
-    const slug = "/" + req.params.slug.replace(/^\//, "");
+    const slug = "/" + req.params.slug.replace(/^\/+/, "");
     const updated = await SeoPage.findOneAndUpdate({ slug }, req.body, { new: true });
 
     if (!updated) return res.status(404).json({ message: "SEO page not found to update" });
@@ -56,13 +60,14 @@ router.put("/:slug", async (req, res) => {
   }
 });
 
-// DELETE SEO page
+// Delete SEO page by slug
 router.delete("/:slug", async (req, res) => {
   try {
-    const slug = "/" + req.params.slug.replace(/^\//, "");
+    const slug = "/" + req.params.slug.replace(/^\/+/, "");
     const deleted = await SeoPage.findOneAndDelete({ slug });
 
     if (!deleted) return res.status(404).json({ message: "SEO page not found to delete" });
+
     res.json({ message: "SEO page deleted successfully", slug });
   } catch (error) {
     res.status(500).json({ message: "Failed to delete SEO page" });
