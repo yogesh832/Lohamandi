@@ -30,7 +30,8 @@ const Dashboard = () => {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`https://lohamandi-3.onrender.com/api/seo/${slug}`);
+const safeSlug = slug.replace(/^\//, "");
+await axios.delete(`https://lohamandi-3.onrender.com/api/seo/${safeSlug}`);
       fetchPages(); // Refresh the list
       if (selectedSlug === slug) setSelectedSlug(null); // Reset form if deleted page was selected
     } catch (err) {
