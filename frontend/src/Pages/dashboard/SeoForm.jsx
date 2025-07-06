@@ -20,7 +20,7 @@ const SeoForm = ({ slug }) => {
     const fetchSeoData = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8000/api/seo/${formatSlug(slug)}`
+          `https://lohamandi-3.onrender.com/api/seo/${formatSlug(slug)}`
         );
         setSeo(res.data || {});
       } catch {
@@ -55,25 +55,25 @@ const SeoForm = ({ slug }) => {
 
     try {
       const res = await axios.get(
-        `http://localhost:8000/api/seo/${formattedSlug}`
+        `https://lohamandi-3.onrender.com/api/seo/${formattedSlug}`
       );
 
       if (res?.data) {
         // Update
         await axios.put(
-          `http://localhost:8000/api/seo/${formattedSlug}`,
+          `https://lohamandi-3.onrender.com/api/seo/${formattedSlug}`,
           seo
         );
       } else {
         // Create
-        await axios.post("http://localhost:8000/api/seo", {
+        await axios.post("https://lohamandi-3.onrender.com/api/seo", {
           slug,
           ...seo,
         });
       }
     } catch {
       // Create on error
-      await axios.post("http://localhost:8000/api/seo", {
+      await axios.post("https://lohamandi-3.onrender.com/api/seo", {
         slug,
         ...seo,
       });

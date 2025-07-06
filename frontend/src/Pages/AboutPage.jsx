@@ -16,7 +16,7 @@ const AboutPage = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/seo/about")
+      .get("https://lohamandi-3.onrender.com/api/seo/about")
       .then((res) => {
         setSeo(res.data);
         console.log("SEO Loaded:", res.data);
@@ -45,17 +45,19 @@ const AboutPage = () => {
   return (
     <>
       <Helmet>
-  <title>{seo.title}</title>
-  <meta name="description" content={seo.description} />
-  <meta name="keywords" content={seo.keywords} />
-  <meta name="robots" content={seo.robots || "index, follow"} />
-  <meta property="og:title" content={seo.title} />
-  <meta property="og:description" content={seo.description} />
-  <meta property="og:image" content={seo.ogImage} />
-  <meta property="og:url" content={seo.canonical || window.location.href} />
-  <link rel="canonical" href={seo.canonical || window.location.href} />
-</Helmet>
-
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
+        <meta name="keywords" content={seo.keywords} />
+        <meta name="robots" content={seo.robots || "index, follow"} />
+        <meta property="og:title" content={seo.title} />
+        <meta property="og:description" content={seo.description} />
+        <meta property="og:image" content={seo.ogImage} />
+        <meta
+          property="og:url"
+          content={seo.canonical || window.location.href}
+        />
+        <link rel="canonical" href={seo.canonical || window.location.href} />
+      </Helmet>
 
       <AboutBanner />
       <AboutText />

@@ -20,7 +20,7 @@ const LandingPage = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/seo/home") // fetching SEO for /home
+      .get("https://lohamandi-3.onrender.com/api/seo/home") // fetching SEO for /home
       .then((res) => setSeo(res.data))
       .catch((err) => console.warn("SEO not found:", err));
   }, []);

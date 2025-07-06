@@ -10,7 +10,7 @@ const Dashboard = () => {
 
   const fetchPages = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/api/seo");
+      const res = await axios.get("https://lohamandi-3.onrender.com/api/seo");
       setPages(res.data);
     } catch (err) {
       console.error("Failed to fetch pages:", err);
@@ -19,7 +19,9 @@ const Dashboard = () => {
 
   const fetchMessages = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/api/contact");
+      const res = await axios.get(
+        "https://lohamandi-3.onrender.com/api/contact"
+      );
       setMessages(res.data);
     } catch (err) {
       console.error("Failed to fetch messages:", err);
@@ -47,7 +49,7 @@ const Dashboard = () => {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://localhost:8000/api/seo${slug}`);
+      await axios.delete(`https://lohamandi-3.onrender.com/api/seo${slug}`);
       fetchPages();
       if (selectedSlug === slug) setSelectedSlug(null);
     } catch (err) {
@@ -131,7 +133,9 @@ const Dashboard = () => {
         <div className="bg-white p-4 rounded shadow">
           {selectedSlug && (
             <>
-              <h2 className="text-xl font-bold mb-4">Edit SEO for: {selectedSlug}</h2>
+              <h2 className="text-xl font-bold mb-4">
+                Edit SEO for: {selectedSlug}
+              </h2>
               <SeoForm slug={selectedSlug} onSave={fetchPages} />
             </>
           )}
