@@ -14,6 +14,7 @@ import EnquirePage from "./Pages/EnquirePage";
 import MoreProducts from "./components/MoreProducts";
 import ProductEnquiry from "./components/EnquireForm";
 import Dashboard from "./Pages/dashboard/dashboard";
+import ProtectedRoute from "./Pages/ProtectedRoute"; // adjust path as needed
 
 function App() {
   return (
@@ -29,7 +30,15 @@ function App() {
           <Route path="/enquiry" element={<EnquirePage />} />
           <Route path="/moreproducts" element={<MoreProducts />} />
           <Route path="/productenquiry" element={<ProductEnquiry />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
         </Route>
       </Routes>
     </Router>
