@@ -90,8 +90,11 @@ const HomeBanner = () => {
                   Get Steel at Best Price
                 </button>
                 <div className="text-center text-sm text-gray-500">or</div>
-                <button className="flex items-center justify-center gap-2 bg-[#25D366] text-white py-4 px-6 rounded-lg hover:bg-green-600 transition">
+                <button className=" bg-[#25D366] text-white py-4 px-6 rounded-lg hover:bg-green-600 transition">
+                        <a href="https://wa.me/919910025184" target="_blank" rel="noopener noreferrer" className='flex items-center justify-center gap-2' >
+
                   <FaWhatsapp /> Chat on Whatsapp
+                  </a>
                 </button>
               </form>
             </div>
