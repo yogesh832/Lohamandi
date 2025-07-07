@@ -44,20 +44,21 @@ const AboutPage = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{seo.title}</title>
-        <meta name="description" content={seo.description} />
-        <meta name="keywords" content={seo.keywords} />
-        <meta name="robots" content={seo.robots || "index, follow"} />
-        <meta property="og:title" content={seo.title} />
-        <meta property="og:description" content={seo.description} />
-        <meta property="og:image" content={seo.ogImage} />
-        <meta
-          property="og:url"
-          content={seo.canonical || window.location.href}
-        />
-        <link rel="canonical" href={seo.canonical || window.location.href} />
-      </Helmet>
+  <Helmet>
+  <title>{seo.title}</title>
+  <meta name="description" content={seo.description} />
+  <meta name="keywords" content={seo.keywords} />
+  <meta name="robots" content={seo.robots || "index, follow"} />
+  <meta property="og:title" content={seo.title} />
+  <meta property="og:description" content={seo.description} />
+  <meta property="og:image" content={seo.ogImage} />
+  <meta property="og:url" content={seo.canonical || window.location.href} />
+  <link rel="canonical" href={seo.canonical || window.location.href} />
+
+  {/* ✅ Add this line */}
+  <meta name="theme-color" content="#000000" />
+</Helmet>
+
 
       <AboutBanner />
       <AboutText />
