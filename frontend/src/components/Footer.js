@@ -71,7 +71,7 @@ const Footer = () => {
               className="h-10 sm:h-[120px] w-[200px] object-contain"
             />
             <p className="text-sm font-semibold">
-              Lohamandi Services Pvt. Ltd.
+              D Y Lohakart Pvt. Ltd.
             </p>
             <p className="text-sm text-gray-400">
               India’s trusted online steel marketplace
