@@ -41,7 +41,7 @@ const HomeBanner = () => {
               Delivered Your Way
             </h1>
             <p className="text-lg max-w-md">
-              From customized length sariya to eco-friendly transport — steel
+              From customized length sariya to eco-friendly transport, steel
               buying made easy.
             </p>
             <div className="flex gap-4">
