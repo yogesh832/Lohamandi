@@ -6,7 +6,7 @@ import MobileStickyCTA from './components/MobileStickyCTA';
 
 const Layout = () => {
   return (
-    <div className="min-h-screen bg-gray-100 relative pb-28">
+    <div className="min-h-screen bg-gray-100 relative ">
       <Header />
       <Outlet />
       <MobileStickyCTA />

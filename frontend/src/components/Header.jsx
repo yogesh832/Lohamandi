@@ -37,14 +37,13 @@ const Header = () => {
       </div>
 
       {/* Main Navbar */}
-      <nav className="flex items-center justify-between px-4 sm:px-6 py-3">
+      <nav className="flex items-center justify-between px-4 sm:px-6 ">
         <a href="/" className="hover:text-gray-600">
-       <img
-  src="/Lohamandilogo.png"
-  alt="Lohamandi Logo"
-  className="h-10 sm:h-[100px] w-[150px] object-contain"
-/>
-
+          <img
+            src="/Lohamandi_original.png"
+            alt="Lohamandi Logo"
+            className=" sm:h-[100px] w-[150px] object-contain"
+          />
         </a>
 
         {/* Desktop Links */}

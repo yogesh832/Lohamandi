@@ -20,7 +20,7 @@ const AboutBanner = () => {
         <p className="text-base sm:text-lg text-justify max-w-full sm:max-w-lg text-black">
           At Lohamandi, we're reshaping how India buys steel. Whether you're a
           contractor, builder, or supplier, we bring you quality steel products,
-          custom-cut options, and reliable doorstep delivery — all through a
+          custom-cut options, and reliable doorstep delivery, all through a
           smooth and digital experience.
         </p>
         <div className="w-full sm:w-auto">

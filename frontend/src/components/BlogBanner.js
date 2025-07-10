@@ -16,7 +16,8 @@ const BlogBanner = () => {
             Steel Industry Insights
           </h1>
           <p className="text-base sm:text-lg md:text-xl max-w-xl mx-auto">
-            Stay updated with the latest in steel, construction trends, and smart building tips — straight from the team at Lohamandi.
+            Stay updated with the latest in steel, construction trends, and
+            smart building tips, straight from the team at Lohamandi.
           </p>
         </div>
       </div>
@@ -25,6 +26,3 @@ const BlogBanner = () => {
 };
 
 export default BlogBanner;
-
-
-

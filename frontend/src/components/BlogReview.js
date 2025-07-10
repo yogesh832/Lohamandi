@@ -13,8 +13,9 @@ const BlogReview = () => {
             What Our Clients Say
           </h2>
           <p className="text-gray-600 mb-6 text-base sm:text-lg">
-            From timely steel delivery to zero material mismatch — see how Lohamandi is helping
-            contractors, dealers, and engineers streamline their construction needs.
+            From timely steel delivery to zero material mismatch, see how
+            Lohamandi is helping contractors, dealers, and engineers streamline
+            their construction needs.
           </p>
           <div className="flex space-x-4">
             <button className="border border-black px-4 py-2 rounded hover:bg-gray-200">
@@ -32,7 +33,9 @@ const BlogReview = () => {
           <div className="bg-white border border-black shadow-md rounded-lg p-6">
             <div className="text-black text-xl mb-2">★★★★★</div>
             <p className="text-gray-700 mb-4 text-base">
-              “Lohamandi’s platform made it easy to compare prices and get materials on-site faster than ever. It’s now our go-to solution for steel procurement.”
+              “Lohamandi’s platform made it easy to compare prices and get
+              materials on-site faster than ever. It’s now our go-to solution
+              for steel procurement.”
             </p>
             <div className="flex items-center space-x-3 mt-4">
               <img
@@ -51,7 +54,8 @@ const BlogReview = () => {
           <div className="bg-white border border-black shadow-md rounded-lg p-6">
             <div className="text-black text-xl mb-2">★★★★★</div>
             <p className="text-gray-700 mb-4 text-base">
-              “What sets Lohamandi apart is their reliability. Materials always arrive on time and the support team is incredibly responsive.”
+              “What sets Lohamandi apart is their reliability. Materials always
+              arrive on time and the support team is incredibly responsive.”
             </p>
             <div className="flex items-center space-x-3 mt-4">
               <img
@@ -72,4 +76,3 @@ const BlogReview = () => {
 };
 
 export default BlogReview;
-

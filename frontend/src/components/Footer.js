@@ -53,27 +53,20 @@ const Footer = () => {
           </div>
           <div>
             <span className="font-semibold text-white">FABRICATION STEEL</span>
-            :&nbsp; MS Rounds | MS Angles | MS Equal Angles | MS Squares | MS
-            Channels | C Channels | U Channels | HR Sheets | CR Sheets | MS
-            Plates | MS Flats | Joist (ISMB) | Narrow Parallel Flange Beams |
-            Wide Parallel Flange Beams | Universal Beams (UB) | Universal
-            Columns (UC) | MS Rectangular Pipes | Light Pipes | Medium Pipes |
-            Heavy Pipes | MS Square Pipes
+            :&nbsp; Coming Soon..
           </div>
           <div>
             <span className="font-semibold text-white">SPECIAL STEEL</span>
-            :&nbsp; EN Flats | EN Plates | EN Rounds | HR Plates | GP Sheets |
-            Seamless Round Pipes | Round Rods | GP Square Pipes | GP Rectangular
-            Pipes | GP Round Pipes | Roofing Sheets
+            :&nbsp; Coming Soon..
           </div>
         </div>
 
         {/* Main Footer Content */}
         <div className="flex flex-col lg:flex-row justify-between items-start gap-10">
           {/* Company Info */}
-          <div className="w-full lg:w-[30%] space-y-3">
+          <div className="w-full lg:w-[30%] ">
             <img
-              src="/Lohamandilogo.png"
+              src="/Lohamandi_original.png"
               alt="Lohamandi Logo"
               className="h-10 sm:h-[120px] w-[200px] object-contain"
             />
@@ -84,7 +77,13 @@ const Footer = () => {
               India’s trusted online steel marketplace
             </p>
             <p className="text-sm font-semibold mt-3">Registered Office</p>
-            <p className="text-sm text-gray-400">
+            <p className="text-sm mb-2 text-gray-400">
+              4th Floor, Metro Plaza,
+              <br />
+              New Delhi - 110001
+            </p>
+            <p className="text-sm font-semibold mt-3">WearHouse Address</p>
+            <p className="text-sm mb-4 text-gray-400">
               4th Floor, Metro Plaza,
               <br />
               New Delhi - 110001
@@ -108,7 +107,10 @@ const Footer = () => {
               <div className="min-w-[130px] sm:w-auto">
                 <h4 className="font-semibold text-sm mb-2">COMPANY</h4>
                 <ul className="space-y-2 text-sm text-gray-300">
-                  <li>About Us</li>
+                  <a href="/about">
+                    {" "}
+                    <li>About Us</li>
+                  </a>
                   <li>Career</li>
                 </ul>
               </div>
@@ -142,7 +144,7 @@ const Footer = () => {
               {/* Payment Options */}
               <div>
                 <h4 className="font-semibold text-sm mb-2">PAYMENT OPTIONS</h4>
-                <div className="flex flex-wrap gap-3 lg:justify-center">
+                <div className="flex  gap-3 lg:justify-center">
                   <img src="/visalogo.png" alt="Visa" className="h-6" />
                   <img
                     src="/mastercardlogo.png"
@@ -180,7 +182,7 @@ const Footer = () => {
             traditional barriers of buying and selling steel. It connects
             manufacturers, suppliers, and buyers across a unified platform. We
             simplify the procurement process by offering competitive pricing,
-            verified suppliers, and secure delivery—making steel sourcing more
+            verified suppliers, and secure delivery,making steel sourcing more
             efficient and reliable. Lohamandi also empowers local sellers to
             become verified suppliers after meeting strict product quality
             standards.

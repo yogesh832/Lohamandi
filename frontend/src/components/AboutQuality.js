@@ -2,17 +2,17 @@
 // src/pages/AboutQuality.jsx
 export default function AboutQuality() {
   const values = [
-    { title: "Quality First", img: "/card.png" },
+    { title: "Quality First", img: "/cardfirst.png" },
     { title: "Reliability", img: "/card2.png" },
-    { title: "Transparency", img: "/card3.jpg"},
+    { title: "Transparency", img: "/card3.jpg" },
     { title: "Innovation", img: "/card4.jpg" },
     { title: "Sustainability", img: "/card5.png" },
   ];
 
   return (
     <section className="min-h-[100vh] bg-white px-4 py-10 text-lg flex flex-col items-center justify-center">
-      <p className="text-[#D61349]-600 text-lg mb-2">Our Values</p>
-      <h2 className="text-3xl md:text-4xl font-bold mb-2 text-center text-black">
+      <p className="text-[#D61349] text-3xl bold mb-2">Our Values</p>
+      <h2 className="text-xl md:text-4xl font-bold mb-2 text-center text-black">
         Built on trust. Driven by purpose.
       </h2>
       <p className="text-center text-gray-700 mb-10 max-w-xl">
@@ -40,7 +40,7 @@ export default function AboutQuality() {
       </div>
 
       <button className="bg-gradient-to-r from-[#F17556] to-[#D61349]  text-white font-semibold py-3 px-6 rounded-xl shadow transition duration-300">
-         <a href="/enquiry">Request Quote</a>
+        <a href="/enquiry">Request Quote</a>
       </button>
     </section>
   );
