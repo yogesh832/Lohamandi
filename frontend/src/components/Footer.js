@@ -66,7 +66,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="w-full lg:w-[30%] ">
             <img
-              src="/Lohamandi_original.png"
+              src="/lohamandi_original.png"
               alt="Lohamandi Logo"
               className="h-10 sm:h-[120px] w-[200px] object-contain"
             />
