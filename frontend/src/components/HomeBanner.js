@@ -38,7 +38,7 @@ const HomeBanner = () => {
           className="h-full w-full absolute top-0 left-0"
           onSlideChangeTransitionStart={() => setIsFading(true)}
           onSlideChangeTransitionEnd={() =>
-            setTimeout(() => setIsFading(false), 800)
+            setTimeout(() => setIsFading(false), 2000)
           }
         >
           {bannerImages.map((img, i) => (
