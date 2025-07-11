@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 import {
   FaBoxOpen,
   FaRecycle,
@@ -6,117 +6,144 @@ import {
   FaShoppingCart,
   FaWhatsapp,
   FaPhoneAlt,
-} from 'react-icons/fa';
+} from "react-icons/fa";
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, EffectFade } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/effect-fade";
 
 const HomeBanner = () => {
-  const bannerImages = ['/lohamandi1.png', '/lohamandi2.png', '/lohamandi3.png'];
+  const bannerImages = [
+    "/lohamandi1.png",
+    "/lohamandi2.png",
+    "/lohamandi3.png",
+  ];
+
+  const [isFading, setIsFading] = useState(false);
 
   return (
     <div>
       {/* Hero Section */}
       <section className="w-full min-h-[80vh] relative">
+        {/* Swiper Background */}
         <Swiper
-          modules={[Autoplay, Pagination]}
-          autoplay={{ delay: 4000 }}
+          modules={[Autoplay, Pagination, EffectFade]}
+          autoplay={{ delay: 5000 }}
           loop={true}
+          effect="fade"
           pagination={{ clickable: true }}
-          className="h-full w-full"
+          className="h-full w-full absolute top-0 left-0"
+          onSlideChangeTransitionStart={() => setIsFading(true)}
+          onSlideChangeTransitionEnd={() =>
+            setTimeout(() => setIsFading(false), 300)
+          }
         >
           {bannerImages.map((img, i) => (
             <SwiperSlide key={i}>
-              {/* === Mobile View === */}
               <div
-                className="md:hidden w-full min-h-[80vh] bg-cover bg-center flex flex-col text-justify"
+                className="w-full min-h-[80vh] bg-cover bg-center"
                 style={{ backgroundImage: `url('${img}')` }}
-              >
-                <div className="w-full bg-black/60 min-h-[80vh] py-40 px-4  text-white space-y-2">
-                  <p className="text-xl text-justify   font-semibold">
-                    At Lohamandi, we simplify your steel sourcing, from order to delivery.
-                  </p>
-                  <p className="text-sm text-justify text-gray-200">
-                    Buy top-brand TMT bars at competitive prices, ensure no wastage with custom lengths,
-                    and track your order in real-time. Whether you're building homes or highways, Lohamandi ensures you get what you need, when you need it.
-                  </p>
-                  <p className="text-sm text-justify text-gray-200">
-                    Trusted by contractors, engineers, and suppliers across India.
-                  </p>
-                </div>
-              </div>
-
-              {/* === Desktop View === */}
-              <div
-                className="hidden md:flex w-full min-h-[80vh] bg-cover bg-center justify-center"
-                style={{ backgroundImage: `url('${img}')` }}
-              >
-                <div className="w-[80vw] h-full bg-black/50 flex items-center justify-between px-4 md:px-10 text-white">
-                  {/* Left Text */}
-                  <div className="flex flex-col justify-center items-start gap-6 w-full md:w-1/2">
-                    <h1 className="text-3xl md:text-5xl font-bold leading-tight">
-                      Smart Steel Solutions
-                    </h1>
-                    <h1 className="text-3xl md:text-5xl font-bold leading-tight">
-                      Delivered Your Way
-                    </h1>
-                    <p className="text-base md:text-lg max-w-md">
-                      From customized length sariya to eco-friendly transport, steel buying made easy.
-                    </p>
-                    <div className="flex flex-wrap gap-4">
-                      <a
-                        href="/enquiry"
-                        className="bg-gradient-to-r from-[#F17556] to-[#D61349] text-white py-3 px-6 rounded-lg hover:opacity-90 transition text-sm"
-                      >
-                        Request Quote
-                      </a>
-                      <a
-                        href="/moreproducts"
-                        className="bg-white text-black py-3 px-6 rounded-lg hover:opacity-90 transition text-sm"
-                      >
-                        Explore Products
-                      </a>
-                    </div>
-                  </div>
-
-                  {/* Right Form */}
-                  <div className="w-full md:w-1/2 flex justify-center items-center py-10">
-                    <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-sm text-black space-y-6">
-                      <h2 className="text-2xl font-semibold">Special Discounts on</h2>
-                      <p className="text-base">Get today's best price & more</p>
-                      <form className="flex flex-col gap-4">
-                        <input
-                          type="text"
-                          placeholder="Enter your Contact Details"
-                          className="p-3 rounded-lg border border-black text-gray-800"
-                        />
-                        <button className="bg-gradient-to-r from-[#F17556] to-[#D61349] text-white py-3 px-6 rounded-lg hover:opacity-90 transition">
-                          Get Steel at Best Price
-                        </button>
-                        <div className="text-center text-sm text-gray-500">or</div>
-                        <a
-                          href="https://wa.me/919910025184"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center justify-center gap-2 bg-[#25D366] text-white py-3 px-6 rounded-lg hover:bg-green-600 transition"
-                        >
-                          <FaWhatsapp /> Chat on Whatsapp
-                        </a>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              ></div>
             </SwiperSlide>
           ))}
         </Swiper>
 
+        {/* === Black Fade Overlay === */}
+        <div
+          className={`absolute top-0 left-0 w-full h-full z-20 bg-black/20 transition-opacity duration-500 pointer-events-none ${
+            isFading ? "opacity-100" : "opacity-0"
+          }`}
+        />
+
+        {/* === Overlay Content: Mobile & Desktop === */}
+        <div className="absolute top-0 left-0 w-full h-full z-10">
+          {/* Mobile Text */}
+          <div className="md:hidden w-full h-full bg-black/60 py-40 px-4 text-white space-y-2">
+            <p className="text-xl font-semibold">
+              At Lohamandi, we simplify your steel sourcing, from order to
+              delivery.
+            </p>
+            <p className="text-sm text-gray-200">
+              Buy top-brand TMT bars at competitive prices, ensure no wastage
+              with custom lengths, and track your order in real-time...
+            </p>
+            <p className="text-sm text-gray-200">
+              Trusted by contractors, engineers, and suppliers across India.
+            </p>
+          </div>
+
+          {/* Desktop Text + Form */}
+          <div className="hidden md:flex w-full h-full bg-black/50 justify-center items-center px-4 md:px-10 text-white">
+            <div className="flex items-center justify-between w-full max-w-7xl">
+              {/* Left Text */}
+              <div className="flex flex-col justify-center gap-6 w-1/2">
+                <h1 className="text-5xl font-bold leading-tight">
+                  Smart Steel Solutions
+                </h1>
+                <h1 className="text-5xl font-bold leading-tight">
+                  Delivered Your Way
+                </h1>
+                <p className="text-lg max-w-md">
+                  From customized length sariya to eco-friendly transport, steel
+                  buying made easy.
+                </p>
+                <div className="flex gap-4">
+                  <a
+                    href="/enquiry"
+                    className="bg-gradient-to-r from-[#F17556] to-[#D61349] text-white py-3 px-6 rounded-lg"
+                  >
+                    Request Quote
+                  </a>
+                  <a
+                    href="/moreproducts"
+                    className="bg-white text-black py-3 px-6 rounded-lg"
+                  >
+                    Explore Products
+                  </a>
+                </div>
+              </div>
+
+              {/* Right Form */}
+              <div className="w-1/2 flex justify-center">
+                <div className="bg-white text-black p-8 rounded-lg w-full max-w-sm space-y-6 shadow-lg">
+                  <h2 className="text-2xl font-semibold">
+                    Special Discounts on
+                  </h2>
+                  <p>Get today's best price & more</p>
+                  <form className="flex flex-col gap-4">
+                    <input
+                      type="text"
+                      placeholder="Enter your Contact Details"
+                      className="p-3 border border-gray-400 rounded"
+                    />
+                    <button className="bg-gradient-to-r from-[#F17556] to-[#D61349] text-white py-3 px-6 rounded-lg">
+                      Get Steel at Best Price
+                    </button>
+                    <div className="text-center text-sm text-gray-500">or</div>
+                    <a
+                      href="https://wa.me/919910025184"
+                      className="flex justify-center items-center gap-2 bg-[#25D366] text-white py-3 px-6 rounded-lg"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaWhatsapp /> Chat on WhatsApp
+                    </a>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* === Mobile Fixed Bottom CTA === */}
         <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-300 shadow-xl">
           <div className="text-center py-2 px-3">
-            <h2 className="text-sm font-semibold text-black">TMT Bars for Construction</h2>
+            <h2 className="text-sm font-semibold text-black">
+              TMT Bars for Construction
+            </h2>
             <p className="text-[#A01F16] text-xs font-semibold mt-1">
               Get free lowest price quote today!
             </p>
