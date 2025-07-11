@@ -26,21 +26,22 @@ const Footer = () => {
             <Phone className="text-white mt-1" size={18} />
             <div>
               <h5 className="font-semibold text-sm uppercase">Call Us</h5>
-              <p className="text-sm text-gray-400">9876543210</p>
+              <p className="text-sm text-gray-400">+91 9910025184</p>
+              <p className="text-sm text-gray-400">+91 9319039145</p>
             </div>
           </div>
           <div className="flex items-start gap-2">
             <MessageSquare className="text-white mt-1" size={18} />
             <div>
               <h5 className="font-semibold text-sm uppercase">WhatsApp Us</h5>
-              <p className="text-sm text-gray-400">9876543210</p>
+              <p className="text-sm text-gray-400">+91 9910025184</p>
             </div>
           </div>
           <div className="flex items-start gap-2">
             <Mail className="text-white mt-1" size={18} />
             <div>
               <h5 className="font-semibold text-sm uppercase">Email Us</h5>
-              <p className="text-sm text-gray-400">support@lohamandi.com</p>
+              <p className="text-sm text-gray-400">Info@lohamandi.com</p>
             </div>
           </div>
         </div>
@@ -49,44 +50,44 @@ const Footer = () => {
         <div className="text-sm text-gray-300 space-y-4 border-b border-gray-700 pb-6">
           <div>
             <span className="font-semibold text-white">CONSTRUCTION STEEL</span>
-            :&nbsp; TMT Bars | Binding Wire | Stirrups
+            : TMT Bars | Binding Wire | Stirrups
           </div>
           <div>
             <span className="font-semibold text-white">FABRICATION STEEL</span>
-            :&nbsp; Coming Soon..
+            : Coming Soon..
           </div>
           <div>
             <span className="font-semibold text-white">SPECIAL STEEL</span>
-            :&nbsp; Coming Soon..
+            : Coming Soon..
           </div>
         </div>
 
         {/* Main Footer Content */}
         <div className="flex flex-col lg:flex-row justify-between items-start gap-10">
           {/* Company Info */}
-          <div className="w-full lg:w-[30%] ">
+          <div className="w-full lg:w-[30%]">
             <img
               src="/lohamandi_original.png"
               alt="Lohamandi Logo"
               className="h-10 sm:h-[120px] w-[200px] object-contain"
             />
-            <p className="text-sm font-semibold">
-              D Y Lohakart Pvt. Ltd.
-            </p>
+            <p className="text-sm font-semibold">D Y Lohakart Pvt. Ltd.</p>
             <p className="text-sm text-gray-400">
               India’s trusted online steel marketplace
             </p>
             <p className="text-sm font-semibold mt-3">Registered Office</p>
             <p className="text-sm mb-2 text-gray-400">
-              4th Floor, Metro Plaza,
+              305, C-102, RDC, Raj Nagar,
               <br />
-              New Delhi - 110001
+              Ghaziabad
             </p>
-            <p className="text-sm font-semibold mt-3">WearHouse Address</p>
+            <p className="text-sm font-semibold mt-3">Warehouse Address</p>
             <p className="text-sm mb-4 text-gray-400">
-              4th Floor, Metro Plaza,
+              Plot No - A4, Block-A, Zone B,
               <br />
-              New Delhi - 110001
+              Jaipuria Sunrise Greens,
+              <br />
+              Village - Bamheta, 201001
             </p>
             <p className="text-sm text-gray-400">
               CIN: U12345DL2020PTC123456
@@ -101,22 +102,17 @@ const Footer = () => {
 
           {/* Links + Payment + Social */}
           <div className="w-full lg:flex-1 flex flex-col sm:flex-row justify-between gap-8">
-            {/* Links */}
+            {/* Quick Links */}
             <div className="w-full flex flex-wrap items-start justify-start gap-6 sm:gap-10 lg:gap-4">
-              {/* COMPANY */}
-              <div className="min-w-[130px] sm:w-auto">
+              <div className="min-w-[130px]">
                 <h4 className="font-semibold text-sm mb-2">COMPANY</h4>
                 <ul className="space-y-2 text-sm text-gray-300">
-                  <a href="/about">
-                    {" "}
-                    <li>About Us</li>
-                  </a>
+                  <li><a href="/about">About Us</a></li>
                   <li>Career</li>
                 </ul>
               </div>
 
-              {/* PURCHASE */}
-              <div className="min-w-[160px] sm:w-auto">
+              <div className="min-w-[160px]">
                 <h4 className="font-semibold text-sm mb-2">PURCHASE</h4>
                 <ul className="space-y-2 text-sm text-gray-300">
                   <li>Track Orders</li>
@@ -126,8 +122,7 @@ const Footer = () => {
                 </ul>
               </div>
 
-              {/* SUPPORT */}
-              <div className="min-w-[160px] sm:w-auto">
+              <div className="min-w-[160px]">
                 <h4 className="font-semibold text-sm mb-2">SUPPORT</h4>
                 <ul className="space-y-2 text-sm text-gray-300">
                   <li>FAQs</li>
@@ -139,25 +134,17 @@ const Footer = () => {
             </div>
 
             {/* Payment & Social */}
-            {/* Payment & Social */}
             <div className="w-full sm:w-auto flex flex-col gap-6 mt-6 sm:mt-0">
-              {/* Payment Options */}
               <div>
                 <h4 className="font-semibold text-sm mb-2">PAYMENT OPTIONS</h4>
-                <div className="flex  gap-3 lg:justify-center">
+                <div className="flex gap-3">
                   <img src="/visalogo.png" alt="Visa" className="h-6" />
-                  <img
-                    src="/mastercardlogo.png"
-                    alt="Mastercard"
-                    className="h-6"
-                  />
+                  <img src="/mastercardlogo.png" alt="Mastercard" className="h-6" />
                   <img src="/americanExp.png" alt="Amex" className="h-6" />
                   <img src="/rupaylogo.png" alt="RuPay" className="h-6" />
-                  {/* <img src="/banktransfer.png" alt="Bank Transfer" className="h-6" /> */}
                 </div>
               </div>
 
-              {/* Follow Us */}
               <div>
                 <h4 className="font-semibold text-sm mb-2">FOLLOW US</h4>
                 <div className="flex space-x-3 text-gray-300 text-lg mt-1">
@@ -174,15 +161,13 @@ const Footer = () => {
 
         {/* Why Lohamandi */}
         <div className="border-t border-gray-700 py-6">
-          <h4 className="font-semibold text-white text-base mb-2">
-            WHY LOHAMANDI?
-          </h4>
+          <h4 className="font-semibold text-white text-base mb-2">WHY LOHAMANDI?</h4>
           <p className="text-sm text-gray-400 leading-relaxed">
             Lohamandi is India’s leading online steel marketplace, breaking the
             traditional barriers of buying and selling steel. It connects
             manufacturers, suppliers, and buyers across a unified platform. We
             simplify the procurement process by offering competitive pricing,
-            verified suppliers, and secure delivery,making steel sourcing more
+            verified suppliers, and secure delivery, making steel sourcing more
             efficient and reliable. Lohamandi also empowers local sellers to
             become verified suppliers after meeting strict product quality
             standards.
