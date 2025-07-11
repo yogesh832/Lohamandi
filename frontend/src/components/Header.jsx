@@ -40,7 +40,7 @@ const Header = () => {
       <nav className="flex items-center justify-between px-4 sm:px-6 ">
         <a href="/" className="hover:text-gray-600">
           <img
-            src="/Lohamandi_original.png"//added 
+            src="/lohamandi_original.png"//added 
             alt="Lohamandi Logo"
             className=" sm:h-[100px] w-[150px] object-contain"
           />
