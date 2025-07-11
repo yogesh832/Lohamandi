@@ -18,15 +18,26 @@ const Header = () => {
       {/* Top Contact Header (Desktop Only) */}
       <div className="hidden sm:flex items-center justify-between px-6 py-2">
         <div className="flex items-center gap-4 font-medium">
+           <a
+    href="mailto:info@lohamandi.com"
+    className="hover:text-[#EA4335] hover:scale-110 transition duration-300"
+  >
           <div className="flex items-center gap-2">
             <FaEnvelope />
-            <span>info@lohamandi.com</span>
+            <span     className="hover:text-[#EA4335] hover:scale-10 transition duration-300"
+>info@lohamandi.com</span>
           </div>
+          </a>
           <span>|</span>
+            <a
+    href="mailto:info@lohamandi.com"
+    className="hover:text-[#EA4335] hover:scale-110 transition duration-300"
+  >
           <div className="flex items-center gap-2">
             <FaPhoneAlt />
             <span>+91-9910025184</span>
           </div>
+          </a>
         </div>
      <div className="flex gap-3 text-xl">
   <a
