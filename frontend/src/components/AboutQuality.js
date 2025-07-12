@@ -11,11 +11,11 @@ export default function AboutQuality() {
 
   return (
     <section className="min-h-[100vh] bg-white px-4 py-10 text-lg flex flex-col items-center justify-center">
-      <p className="text-[#D61349] text-3xl bold mb-2">Our Values</p>
-      <h2 className="text-xl md:text-4xl font-bold mb-2 text-center text-black">
+      <p className="text-[#D61349] text-4xl bold mb-2">Our Values</p>
+      <h2 className="text-lg md:text-2xl font-bold mb-2 text-center text-black">
         Built on trust. Driven by purpose.
       </h2>
-      <p className="text-center text-gray-700 mb-10 max-w-xl">
+      <p className="text-center textz-gray-700 mb-10 max-w-xl">
         The foundation behind every bar we deliver.
       </p>
 

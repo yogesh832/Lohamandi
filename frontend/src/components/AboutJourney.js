@@ -35,24 +35,34 @@ const AboutJourney = () => {
         </h2>
 
         <div className="relative">
-          {/* Vertical line for desktop (center) */}
+          {/* Vertical line for desktop */}
           <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-[2px] bg-gray-300 z-0" />
-
-          {/* Vertical line for mobile (left-aligned) */}
+          {/* Vertical line for mobile */}
           <div className="block md:hidden absolute left-6 h-full w-[2px] bg-gray-300 z-0" />
 
           <div className="space-y-16">
             {journey.map((item, idx) => (
-              <div key={idx} className="relative flex flex-col md:flex-row items-start md:items-center">
-                
+              <div
+                key={idx}
+                className="group relative flex flex-col md:flex-row items-start md:items-center"
+              >
                 {/* Icon on the timeline line */}
-                <div className="absolute top-1/2 transform -translate-y-1/2 
-                  md:left-1/2 md:-translate-x-1/2 left-6 z-10">
-                  <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-md border border-gray-300">
+                <div
+                  className="absolute top-1/2 transform -translate-y-1/2 
+                    md:left-1/2 md:-translate-x-1/2 left-6 z-10"
+                >
+                  <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-md border border-gray-300 overflow-hidden relative">
+                    {/* Default Image */}
                     <img
-                      src={idx === 0 ? "/line1.png" : "/line2.png"}
+                      src="/line2.png"
                       alt="icon"
-                      className="w-10 h-10 object-cover"
+                      className="w-10 h-10 object-cover transition-all duration-300 ease-in-out scale-100 opacity-100 group-hover:scale-105 group-hover:opacity-0 absolute"
+                    />
+                    {/* Hover Image */}
+                    <img
+                      src="/line1.png"
+                      alt="icon-hover"
+                      className="w-10 h-10 object-cover transition-all duration-300 ease-in-out scale-95 opacity-0 group-hover:scale-105 group-hover:opacity-100"
                     />
                   </div>
                 </div>
@@ -67,11 +77,14 @@ const AboutJourney = () => {
                     pl-16 md:pl-0
                   `}
                 >
-                  <div className="bg-white p-6 rounded-xl shadow-lg">
-                    <p className="text-sm text-red-600 font-semibold mb-1">{item.year}</p>
-                    <h3 className="font-bold text-gray-800 mb-1">{item.title}</h3>
-                    <p className="text-gray-700">{item.description}</p>
-                  </div>
+                <div
+  className="bg-white p-6 rounded-xl shadow-lg transition-all duration-300 ease-in-out transform group-hover:scale-105 group-hover:-translate-y-1 group-hover:shadow-xl"
+>
+  <p className="text-sm text-red-600 font-semibold mb-1">{item.year}</p>
+  <h3 className="font-bold text-gray-800 mb-1">{item.title}</h3>
+  <p className="text-gray-700">{item.description}</p>
+</div>
+
                 </div>
 
                 {/* For spacing/alignment on desktop */}
@@ -86,4 +99,3 @@ const AboutJourney = () => {
 };
 
 export default AboutJourney;
-

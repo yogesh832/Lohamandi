@@ -5,7 +5,7 @@ const AboutText = () => {
 
   return (
     <section
-      className="min-h-[110vh] bg-white px-6 py-16 text-black text-lg flex items-center justify-center"
+      className="min-h-[70vh] bg-white px-6 text-black text-lg flex items-center justify-center"
       id="aboutext"
     >
       <div className="max-w-4xl mx-auto space-y-6 text-left">
