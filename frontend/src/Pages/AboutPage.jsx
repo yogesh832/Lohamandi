@@ -83,7 +83,13 @@ const AboutPage = () => {
           <title>About | Default Title</title>
           <meta name="description" content="Default About description" />
         </Helmet>
-        <p className="text-center py-10">Loading...</p>
+<div className="flex justify-center items-center py-10">
+  <img
+    src="/enquire.png"
+    alt="Loading..."
+    className="h-16 w-16 animate-spin-slow"
+  />
+</div>
       </>
     );
   }
