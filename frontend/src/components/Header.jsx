@@ -18,72 +18,72 @@ const Header = () => {
       {/* Top Contact Header (Desktop Only) */}
       <div className="hidden sm:flex items-center justify-between px-6 py-2">
         <div className="flex items-center gap-4 font-medium">
-           <a
-    href="mailto:info@lohamandi.com"
-    className="hover:text-[#EA4335] hover:scale-110 transition duration-300"
-  >
-          <div className="flex items-center gap-2">
-            <FaEnvelope />
-            <span     className="hover:text-[#EA4335] hover:scale-10 transition duration-300"
->info@lohamandi.com</span>
-          </div>
+          <a
+            href="mailto:info@lohamandi.com"
+            className="hover:text-[#EA4335] hover:scale-110 transition duration-300"
+          >
+            <div className="flex items-center gap-2">
+              <FaEnvelope />
+              <span className="hover:text-[#EA4335] hover:scale-10 transition duration-300">
+                info@lohamandi.com
+              </span>
+            </div>
           </a>
           <span>|</span>
-            <a
-    href="mailto:info@lohamandi.com"
-    className="hover:text-[#EA4335] hover:scale-110 transition duration-300"
-  >
-          <div className="flex items-center gap-2">
-            <FaPhoneAlt />
-            <span>+91-9910025184</span>
-          </div>
+          <a
+            href="mailto:info@lohamandi.com"
+            className="hover:text-[#EA4335] hover:scale-110 transition duration-300"
+          >
+            <div className="flex items-center gap-2">
+              <FaPhoneAlt />
+              <span>+91-9910025184</span>
+            </div>
           </a>
         </div>
-     <div className="flex gap-3 text-xl">
-  <a
-    href="https://www.facebook.com/"
-    className="hover:text-[#1877F2] hover:scale-110 transition duration-300"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <FaFacebookF />
-  </a>
-  <a
-    href="https://www.youtube.com/"
-    className="hover:text-[#FF0000] hover:scale-110 transition duration-300"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <FaYoutube />
-  </a>
-  <a
-    href="https://www.instagram.com/lohamandicom?igsh=MWRzZmVvNDRhYTd4bg=="
-    className="hover:text-[#E1306C] hover:scale-110 transition duration-300"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <FaInstagram />
-  </a>
-  <a
-    href="https://www.linkedin.com/company/lohamandicom/"
-    className="hover:text-[#0077B5] hover:scale-110 transition duration-300"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    <FaLinkedinIn />
-  </a>
-  <a
-    href="mailto:info@lohamandi.com"
-    className="hover:text-[#EA4335] hover:scale-110 transition duration-300"
-  >
-    <FaEnvelope />
-  </a>
-</div>
-
+        <div className="flex gap-3 text-xl">
+          <a
+            href="https://www.facebook.com/"
+            className="hover:text-[#1877F2] hover:scale-110 transition duration-300"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaFacebookF />
+          </a>
+          <a
+            href="https://www.youtube.com/"
+            className="hover:text-[#FF0000] hover:scale-110 transition duration-300"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaYoutube />
+          </a>
+          <a
+            href="https://www.instagram.com/lohamandicom?igsh=MWRzZmVvNDRhYTd4bg=="
+            className="hover:text-[#E1306C] hover:scale-110 transition duration-300"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaInstagram />
+          </a>
+          <a
+            href="https://www.linkedin.com/company/lohamandicom/"
+            className="hover:text-[#0077B5] hover:scale-110 transition duration-300"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaLinkedinIn />
+          </a>
+          <a
+            href="mailto:info@lohamandi.com"
+            className="hover:text-[#EA4335] hover:scale-110 transition duration-300"
+          >
+            <FaEnvelope />
+          </a>
+        </div>
       </div>
 
       {/* Main Navbar */}
-      <nav className="flex items-center justify-between px-4 sm:px-6">
+      <nav className="flex items-center justify-between px-4 sm:px-6 sm: min-h-16">
         <a href="/" className="hover:text-gray-600">
           <img
             src="/lohamandi_original.png"
@@ -130,7 +130,10 @@ const Header = () => {
         </ul>
 
         {/* Hamburger Icon */}
-        <div className="sm:hidden text-2xl" onClick={() => setIsOpen(!isOpen)}>
+        <div
+          className="sm:hidden p-y-10 text-2xl"
+          onClick={() => setIsOpen(!isOpen)}
+        >
           {isOpen ? <FaTimes /> : <FaBars />}
         </div>
       </nav>
