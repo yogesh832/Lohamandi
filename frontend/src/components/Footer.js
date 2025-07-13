@@ -5,8 +5,10 @@ import {
   FaLinkedinIn,
   FaTwitter,
   FaYoutube,
+  FaPhoneAlt,
+  FaWhatsapp,
+  FaEnvelope,
 } from "react-icons/fa";
-import { Phone, Mail, MessageSquare } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -22,26 +24,74 @@ const Footer = () => {
               Discuss it with our steel expert
             </p>
           </div>
+
+          {/* Phone Numbers */}
           <div className="flex items-start gap-2">
-            <Phone className="text-white mt-1" size={18} />
+            <FaPhoneAlt className="text-white mt-1" size={18} />
             <div>
               <h5 className="font-semibold text-sm uppercase">Call Us</h5>
-              <p className="text-sm text-gray-400">+91 9910025184</p>
-              <p className="text-sm text-gray-400">+91 9319039145</p>
+              <div className="flex flex-col gap-1">
+                <div className="flex items-center gap-2">
+                  <p className="text-sm text-gray-400">+91 9910025184</p>
+                  <button
+                    onClick={() => window.location.href = "tel:+919910025184"}
+                    className="p-1 rounded hover:bg-gray-700 hover:scale-110 transition"
+                    aria-label="Call"
+                  >
+                    <FaPhoneAlt size={14} />
+                  </button>
+                </div>
+                <div className="flex items-center gap-2">
+                  <p className="text-sm text-gray-400">+91 9319039145</p>
+                  <button
+                    onClick={() => window.location.href = "tel:+919319039145"}
+                    className="p-1 rounded hover:bg-gray-700 hover:scale-110 transition"
+                    aria-label="Call"
+                  >
+                    <FaPhoneAlt size={14} />
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
+
+          {/* WhatsApp */}
           <div className="flex items-start gap-2">
-            <MessageSquare className="text-white mt-1" size={18} />
+            <FaWhatsapp className="text-white mt-1" size={18} />
             <div>
               <h5 className="font-semibold text-sm uppercase">WhatsApp Us</h5>
-              <p className="text-sm text-gray-400">+91 9910025184</p>
+              <div className="flex items-center gap-2">
+                <p className="text-sm text-gray-400">+91 9910025184</p>
+                <button
+                  onClick={() =>
+                    window.open("https://wa.me/919910025184", "_blank")
+                  }
+                  className="p-1 rounded hover:bg-gray-700 hover:scale-110 transition"
+                  aria-label="WhatsApp"
+                >
+                  <FaWhatsapp size={14} />
+                </button>
+              </div>
             </div>
           </div>
+
+          {/* Email */}
           <div className="flex items-start gap-2">
-            <Mail className="text-white mt-1" size={18} />
+            <FaEnvelope className="text-white mt-1" size={18} />
             <div>
               <h5 className="font-semibold text-sm uppercase">Email Us</h5>
-              <p className="text-sm text-gray-400">Info@lohamandi.com</p>
+              <div className="flex items-center gap-2">
+                <p className="text-sm text-gray-400">info@lohamandi.com</p>
+                <button
+                  onClick={() =>
+                    window.location.href = "mailto:info@lohamandi.com"
+                  }
+                  className="p-1 rounded hover:bg-gray-700 hover:scale-110 transition"
+                  aria-label="Email"
+                >
+                  <FaEnvelope size={14} />
+                </button>
+              </div>
             </div>
           </div>
         </div>
