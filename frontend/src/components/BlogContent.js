@@ -31,7 +31,7 @@ const BlogContent = () => {
       <div className="flex items-center gap-4">
         <img src="/symbol2.png" alt="CTL Process" />
         <div>
-          <h3 className="text-xl font-semibold text-black">Ready-Made TMT Columns</h3>
+          <h3 className="text-xl font-semibold text-black">Customized TMT Columns</h3>
           <p className="text-gray-600">Delivered pre-tied to your specs</p>
         </div>
       </div>
