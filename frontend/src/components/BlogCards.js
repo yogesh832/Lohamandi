@@ -1,32 +1,32 @@
 import React from "react";
 
 const BlogCards = () => {
-  const blogs = [
-    {
-      title: "5 Reasons Why Custom-Length TMT Bars Save You Time & Money",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin posuere elit id...",
-      tag: "Construction Tips",
-      img: "/blog1.png",
-      date: "09",
-      month: "JUN",
-    },
-    {
-      title: "How Eco-Friendly Steel Delivery is Changing the Construction Game",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin posuere elit id...",
-      tag: "Sustainability",
-      img: "/blog2.png",
-      date: "09",
-      month: "JUN",
-    },
-    {
-      title: "TMT Bar Grades Explained: Which One is Right Project?",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin posuere elit id...",
-      tag: "Product Knowledge",
-      img: "/blog3.png",
-      date: "09",
-      month: "JUN",
-    },
-  ];
+const blogs = [
+  {
+    title: "5 Reasons Why Custom-Length TMT Bars Save You Time & Money",
+    desc: "Discover how ordering TMT bars in custom lengths minimizes waste, reduces labor costs, and speeds up your construction timelines.",
+    tag: "Construction Tips",
+    img: "/blog1.png",
+    date: "09",
+    month: "JUN",
+  },
+  {
+    title: "How Eco-Friendly Steel Delivery is Changing the Construction Game",
+    desc: "Learn how sustainable logistics practices, such as optimized delivery routes and green packaging, are transforming the way steel reaches your site.",
+    tag: "Sustainability",
+    img: "/blog2.png",
+    date: "09",
+    month: "JUN",
+  },
+  {
+    title: "TMT Bar Grades Explained: Which One is Right for Your Project?",
+    desc: "Understand the differences between Fe-415, Fe-500, and Fe-550 grades to choose the best TMT bar strength for your construction needs.",
+    tag: "Product Knowledge",
+    img: "/blog3.png",
+    date: "09",
+    month: "JUN",
+  },
+];
 
   return (
     <section className="bg-white from-[#D61349] to-[#F17556] py-12 px-6 sm:px-10 lg:px-20 text-black">
