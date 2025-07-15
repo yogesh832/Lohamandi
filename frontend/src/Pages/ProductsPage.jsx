@@ -17,7 +17,7 @@ const ProductsPage = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/seo/product")
+      .get("https://lohamandi-3.onrender.com/api/seo/product")
       .then((res) => setSeo(res.data))
       .catch((err) => console.warn("SEO for /product not found:", err));
   }, []);
@@ -26,7 +26,10 @@ const ProductsPage = () => {
     <>
       <Helmet>
         <title>{seo?.title || "Our Products"}</title>
-        <meta name="description" content={seo?.description || "Default product description"} />
+        <meta
+          name="description"
+          content={seo?.description || "Default product description"}
+        />
         <meta name="keywords" content={seo?.keywords || ""} />
         <meta name="robots" content={seo?.robots || "index,follow"} />
         <meta property="og:image" content={seo?.ogImage || ""} />

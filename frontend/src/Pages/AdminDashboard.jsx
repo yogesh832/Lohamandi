@@ -9,7 +9,7 @@ const AdminDashboard = () => {
 
   const fetchBlogs = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/api/blog");
+      const res = await axios.get("https://lohamandi-3.onrender.com/api/blog");
       setBlogs(res.data);
     } catch (err) {
       console.error("Failed to fetch blogs", err);
@@ -25,7 +25,7 @@ const AdminDashboard = () => {
     if (!window.confirm("Are you sure you want to delete this blog?")) return;
 
     try {
-      await axios.delete(`http://localhost:8000/api/blog/${id}`);
+      await axios.delete(`https://lohamandi-3.onrender.com/api/blog/${id}`);
       fetchBlogs();
     } catch (err) {
       console.error("Delete failed", err);
@@ -58,13 +58,12 @@ const AdminDashboard = () => {
         <h2 className="text-xl font-bold mb-4">All Blogs</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {blogs.map((blog) => (
-          <BlogCard
-  key={blog._id}
-  blog={blog}
-  onEdit={setEditingBlog}
-  onDelete={handleDelete}
-/>
-
+            <BlogCard
+              key={blog._id}
+              blog={blog}
+              onEdit={setEditingBlog}
+              onDelete={handleDelete}
+            />
           ))}
         </div>
       </div>

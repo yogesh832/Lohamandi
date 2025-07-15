@@ -9,7 +9,7 @@ const SeoList = () => {
 
   const fetchPages = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/api/seo");
+      const res = await axios.get("https://lohamandi-3.onrender.com/api/seo");
       setPages(res.data);
     } catch (err) {
       console.error("Failed to fetch SEO pages", err);
@@ -22,7 +22,7 @@ const SeoList = () => {
 
   const handleDelete = async (slug) => {
     if (!window.confirm(`Delete ${slug}?`)) return;
-    await axios.delete(`http://localhost:8000/api/seo${slug}`);
+    await axios.delete(`https://lohamandi-3.onrender.com/api/seo${slug}`);
     fetchPages();
     setSelectedSlug(null);
   };

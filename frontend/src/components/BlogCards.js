@@ -9,7 +9,9 @@ const BlogCards = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const res = await axios.get("http://localhost:8000/api/blog");
+        const res = await axios.get(
+          "https://lohamandi-3.onrender.com/api/blog"
+        );
         setBlogs(res.data);
       } catch (err) {
         console.error("Failed to fetch blogs:", err);
@@ -37,7 +39,9 @@ const BlogCards = () => {
                   />
                   <div className="absolute top-3 left-3 bg-white text-black rounded-md px-2 py-1 text-xs font-semibold text-center shadow">
                     <p className="leading-none">{blog.date}</p>
-                    <p className="text-[10px] uppercase text-gray-500">{blog.month}</p>
+                    <p className="text-[10px] uppercase text-gray-500">
+                      {blog.month}
+                    </p>
                   </div>
                 </div>
 
@@ -45,7 +49,9 @@ const BlogCards = () => {
                 <div className="p-5">
                   <h3 className="text-lg font-bold mb-2">{blog.title}</h3>
                   <p className="text-sm text-gray-700 mb-3">
-                    {blog.desc?.length > 120 ? blog.desc.slice(0, 120) + "..." : blog.desc}
+                    {blog.desc?.length > 120
+                      ? blog.desc.slice(0, 120) + "..."
+                      : blog.desc}
                   </p>
                   <span className="inline-block text-xs font-semibold text-black border border-black px-3 py-1 rounded-full">
                     {blog.tag}

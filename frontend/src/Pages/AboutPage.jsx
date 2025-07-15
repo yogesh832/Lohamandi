@@ -16,7 +16,7 @@ const AboutPage = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/seo/about")
+      .get("https://lohamandi-3.onrender.com/api/seo/about")
       .then((res) => setSeo(res.data))
       .catch((err) => console.warn("SEO not found:", err));
   }, []);
@@ -25,7 +25,10 @@ const AboutPage = () => {
     <>
       <Helmet>
         <title>{seo?.title || "About"}</title>
-        <meta name="description" content={seo?.description || "About us page"} />
+        <meta
+          name="description"
+          content={seo?.description || "About us page"}
+        />
         <meta name="keywords" content={seo?.keywords || ""} />
         <meta name="robots" content={seo?.robots || "index,follow"} />
         <meta property="og:title" content={seo?.title} />

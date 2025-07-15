@@ -6,7 +6,7 @@ const AdminMessages = () => {
   const [selectedMessage, setSelectedMessage] = useState(null);
 
   const fetchMessages = async () => {
-    const res = await axios.get("http://localhost:8000/contact");
+    const res = await axios.get("https://lohamandi-3.onrender.com/contact");
     setMessages(res.data);
   };
 

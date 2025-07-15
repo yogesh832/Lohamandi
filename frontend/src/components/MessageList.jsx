@@ -8,7 +8,7 @@ const MessageList = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/contact")
+      .get("https://lohamandi-3.onrender.com/api/contact")
       .then((res) => setMessages(res.data))
       .catch((err) => console.error("Error fetching messages:", err));
   }, []);

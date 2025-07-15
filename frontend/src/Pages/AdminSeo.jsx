@@ -7,7 +7,7 @@ const AdminSeo = () => {
   const [selectedSlug, setSelectedSlug] = useState(null);
 
   const fetchPages = async () => {
-    const res = await axios.get("http://localhost:8000/seo");
+    const res = await axios.get("https://lohamandi-3.onrender.com/seo");
     setPages(res.data);
   };
 

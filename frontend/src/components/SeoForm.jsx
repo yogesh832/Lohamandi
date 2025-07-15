@@ -18,7 +18,7 @@ const SeoForm = ({ slug, onSave }) => {
   useEffect(() => {
     if (!isNew) {
       axios
-        .get(`http://localhost:8000/api/seo${slug}`)
+        .get(`https://lohamandi-3.onrender.com/api/seo${slug}`)
         .then((res) => setForm(res.data))
         .catch((err) => console.error("Fetch error:", err));
     } else {
@@ -43,13 +43,12 @@ const SeoForm = ({ slug, onSave }) => {
     try {
       const payload = {
         ...form,
-        slug:
-          form.slug.trim().startsWith("/")
-            ? form.slug.trim()
-            : "/" + form.slug.trim(), // ✅ normalize slug
+        slug: form.slug.trim().startsWith("/")
+          ? form.slug.trim()
+          : "/" + form.slug.trim(), // ✅ normalize slug
       };
 
-      await axios.post("http://localhost:8000/api/seo", payload);
+      await axios.post("https://lohamandi-3.onrender.com/api/seo", payload);
       onSave();
     } catch (err) {
       console.error("Save error:", err);
@@ -111,7 +110,10 @@ const SeoForm = ({ slug, onSave }) => {
         onChange={handleChange}
         className="w-full p-2 border rounded"
       />
-      <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">
+      <button
+        type="submit"
+        className="bg-blue-600 text-white px-4 py-2 rounded"
+      >
         Save SEO
       </button>
     </form>

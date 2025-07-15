@@ -9,7 +9,9 @@ export default function IndividualContent() {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/api/blog/${id}`);
+        const res = await axios.get(
+          `https://lohamandi-3.onrender.com/api/blog/${id}`
+        );
         setBlog(res.data);
       } catch (err) {
         console.error("Error loading blog:", err);
@@ -35,7 +37,9 @@ export default function IndividualContent() {
       {/* Meta Info */}
       <div className="flex justify-between items-center text-sm text-gray-500 mb-6">
         <div className="flex items-center gap-2">
-          <div className="w-9 h-9 bg-red-500 text-white flex items-center justify-center font-bold rounded-full">L</div>
+          <div className="w-9 h-9 bg-red-500 text-white flex items-center justify-center font-bold rounded-full">
+            L
+          </div>
           <div>
             <p className="font-semibold">Lohamandi Services</p>
             <p>{`${blog.month} ${blog.date}, 2025`}</p>
@@ -52,7 +56,9 @@ export default function IndividualContent() {
 
       {/* Description */}
       {blog.desc && (
-        <p className="text-base mb-6 text-gray-700 leading-relaxed">{blog.desc}</p>
+        <p className="text-base mb-6 text-gray-700 leading-relaxed">
+          {blog.desc}
+        </p>
       )}
 
       {/* Render CKEditor HTML Content */}

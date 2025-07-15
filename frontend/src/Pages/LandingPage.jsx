@@ -21,7 +21,7 @@ const LandingPage = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/seo/home")
+      .get("https://lohamandi-3.onrender.com/api/seo/home")
       .then((res) => setSeo(res.data))
       .catch((err) => console.warn("SEO not found:", err));
   }, []);
@@ -30,7 +30,10 @@ const LandingPage = () => {
     <>
       <Helmet>
         <title>{seo?.title || "Default Page Title"}</title>
-        <meta name="description" content={seo?.description || "Default description"} />
+        <meta
+          name="description"
+          content={seo?.description || "Default description"}
+        />
         <meta name="keywords" content={seo?.keywords || ""} />
         <meta name="robots" content={seo?.robots || "index,follow"} />
         <meta property="og:title" content={seo?.title} />

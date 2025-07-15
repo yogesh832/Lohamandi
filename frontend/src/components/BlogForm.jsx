@@ -51,10 +51,13 @@ const BlogForm = ({ onBlogPosted, editingBlog, setEditingBlog }) => {
 
     try {
       if (editingBlog) {
-        await axios.put(`http://localhost:8000/api/blog/${editingBlog._id}`, formData);
+        await axios.put(
+          `https://lohamandi-3.onrender.com/api/blog/${editingBlog._id}`,
+          formData
+        );
         setEditingBlog(null);
       } else {
-        await axios.post("http://localhost:8000/api/blog", formData);
+        await axios.post("https://lohamandi-3.onrender.com/api/blog", formData);
       }
 
       setForm({
@@ -76,7 +79,10 @@ const BlogForm = ({ onBlogPosted, editingBlog, setEditingBlog }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 bg-white p-6 rounded shadow-md max-w-2xl mx-auto">
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-6 bg-white p-6 rounded shadow-md max-w-2xl mx-auto"
+    >
       <input
         type="text"
         name="title"
@@ -163,7 +169,10 @@ const BlogForm = ({ onBlogPosted, editingBlog, setEditingBlog }) => {
       </div>
 
       <div className="flex gap-2">
-        <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">
+        <button
+          type="submit"
+          className="bg-blue-600 text-white px-4 py-2 rounded"
+        >
           {editingBlog ? "Update Blog" : "Create Blog"}
         </button>
         {editingBlog && (

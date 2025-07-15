@@ -16,9 +16,9 @@ const Dashboard = () => {
     const fetchData = async () => {
       try {
         const [msgRes, blogRes, seoRes] = await Promise.all([
-          axios.get("http://localhost:8000/api/contact"),
-          axios.get("http://localhost:8000/api/blog"),
-          axios.get("http://localhost:8000/api/seo"),
+          axios.get("https://lohamandi-3.onrender.com/api/contact"),
+          axios.get("https://lohamandi-3.onrender.com/api/blog"),
+          axios.get("https://lohamandi-3.onrender.com/api/seo"),
         ]);
 
         setStats({
@@ -42,9 +42,24 @@ const Dashboard = () => {
 
       {/* Stats Section */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <StatCard title="Total Messages" count={stats.messages} icon={<FaEnvelope />} color="bg-blue-500" />
-        <StatCard title="Total Blogs" count={stats.blogs} icon={<FaBlog />} color="bg-green-500" />
-        <StatCard title="SEO Pages" count={stats.seoPages} icon={<FaSearch />} color="bg-yellow-500" />
+        <StatCard
+          title="Total Messages"
+          count={stats.messages}
+          icon={<FaEnvelope />}
+          color="bg-blue-500"
+        />
+        <StatCard
+          title="Total Blogs"
+          count={stats.blogs}
+          icon={<FaBlog />}
+          color="bg-green-500"
+        />
+        <StatCard
+          title="SEO Pages"
+          count={stats.seoPages}
+          icon={<FaSearch />}
+          color="bg-yellow-500"
+        />
       </div>
 
       {/* Latest Messages */}
@@ -56,8 +71,13 @@ const Dashboard = () => {
           <ul className="divide-y mt-4 divide-gray-200">
             {latestMessages.map((msg) => (
               <li key={msg._id} className="py-4">
-                <p className="font-medium">{msg.name} <span className="text-sm text-gray-400">({msg.email})</span></p>
-                <p className="text-sm text-gray-600">{msg.message.slice(0, 80)}...</p>
+                <p className="font-medium">
+                  {msg.name}{" "}
+                  <span className="text-sm text-gray-400">({msg.email})</span>
+                </p>
+                <p className="text-sm text-gray-600">
+                  {msg.message.slice(0, 80)}...
+                </p>
               </li>
             ))}
           </ul>
