@@ -11,7 +11,7 @@ const BlogContent = () => {
             Smart steel solutions, built for efficiency.
           </h1>
           <p className="text-gray-600 text-lg sm:text-xl mt-4 max-w-3xl mx-auto">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+         We provide innovative and reliable steel solutions tailored to your project’s needs, ensuring durability, performance, and cost-efficiency at every step
           </p>
         </div>
 
