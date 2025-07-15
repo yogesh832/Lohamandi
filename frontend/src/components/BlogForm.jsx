@@ -1,106 +1,181 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
-const BlogForm = ({ onBlogPosted }) => {
+const BlogForm = ({ onBlogPosted, editingBlog, setEditingBlog }) => {
   const [form, setForm] = useState({
     title: "",
-    desc: "",
+    content: "",
     tag: "",
-    img: null, // for file object
     date: "",
     month: "",
+    img: null,
+    metaTitle: "",
+    metaKeywords: "",
+    metaDescription: "",
   });
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  useEffect(() => {
+    if (editingBlog) {
+      setForm({
+        title: editingBlog.title || "",
+        content: editingBlog.content || "",
+        tag: editingBlog.tag || "",
+        date: editingBlog.date || "",
+        month: editingBlog.month || "",
+        img: null,
+        metaTitle: editingBlog.metaTitle || "",
+        metaKeywords: editingBlog.metaKeywords || "",
+        metaDescription: editingBlog.metaDescription || "",
+      });
+    }
+  }, [editingBlog]);
 
-  const handleFileChange = (e) => {
-    setForm({ ...form, img: e.target.files[0] });
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
+    if (name === "img") {
+      setForm({ ...form, img: files[0] });
+    } else {
+      setForm({ ...form, [name]: value });
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("title", form.title);
-    formData.append("desc", form.desc);
-    formData.append("tag", form.tag);
-    formData.append("img", form.img); // file object
-    formData.append("date", form.date);
-    formData.append("month", form.month);
+
+    Object.keys(form).forEach((key) => {
+      if (form[key]) formData.append(key, form[key]);
+    });
 
     try {
-      await axios.post("http://localhost:8000/api/blog", formData);
-      onBlogPosted();
+      if (editingBlog) {
+        await axios.put(`http://localhost:8000/api/blog/${editingBlog._id}`, formData);
+        setEditingBlog(null);
+      } else {
+        await axios.post("http://localhost:8000/api/blog", formData);
+      }
+
       setForm({
         title: "",
-        desc: "",
+        content: "",
         tag: "",
-        img: null,
         date: "",
         month: "",
+        img: null,
+        metaTitle: "",
+        metaKeywords: "",
+        metaDescription: "",
       });
+
+      onBlogPosted();
     } catch (err) {
-      console.error("Blog post error:", err);
+      console.error("Error submitting blog:", err);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-6 bg-white p-6 rounded shadow-md max-w-2xl mx-auto">
       <input
+        type="text"
         name="title"
-        placeholder="Title"
+        placeholder="Blog Title"
         value={form.title}
         onChange={handleChange}
-        className="w-full p-2 border rounded"
+        className="w-full border p-2 rounded"
         required
       />
-      <textarea
-        name="desc"
-        placeholder="Description"
-        value={form.desc}
-        onChange={handleChange}
-        className="w-full p-2 border rounded"
-        required
-      ></textarea>
+
+      {/* CKEditor */}
+      <CKEditor
+        editor={ClassicEditor}
+        data={form.content}
+        onChange={(event, editor) => {
+          const data = editor.getData();
+          setForm((prev) => ({ ...prev, content: data }));
+        }}
+      />
+
       <input
+        type="text"
         name="tag"
-        placeholder="Tag"
+        placeholder="Blog Tag"
         value={form.tag}
         onChange={handleChange}
-        className="w-full p-2 border rounded"
-        required
+        className="w-full border p-2 rounded"
       />
+
+      <div className="flex gap-4">
+        <input
+          type="text"
+          name="date"
+          placeholder="Date"
+          value={form.date}
+          onChange={handleChange}
+          className="flex-1 border p-2 rounded"
+        />
+        <input
+          type="text"
+          name="month"
+          placeholder="Month"
+          value={form.month}
+          onChange={handleChange}
+          className="flex-1 border p-2 rounded"
+        />
+      </div>
+
       <input
         type="file"
-        accept="image/*"
         name="img"
-        onChange={handleFileChange}
-        className="w-full p-2 border rounded"
-        required
-      />
-      <input
-        name="date"
-        placeholder="Date (e.g. 09)"
-        value={form.date}
+        accept="image/*"
         onChange={handleChange}
-        className="w-full p-2 border rounded"
-        required
+        className="w-full"
+        required={!editingBlog}
       />
-      <input
-        name="month"
-        placeholder="Month (e.g. JUN)"
-        value={form.month}
-        onChange={handleChange}
-        className="w-full p-2 border rounded"
-        required
-      />
-      <button
-        type="submit"
-        className="bg-blue-600 text-white px-4 py-2 rounded"
-      >
-        Post Blog
-      </button>
+
+      {/* SEO */}
+      <div className="border-t pt-6">
+        <h3 className="font-bold mb-4">SEO Options</h3>
+        <input
+          type="text"
+          name="metaTitle"
+          placeholder="Meta Title"
+          value={form.metaTitle}
+          onChange={handleChange}
+          className="w-full border p-2 rounded mb-2"
+        />
+        <input
+          type="text"
+          name="metaKeywords"
+          placeholder="Meta Keywords"
+          value={form.metaKeywords}
+          onChange={handleChange}
+          className="w-full border p-2 rounded mb-2"
+        />
+        <textarea
+          name="metaDescription"
+          placeholder="Meta Description"
+          value={form.metaDescription}
+          onChange={handleChange}
+          className="w-full border p-2 rounded"
+        />
+      </div>
+
+      <div className="flex gap-2">
+        <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">
+          {editingBlog ? "Update Blog" : "Create Blog"}
+        </button>
+        {editingBlog && (
+          <button
+            type="button"
+            onClick={() => setEditingBlog(null)}
+            className="bg-gray-400 text-white px-4 py-2 rounded"
+          >
+            Cancel
+          </button>
+        )}
+      </div>
     </form>
   );
 };

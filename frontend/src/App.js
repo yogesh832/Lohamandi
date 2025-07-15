@@ -20,6 +20,7 @@ import AdminDashboard from "./Pages/AdminDashboard"; // Blog Management
 import MessageList from "./components/MessageList";
 import SeoList from "./components/SeoList";
 import Dashboard from "./Pages/dashboard/dashboard";
+import IndividualContent from "./components/IndividualContent";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/about" element={<AboutPage />} />
+        <Route path="/blog/:id" element={<IndividualContent />} />
           <Route path="/enquiry" element={<EnquirePage />} />
           <Route path="/moreproducts" element={<MoreProducts />} />
           <Route path="/productenquiry" element={<ProductEnquiry />} />
