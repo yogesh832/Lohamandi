@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
 
-const seoPageSchema = new mongoose.Schema({
+const seoSchema = new mongoose.Schema({
   slug: { type: String, required: true, unique: true },
-  title: String,
-  description: String,
-  keywords: String,
-  ogImage: String,
-  canonical: String,
-  robots: { type: String, default: "index,follow" }
+  title: { type: String, required: true },
+  description: { type: String },
+  keywords: { type: String },
+  ogImage: { type: String },
+  canonical: { type: String },
+  robots: { type: String, default: "index,follow" },
 });
 
-module.exports = mongoose.model("SeoPage", seoPageSchema);
+module.exports = mongoose.model("SeoPage", seoSchema);

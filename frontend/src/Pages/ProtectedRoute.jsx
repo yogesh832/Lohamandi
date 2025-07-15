@@ -25,8 +25,13 @@ const ProtectedRoute = ({ children }) => {
   if (!isAuthenticated) {
     return (
       <div className="flex flex-col items-center my-20 min-h-screen bg-gray-100">
-        <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow w-80">
-          <h2 className="text-xl font-bold mb-4 text-center">Enter Dashboard Password</h2>
+        <form
+          onSubmit={handleSubmit}
+          className="bg-white p-6 rounded shadow w-80"
+        >
+          <h2 className="text-xl font-bold mb-4 text-center">
+            Enter Dashboard Password
+          </h2>
 
           <div className="relative mb-4">
             <input

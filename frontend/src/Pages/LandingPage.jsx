@@ -2,17 +2,18 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Helmet } from "react-helmet";
 
+// Import your components
 import HomeBanner from "../components/HomeBanner";
 import HomeAbout from "../components/HomeAbout";
 import HomeProducts from "../components/HomeProducts";
 import Homeblog from "../components/Homeblog";
-import TextSection from "../components/TextSection";
+import BlogReview from "../components/BlogReview";
 import BlogContent from "../components/BlogContent";
+import TextSection from "../components/TextSection";
 import BlogBrand from "../components/BlogBrand";
 import BlogLatest from "../components/BlogLatest";
-import BlogReview from "../components/BlogReview";
-import BlogContact from "../components/BlogContact";
 import BlogQuestion from "../components/BlogQuestion";
+import BlogContact from "../components/BlogContact";
 import Footer from "../components/Footer";
 
 const LandingPage = () => {
@@ -20,7 +21,7 @@ const LandingPage = () => {
 
   useEffect(() => {
     axios
-      .get("https://lohamandi-3.onrender.com/api/seo/home") // fetching SEO for /home
+      .get("http://localhost:8000/api/seo/home")
       .then((res) => setSeo(res.data))
       .catch((err) => console.warn("SEO not found:", err));
   }, []);
@@ -29,18 +30,12 @@ const LandingPage = () => {
     <>
       <Helmet>
         <title>{seo?.title || "Default Page Title"}</title>
-        <meta
-          name="description"
-          content={seo?.description || "Default description"}
-        />
+        <meta name="description" content={seo?.description || "Default description"} />
         <meta name="keywords" content={seo?.keywords || ""} />
         <meta name="robots" content={seo?.robots || "index,follow"} />
-        <meta property="og:image" content={seo?.ogImage || ""} />
-        <meta
-          name="description"
-          content={seo?.description || "Default Description"}
-        />
-
+        <meta property="og:title" content={seo?.title} />
+        <meta property="og:description" content={seo?.description} />
+        <meta property="og:image" content={seo?.ogImage || "/default.png"} />
         <link rel="canonical" href={seo?.canonical || window.location.href} />
       </Helmet>
 

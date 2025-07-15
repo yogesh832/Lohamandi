@@ -1,25 +1,19 @@
 const express = require("express");
 const cors = require("cors");
 const dbConnection = require("./config/db");
-const seoRoutes = require("./routes/seoRoutes");
 
 const app = express();
 
-// ✅ Use proper CORS setup
-app.use(cors({
-  origin: "*", // or restrict to specific domains like "https://yourdomain.com"
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type"]
-}));
-
+app.use(cors());
 app.use(express.json());
 
-// ✅ Connect to MongoDB
+// Connect DB
 dbConnection();
 
-// ✅ Mount routes (enable these only if verified)
-app.use("/api/seo", seoRoutes);
-app.use("/api/contact", require("./routes/contactRoutes"));
+// Mount Routes
+app.use("/api/seo", require("./routes/seoRoutes"));      // ✅ Slug-safe
+app.use("/api/blog", require("./routes/blogRoutes"));    // ✅ Blog endpoint
+app.use("/api/contact", require("./routes/contactRoutes")); // ✅ Contact messages
 
-// ✅ Start server
+// Start Server
 app.listen(8000, () => console.log("Server running on port 8000"));

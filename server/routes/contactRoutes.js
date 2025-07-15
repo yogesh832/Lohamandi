@@ -3,19 +3,18 @@ const router = express.Router();
 const ContactMessage = require("../models/ContactMessage");
 const nodemailer = require("nodemailer");
 
-// Gmail SMTP (Testing Only)
+// Email setup (Gmail)
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
     user: "upadhayayyogesh832@gmail.com",
-    pass: "exzl urpm udfq kzsq", // ⚠️ Avoid committing real passwords to public repos!
+    pass: "exzl urpm udfq kzsq", // Secure this in .env file
   },
 });
 
-// Save and Email Message
+// POST: Save and Send Email
 router.post("/", async (req, res) => {
   const { name, email, message } = req.body;
-
   if (!name || !email || !message) {
     return res.status(400).json({ message: "All fields are required" });
   }
@@ -25,27 +24,24 @@ router.post("/", async (req, res) => {
     await newMessage.save();
 
     await transporter.sendMail({
-      from: `"Website Contact" <upadhayayyogesh832@gmail.com>`,
+      from: `"Website Contact" <${email}>`,
       to: "upadhayayyogesh832@gmail.com",
-      replyTo: email,
-      subject: `New Contact Message from ${name}`,
+      subject: `New Message from ${name}`,
       html: `
-        <h3>New Contact Message</h3>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
+        <p><strong>Message:</strong><br/>${message}</p>
       `,
     });
 
     res.status(201).json({ message: "Message saved and email sent!" });
   } catch (error) {
-    console.error("Error sending email:", error);
-    res.status(500).json({ message: "Something went wrong." });
+    console.error("Email Error:", error);
+    res.status(500).json({ message: "Something went wrong" });
   }
 });
 
-// Get All Messages
+// GET: All Messages
 router.get("/", async (req, res) => {
   try {
     const messages = await ContactMessage.find().sort({ createdAt: -1 });
@@ -55,11 +51,11 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Get Single Message by ID
+// GET: Single Message
 router.get("/:id", async (req, res) => {
   try {
     const message = await ContactMessage.findById(req.params.id);
-    if (!message) return res.status(404).json({ message: "Message not found" });
+    if (!message) return res.status(404).json({ message: "Not found" });
     res.json(message);
   } catch (err) {
     res.status(500).json({ message: "Failed to fetch message" });

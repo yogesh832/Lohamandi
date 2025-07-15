@@ -1,56 +1,7 @@
-// import React from "react";
-
-
-// import AboutBanner from "../components/AboutBanner";
-// import AboutText from "../components/AboutText";
-// import BlogBrand from "../components/BlogBrand";
-// import AboutQuality from "../components/AboutQuality";
-// import AboutJourney from "../components/AboutJourney";
-// import TextSection from "../components/TextSection";
-// import ProductBlog from "../components/ProductBlog";
-// import Footer from "../components/Footer";
-
-// const AboutPage = () => {
-
-
-//   return (
-//     <>
-
-
-//       <AboutBanner />
-//       <AboutText />
-//       <BlogBrand />
-//       <AboutQuality />
-//       <AboutJourney />
-//       <TextSection />
-//       <ProductBlog />
-//       <Footer />
-//     </>
-//   );
-// };
-
-// export default AboutPage;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// --- Example: AboutPage.jsx ---
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Helmet } from "react-helmet";
-
 import AboutBanner from "../components/AboutBanner";
 import AboutText from "../components/AboutText";
 import BlogBrand from "../components/BlogBrand";
@@ -61,59 +12,27 @@ import ProductBlog from "../components/ProductBlog";
 import Footer from "../components/Footer";
 
 const AboutPage = () => {
-  const [seo, setSeo] = useState(null);
+  const [seo, setSeo] = useState({});
 
   useEffect(() => {
     axios
-      .get("https://lohamandi-3.onrender.com/api/seo/about")
-      .then((res) => {
-        setSeo(res.data);
-        console.log("SEO Loaded:", res.data);
-      })
-      .catch((err) => {
-        console.warn("SEO for /about not found:", err);
-        setSeo(null);
-      });
+      .get("http://localhost:8000/api/seo/about")
+      .then((res) => setSeo(res.data))
+      .catch((err) => console.warn("SEO not found:", err));
   }, []);
-
-  if (!seo) {
-    return (
-      <>
-        <Helmet>
-          <title>About | Default Title</title>
-          <meta name="description" content="Default About description" />
-        </Helmet>
-<div className="flex justify-center items-center py-10">
-  <img
-    src="/enquire.png"
-    alt="Loading..."
-    className="h-16 w-16 animate-spin-slow"
-  />
-</div>
-      </>
-    );
-  }
-
-  // ✅ Move log outside JSX
-  console.log("Helmet rendered...");
 
   return (
     <>
-  <Helmet>
-  <title>{seo.title}</title>
-  <meta name="description" content={seo.description} />
-  <meta name="keywords" content={seo.keywords} />
-  <meta name="robots" content={seo.robots || "index, follow"} />
-  <meta property="og:title" content={seo.title} />
-  <meta property="og:description" content={seo.description} />
-  <meta property="og:image" content={seo.ogImage} />
-  <meta property="og:url" content={seo.canonical || window.location.href} />
-  <link rel="canonical" href={seo.canonical || window.location.href} />
-
-  {/* ✅ Add this line */}
-  <meta name="theme-color" content="#000000" />
-</Helmet>
-
+      <Helmet>
+        <title>{seo?.title || "About"}</title>
+        <meta name="description" content={seo?.description || "About us page"} />
+        <meta name="keywords" content={seo?.keywords || ""} />
+        <meta name="robots" content={seo?.robots || "index,follow"} />
+        <meta property="og:title" content={seo?.title} />
+        <meta property="og:description" content={seo?.description} />
+        <meta property="og:image" content={seo?.ogImage || "/default.png"} />
+        <link rel="canonical" href={seo?.canonical || window.location.href} />
+      </Helmet>
 
       <AboutBanner />
       <AboutText />
