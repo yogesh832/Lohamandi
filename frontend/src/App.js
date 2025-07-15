@@ -9,7 +9,7 @@ import ContactPage from "./Pages/ContactPage";
 import ProductsPage from "./Pages/ProductsPage";
 import BlogPage from "./Pages/BlogPage";
 import AboutPage from "./Pages/AboutPage";
-import IndPage from "./Pages/IndPage";
+// import IndPage from "./Pages/IndPage";
 import EnquirePage from "./Pages/EnquirePage";
 import MoreProducts from "./components/MoreProducts";
 import ProductEnquiry from "./components/EnquireForm";
@@ -26,7 +26,7 @@ function App() {
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/ind" element={<IndPage />} />
+          {/* <Route path="/ind" element={<IndPage />} /> */}
           <Route path="/enquiry" element={<EnquirePage />} />
           <Route path="/moreproducts" element={<MoreProducts />} />
           <Route path="/productenquiry" element={<ProductEnquiry />} />
