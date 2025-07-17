@@ -15,86 +15,58 @@ const Footer = () => {
     <footer className="bg-[#060814] text-white pt-10 px-4 sm:px-6 md:px-10">
       <div className="max-w-6xl mx-auto space-y-6">
         {/* Top Contact Info */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 border-b border-gray-700 pb-6">
-          <div>
-            <h5 className="font-semibold text-sm uppercase">
-              Tell Us Your Requirements
-            </h5>
-            <p className="text-sm text-gray-400">
-              Discuss it with our steel expert
-            </p>
-          </div>
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 border-b border-gray-700 pb-6">
+  {/* Requirement Info */}
+  <div>
+    <h5 className="font-semibold text-sm uppercase">Tell Us Your Requirements</h5>
+    <p className="text-sm text-gray-400">Discuss it with our steel expert</p>
+  </div>
 
-          {/* Phone Numbers */}
-          <div className="flex items-start gap-2">
-            <FaPhoneAlt className="text-white mt-1" size={18} />
-            <div>
-              <h5 className="font-semibold text-sm uppercase">Call Us</h5>
-              <div className="flex flex-col gap-1">
-                <div className="flex items-center gap-2">
-                  <p className="text-sm text-gray-400">+91 9910025184</p>
-                  <button
-                    onClick={() => window.location.href = "tel:+919910025184"}
-                    className="p-1 rounded hover:bg-gray-700 hover:scale-110 transition"
-                    aria-label="Call"
-                  >
-                    <FaPhoneAlt size={14} />
-                  </button>
-                </div>
-                <div className="flex items-center gap-2">
-                  <p className="text-sm text-gray-400">+91 9319039145</p>
-                  <button
-                    onClick={() => window.location.href = "tel:+919319039145"}
-                    className="p-1 rounded hover:bg-gray-700 hover:scale-110 transition"
-                    aria-label="Call"
-                  >
-                    <FaPhoneAlt size={14} />
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+  {/* Call Us */}
+  <div>
+    <h5 className="font-semibold text-sm uppercase mb-2">Call Us</h5>
+    <div className="flex flex-col gap-2">
+      <p
+        className="text-sm text-gray-400 hover:text-white cursor-pointer transition"
+        onClick={() => window.location.href = "tel:+919910025184"}
+        title="Call +91 9910025184"
+      >
+        +91 9910025184
+      </p>
+      <p
+        className="text-sm text-gray-400 hover:text-white cursor-pointer transition"
+        onClick={() => window.location.href = "tel:+919319039145"}
+        title="Call +91 9319039145"
+      >
+        +91 9319039145
+      </p>
+    </div>
+  </div>
 
-          {/* WhatsApp */}
-          <div className="flex items-start gap-2">
-            <FaWhatsapp className="text-white mt-1" size={18} />
-            <div>
-              <h5 className="font-semibold text-sm uppercase">WhatsApp Us</h5>
-              <div className="flex items-center gap-2">
-                <p className="text-sm text-gray-400">+91 9910025184</p>
-                <button
-                  onClick={() =>
-                    window.open("https://wa.me/919910025184", "_blank")
-                  }
-                  className="p-1 rounded hover:bg-gray-700 hover:scale-110 transition"
-                  aria-label="WhatsApp"
-                >
-                  <FaWhatsapp size={14} />
-                </button>
-              </div>
-            </div>
-          </div>
+  {/* WhatsApp */}
+  <div>
+    <h5 className="font-semibold text-sm uppercase mb-2">WhatsApp Us</h5>
+    <p
+      className="text-sm text-gray-400 hover:text-white cursor-pointer transition"
+      onClick={() => window.open("https://wa.me/919910025184", "_blank")}
+      title="Chat on WhatsApp"
+    >
+      +91 9910025184
+    </p>
+  </div>
 
-          {/* Email */}
-          <div className="flex items-start gap-2">
-            <FaEnvelope className="text-white mt-1" size={18} />
-            <div>
-              <h5 className="font-semibold text-sm uppercase">Email Us</h5>
-              <div className="flex items-center gap-2">
-                <p className="text-sm text-gray-400">info@lohamandi.com</p>
-                <button
-                  onClick={() =>
-                    window.location.href = "mailto:info@lohamandi.com"
-                  }
-                  className="p-1 rounded hover:bg-gray-700 hover:scale-110 transition"
-                  aria-label="Email"
-                >
-                  <FaEnvelope size={14} />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+  {/* Email */}
+  <div>
+    <h5 className="font-semibold text-sm uppercase mb-2">Email Us</h5>
+    <p
+      className="text-sm text-gray-400 hover:text-white cursor-pointer transition"
+      onClick={() => window.location.href = "mailto:info@lohamandi.com"}
+      title="Send Email"
+    >
+      info@lohamandi.com
+    </p>
+  </div>
+</div>
 
         {/* Steel Categories */}
         <div className="text-sm text-gray-300 space-y-4 border-b border-gray-700 pb-6">
