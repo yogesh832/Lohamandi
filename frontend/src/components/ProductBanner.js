@@ -4,7 +4,7 @@ const ProductBanner = () => {
   return (
     <section
       className="w-full min-h-[85vh] bg-center bg-cover relative overflow-hidden rounded-2xl mt-5"
-      style={{ backgroundImage: "url('/productBannerNew.png')" }}
+      style={{ backgroundImage: "url('/productBannerNew.webp')" }}
     >
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/50 z-0 rounded-2xl" />

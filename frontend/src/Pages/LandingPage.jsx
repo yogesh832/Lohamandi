@@ -21,7 +21,7 @@ const LandingPage = () => {
 
   useEffect(() => {
     axios
-      .get("https://lohamandi-3.onrender.com/api/seo/home")
+      .get("https://lohamandi.com/api/seo/home")
       .then((res) => setSeo(res.data))
       .catch((err) => console.warn("SEO not found:", err));
   }, []);

@@ -9,7 +9,7 @@ const AdminDashboard = () => {
 
   const fetchBlogs = async () => {
     try {
-      const res = await axios.get("https://lohamandi-3.onrender.com/api/blog");
+      const res = await axios.get("https://lohamandi.com/api/blog");
       setBlogs(res.data);
     } catch (err) {
       console.error("Failed to fetch blogs", err);
@@ -25,7 +25,7 @@ const AdminDashboard = () => {
     if (!window.confirm("Are you sure you want to delete this blog?")) return;
 
     try {
-      await axios.delete(`https://lohamandi-3.onrender.com/api/blog/${id}`);
+      await axios.delete(`https://lohamandi.com/api/blog/${id}`);
       fetchBlogs();
     } catch (err) {
       console.error("Delete failed", err);

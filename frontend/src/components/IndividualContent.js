@@ -9,9 +9,7 @@ export default function IndividualContent() {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const res = await axios.get(
-          `https://lohamandi-3.onrender.com/api/blog/${id}`
-        );
+        const res = await axios.get(`https://lohamandi.com/api/blog/${id}`);
         setBlog(res.data);
       } catch (err) {
         console.error("Error loading blog:", err);

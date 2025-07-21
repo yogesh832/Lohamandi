@@ -52,12 +52,12 @@ const BlogForm = ({ onBlogPosted, editingBlog, setEditingBlog }) => {
     try {
       if (editingBlog) {
         await axios.put(
-          `https://lohamandi-3.onrender.com/api/blog/${editingBlog._id}`,
+          `https://lohamandi.com/api/blog/${editingBlog._id}`,
           formData
         );
         setEditingBlog(null);
       } else {
-        await axios.post("https://lohamandi-3.onrender.com/api/blog", formData);
+        await axios.post("https://lohamandi.com/api/blog", formData);
       }
 
       setForm({

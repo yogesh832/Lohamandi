@@ -16,9 +16,9 @@ const Dashboard = () => {
     const fetchData = async () => {
       try {
         const [msgRes, blogRes, seoRes] = await Promise.all([
-          axios.get("https://lohamandi-3.onrender.com/api/contact"),
-          axios.get("https://lohamandi-3.onrender.com/api/blog"),
-          axios.get("https://lohamandi-3.onrender.com/api/seo"),
+          axios.get("https://lohamandi.com/api/contact"),
+          axios.get("https://lohamandi.com/api/blog"),
+          axios.get("https://lohamandi.com/api/seo"),
         ]);
 
         setStats({

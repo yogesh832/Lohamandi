@@ -13,7 +13,7 @@ const BlogPage = () => {
 
   useEffect(() => {
     axios
-      .get("https://lohamandi-3.onrender.com/api/seo/blog")
+      .get("https://lohamandi.com/api/seo/blog")
       .then((res) => setSeo(res.data))
       .catch((err) => console.warn("SEO for /blog not found:", err));
   }, []);

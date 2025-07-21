@@ -4,7 +4,7 @@ const AboutBanner = () => {
   return (
     <section
       className="w-full min-h-[80vh] bg-cover bg-center grid grid-cols-1 md:grid-cols-2 relative"
-      style={{ backgroundImage: "url('/aboutpage.png')" }}
+      style={{ backgroundImage: "url('/aboutpage.webp')" }}
     >
       {/* Overlay for backdrop blur (only on mobile) */}
       <div className="absolute inset-0 bg-white/40 backdrop-blur-[1px] sm:backdrop-blur-0 sm:bg-transparent z-0" />

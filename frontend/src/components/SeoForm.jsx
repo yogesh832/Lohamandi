@@ -18,7 +18,7 @@ const SeoForm = ({ slug, onSave }) => {
   useEffect(() => {
     if (!isNew) {
       axios
-        .get(`https://lohamandi-3.onrender.com/api/seo${slug}`)
+        .get(`https://lohamandi.com/api/seo${slug}`)
         .then((res) => setForm(res.data))
         .catch((err) => console.error("Fetch error:", err));
     } else {
@@ -48,7 +48,7 @@ const SeoForm = ({ slug, onSave }) => {
           : "/" + form.slug.trim(), // ✅ normalize slug
       };
 
-      await axios.post("https://lohamandi-3.onrender.com/api/seo", payload);
+      await axios.post("https://lohamandi.com/api/seo", payload);
       onSave();
     } catch (err) {
       console.error("Save error:", err);

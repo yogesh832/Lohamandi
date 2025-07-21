@@ -16,7 +16,7 @@ const AboutPage = () => {
 
   useEffect(() => {
     axios
-      .get("https://lohamandi-3.onrender.com/api/seo/about")
+      .get("https://lohamandi.com/api/seo/about")
       .then((res) => setSeo(res.data))
       .catch((err) => console.warn("SEO not found:", err));
   }, []);
