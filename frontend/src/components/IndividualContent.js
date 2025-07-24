@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 export default function IndividualContent() {
   const { id } = useParams();
@@ -21,6 +22,30 @@ export default function IndividualContent() {
   if (!blog) return <p className="text-center p-10">Loading...</p>;
 
   return (
+    <>
+ <Helmet>
+  <title>{blog.metaTitle || blog.title}</title>
+  <meta name="description" content={blog.metaDescription || blog.desc?.slice(0, 160)} />
+  <meta name="keywords" content={blog.metaKeywords || "blog, lohamandi"} />
+
+  {/* Open Graph for Facebook, LinkedIn, etc. */}
+  <meta property="og:title" content={blog.metaTitle || blog.title} />
+  <meta property="og:description" content={blog.metaDescription || blog.desc} />
+  <meta property="og:image" content={blog.img} />
+  <meta property="og:url" content={`https://lohamandi.com/blog/${id}`} />
+  <meta property="og:type" content="article" />
+
+  {/* Twitter Card support */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={blog.metaTitle || blog.title} />
+  <meta name="twitter:description" content={blog.metaDescription || blog.desc} />
+  <meta name="twitter:image" content={blog.img} />
+
+  {/* Canonical link */}
+  <link rel="canonical" href={`https://lohamandi.com/blog/${id}`} />
+</Helmet>
+
+
     <section className="max-w-3xl mx-auto px-4 py-12 text-[#1a1a1a]">
       {/* Title */}
       <h1 className="text-3xl font-bold mb-6 leading-tight">{blog.title}</h1>
@@ -72,5 +97,6 @@ export default function IndividualContent() {
         <p>Meta Description: {blog.metaDescription}</p>
       </div>
     </section>
+    </>
   );
 }
