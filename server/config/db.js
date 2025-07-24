@@ -10,6 +10,4 @@ const dbConnection = async () => {
   }
 };
 
-//this is d
-
 module.exports = dbConnection;
