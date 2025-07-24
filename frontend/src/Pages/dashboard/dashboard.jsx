@@ -8,17 +8,18 @@ const Dashboard = () => {
     blogs: 0,
     seoPages: 0,
   });
+  const api = import.meta.env.VITE_API_URL;
+  console.log(api);
 
   const [latestMessages, setLatestMessages] = useState([]);
-
   useEffect(() => {
     // Fetch total counts and recent messages
     const fetchData = async () => {
       try {
         const [msgRes, blogRes, seoRes] = await Promise.all([
-          axios.get("https://lohamandi.com/api/contact"),
-          axios.get("https://lohamandi.com/api/blog"),
-          axios.get("https://lohamandi.com/api/seo"),
+          axios.get(`https://lohamandi.com/api/contact`),
+          axios.get(`https://lohamandi.com/api/blog`),
+          axios.get(`https://lohamandi.com/api/seo`),
         ]);
 
         setStats({

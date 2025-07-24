@@ -57,7 +57,7 @@ const BlogForm = ({ onBlogPosted, editingBlog, setEditingBlog }) => {
         );
         setEditingBlog(null);
       } else {
-        await axios.post("https://lohamandi.com/api/blog", formData);
+        await axios.post(`https://lohamandi.com/api/blog`, formData);
       }
 
       setForm({

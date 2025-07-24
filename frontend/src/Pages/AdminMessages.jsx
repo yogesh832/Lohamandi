@@ -6,7 +6,7 @@ const AdminMessages = () => {
   const [selectedMessage, setSelectedMessage] = useState(null);
 
   const fetchMessages = async () => {
-    const res = await axios.get("https://lohamandi.com/contact");
+    const res = await axios.get(`https://lohamandi.com/contact`);
     setMessages(res.data);
   };
 

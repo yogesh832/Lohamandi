@@ -14,7 +14,7 @@ const ContactPage = () => {
 
   useEffect(() => {
     axios
-      .get("https://lohamandi.com/api/seo/contact")
+      .get(`https://lohamandi.com/api/seo/contact`)
       .then((res) => setSeo(res.data))
       .catch((err) => console.warn("SEO for /contact not found:", err));
   }, []);

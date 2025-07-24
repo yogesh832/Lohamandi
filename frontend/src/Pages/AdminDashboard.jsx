@@ -9,7 +9,7 @@ const AdminDashboard = () => {
 
   const fetchBlogs = async () => {
     try {
-      const res = await axios.get("https://lohamandi.com/api/blog");
+      const res = await axios.get(`https://lohamandi.com/api/blog`);
       setBlogs(res.data);
     } catch (err) {
       console.error("Failed to fetch blogs", err);

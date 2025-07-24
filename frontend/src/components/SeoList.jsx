@@ -9,7 +9,7 @@ const SeoList = () => {
 
   const fetchPages = async () => {
     try {
-      const res = await axios.get("https://lohamandi.com/api/seo");
+      const res = await axios.get(`https://lohamandi.com/api/seo`);
       setPages(res.data);
     } catch (err) {
       console.error("Failed to fetch SEO pages", err);
