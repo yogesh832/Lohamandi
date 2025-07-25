@@ -8,8 +8,8 @@ const Dashboard = () => {
     blogs: 0,
     seoPages: 0,
   });
-  const api = import.meta.env.VITE_API_URL;
-  console.log(api);
+  // const api = import.meta.env.VITE_API_URL;
+  // console.log(api);
 
   const [latestMessages, setLatestMessages] = useState([]);
   useEffect(() => {
