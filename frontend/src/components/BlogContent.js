@@ -59,7 +59,7 @@ const BlogContent = () => {
   {/* Center Image */}
   <div className="flex justify-center items-stretch h-full">
     <img
-      src="/blog.png"
+      src="/blog.webp"
       alt="Warehouse"
       className="rounded-xl w-full max-w-sm max-h-[1100px] object-cover"
     />

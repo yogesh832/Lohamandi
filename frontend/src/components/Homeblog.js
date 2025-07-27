@@ -7,7 +7,7 @@ const Homeblog = () => {
         {/* Left Side - Image */}
         <div>
           <img
-            src="/blog.png"
+            src="/blog.webp"
             alt="Blog Visual"
             className="w-full h-[300px] sm:h-[500px] md:h-[70vh] object-cover rounded-xl"
           />

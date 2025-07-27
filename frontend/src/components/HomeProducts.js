@@ -3,14 +3,14 @@ import { FaWhatsapp, FaPhone } from "react-icons/fa";
 
 const HomeProducts = () => {
   const products = [
-    { name: "TMT ProMax 500D", image: "/product1.png" },
-    { name: "TMT Bars 10 MM", image: "/product2.png" },
-    { name: "TMT Bars 12 MM", image: "/product3.png" },
-    { name: "TMT Bars 16 MM", image: "/product4.png" },
-    { name: "TMT Bars 20 MM", image: "/product5.png" },
-    { name: "TMT Bars 25 MM", image: "/product6.png" },
-    { name: "TMT Bars 32 MM", image: "/product7.png" },
-    { name: "TMT Bars 40 MM", image: "/product8.png" },
+    { name: "TMT ProMax 500D", image: "/product1.webp" },
+    { name: "TMT Bars 10 MM", image: "/product2.webp" },
+    { name: "TMT Bars 12 MM", image: "/product3.webp" },
+    { name: "TMT Bars 16 MM", image: "/product4.webp" },
+    { name: "TMT Bars 20 MM", image: "/product5.webp" },
+    { name: "TMT Bars 25 MM", image: "/product6.webp" },
+    { name: "TMT Bars 32 MM", image: "/product7.webp" },
+    { name: "TMT Bars 40 MM", image: "/product8.webp" },
   ];
 
   return (
