@@ -17,9 +17,9 @@ import "swiper/css/effect-fade";
 
 const HomeBanner = () => {
   const bannerImages = [
-    "/lohamandi1.png",
-    "/lohamandi2.png",
-    "/lohamandi3.png",
+    "/lohamandi1.webp",
+    "/lohamandi2.webp",
+    "/lohamandi3.webp",
   ];
 
   const [isFading, setIsFading] = useState(false);

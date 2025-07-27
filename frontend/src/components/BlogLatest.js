@@ -18,7 +18,7 @@ const BlogLatest = () => {
         {/* Large Left Image with Text */}
         <div className="col-span-1 lg:col-span-2 relative rounded-xl overflow-hidden shadow-md">
           <img
-            src="/bloglatest.png" // Replace with actual image path
+            src="/bloglatest.webp" // Replace with actual image path
             alt="Custom Length TMT Bars"
             className="w-full h-full object-cover"
           />
@@ -40,7 +40,7 @@ const BlogLatest = () => {
         <div className="flex flex-col gap-8">
           <div className="relative rounded-xl overflow-hidden shadow-md">
             <img
-              src="/bloglatest2.png" // Replace with actual image path
+              src="/bloglatest2.webp" // Replace with actual image path
               alt="Eco Friendly Steel"
               className="w-full h-full object-cover"
             />
@@ -57,7 +57,7 @@ const BlogLatest = () => {
 
           <div className="relative rounded-xl overflow-hidden shadow-md">
             <img
-              src="/bloglatest3.png" // Replace with actual image path
+              src="/bloglatest3.webp" // Replace with actual image path
               alt="TMT Bar Grades"
               className="w-full h-full object-cover"
             />
