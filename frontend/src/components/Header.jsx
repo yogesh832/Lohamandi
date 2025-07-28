@@ -120,12 +120,13 @@ const Header = () => {
             </a>
           </li>
           <li>
-            <a
-              href="/enquiry"
-              className="bg-gradient-to-r from-[#F17556] to-[#D61349] text-white px-4 py-2 rounded-lg"
-            >
-              Enquire Now
-            </a>
+        <a
+  href="/enquiry"
+  className="block bg-gradient-to-r from-[#F17556] to-[#D61349] hover:bg-[#c94524] text-white px-4 py-2 rounded-lg text-center"
+>
+  Enquire Now
+</a>
+
           </li>
         </ul>
 
@@ -197,12 +198,13 @@ const Header = () => {
           <a href="/blog" className="block hover:text-gray-600">
             Blog
           </a>
-          <a
-            href="/enquiry"
-            className="block bg-gradient-to-r from-[#F17556] to-[#D61349] text-white px-4 py-2 rounded-lg text-center"
-          >
-            Enquire Now
-          </a>
+     <a
+  href="/enquiry"
+  className="block bg-gradient-to-r from-[#F17556] to-[#D61349] hover:bg-[#c94524] text-white px-4 py-2 rounded-lg text-center"
+>
+  Enquire Now
+</a>
+
         </div>
       )}
     </header>

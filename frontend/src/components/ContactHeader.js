@@ -2,12 +2,12 @@ import React from "react";
 
 const ContactHeader = () => {
   return (
-    <section
-      className="w-full min-h-[60vh] bg-center bg-cover relative overflow-hidden rounded-2xl mt-5"
+      <section
+      className="w-full h-[80vh] bg-center bg-cover relative overflow-hidden rounded-2xl mt-5"
       style={{ backgroundImage: "url('/contact.png')" }}
     >
       {/* Overlay */}
-      <div className="relative z-10 flex items-center justify-center min-h-[85vh] p-4 sm:p-8 md:p-12"/>
+      <div className="absolute inset-0 bg-black/50 z-0 rounded-2xl" />
 
       {/* Centered Content */}
       <div className="relative z-10 flex items-center justify-center h-full p-4 sm:p-8 md:p-12">

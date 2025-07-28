@@ -39,15 +39,18 @@ const HomeProducts = () => {
               </h3>
               <div className="flex justify-center items-center gap-2">
                 <a
-                  href="/productenquiry"
-                  className="bg-red-600 text-white text-sm px-4 py-2 rounded-md hover:bg-red-700 transition"
-                >
-                  Enquire Now
-                </a>
+  href="/enquiry"
+  className="block bg-gradient-to-r from-[#F17556] to-[#D61349] hover:bg-[#c94524] text-white px-4 py-2 rounded-lg text-center"
+>
+  Enquire Now
+</a>
+
                 <a
                   href="https://wa.me/+919910025184"
                   className="bg-green-500 text-white p-2 rounded-md hover:bg-green-600 transition"
                   title="WhatsApp"
+                target="_blank"
+                  rel=" noreferrer"
                 >
                   <FaWhatsapp size={18} />
                 </a>

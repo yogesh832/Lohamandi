@@ -43,9 +43,11 @@ const HomeAbout = () => {
             <button className="bg-gradient-to-r from-[#F17556] to-[#D61349] text-white py-3 px-6 rounded-lg hover:opacity-90 transition duration-300">
               <a href="/enquiry">Request Quote</a>
             </button>
-            <button className="bg-white text-black border border-black py-3 px-6 rounded-lg hover:bg-gray-100 transition duration-300">
+            <a href='/about'>
+            <button className="bg-white text-black border hover:bg-black/10 border-black py-3 px-6 rounded-lg hover:bg-gray-100 transition duration-300">
               Learn More
             </button>
+            </a>
           </div>
         </div>
       </div>

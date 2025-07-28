@@ -1,42 +1,82 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 
-const Homeblog = () => {
+const HomeBlog = () => {
+  const [blogs, setBlogs] = useState([]);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const res = await axios.get(`https://lohamandi.com/api/blog`);
+        setBlogs(res.data);
+      } catch (err) {
+        console.error("Failed to fetch blogs:", err);
+      }
+    };
+    fetchBlogs();
+  }, []);
+
   return (
-    <div className="bg-[#E7F0DD] min-h-screen py-12 px-4 sm:px-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-        {/* Left Side - Image */}
-        <div>
-          <img
-            src="/blog.webp"
-            alt="Blog Visual"
-            className="w-full h-[300px] sm:h-[500px] md:h-[70vh] object-cover rounded-xl"
-          />
-        </div>
+    <section className="py-12 px-6 sm:px-10 lg:px-20 bg-white text-black">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-2xl font-bold mb-6 text-center">Latest Blogs</h2>
 
-        {/* Right Side - Text Content */}
-        <div className="space-y-6 text-center md:text-left">
-          <h2 className="text-[#A01F16] text-xl sm:text-2xl font-semibold">
-            About Lohamandi
-          </h2>
-          <h1 className="text-2xl sm:text-4xl md:text-5xl font-semibold text-black leading-tight">
-            India's trusted Online Steel Platform
-          </h1>
-          <p className="text-gray-700 text-base sm:text-lg md:text-xl">
-            Lohamandi is a B2B & B2C steel marketplace, connecting buyers with
-            verified suppliers across India. From TMT Bars to structural steel,
-            we ensure quality, custom sizing and doorstep delivery, all with
-            just a few clicks.
-          </p>
-          <button
-            className="bg-[#E7F0DD] text-black font-semibold px-6 py-3 sm:py-4 rounded-md hover:opacity-90 
-                 transition duration-300 border border-black"
-          >
-            Learn More
-          </button>
-        </div>
+        <Swiper
+          modules={[Autoplay, Pagination]}
+          autoplay={{ delay: 2500, disableOnInteraction: false }}
+          pagination={{ clickable: true }}
+          spaceBetween={30}
+          breakpoints={{
+            0: { slidesPerView: 1 },
+            640: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 },
+          }}
+        >
+          {blogs.map((blog) => (
+            <SwiperSlide key={blog._id}>
+              <Link to={`/blog/${blog._id}`}>
+                <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+                  {/* Image */}
+                  <div className="relative">
+                    <img
+                      src={blog.img}
+                      alt={blog.title}
+                      className="w-full h-52 object-cover"
+                    />
+                    <div className="absolute top-3 left-3 bg-white text-black rounded-md px-2 py-1 text-xs font-semibold text-center shadow">
+                      <p className="leading-none">{blog.date}</p>
+                      <p className="text-[10px] uppercase text-gray-500">
+                        {blog.month}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-5">
+                    <h3 className="text-lg font-bold mb-2">{blog.title}</h3>
+                    <p className="text-sm text-gray-700 mb-3">
+                      {blog.desc?.length > 120
+                        ? blog.desc.slice(0, 120) + "..."
+                        : blog.desc}
+                    </p>
+                    <span className="inline-block text-xs font-semibold text-black border border-black px-3 py-1 rounded-full">
+                      {blog.tag}
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
-    </div>
+    </section>
   );
 };
 
-export default Homeblog;
+export default HomeBlog;

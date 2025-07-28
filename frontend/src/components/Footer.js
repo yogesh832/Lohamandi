@@ -117,7 +117,9 @@ const Footer = () => {
               GSTIN: 07AAXXX1234X1Z1
             </p>
             <p className="text-xs text-gray-500 mt-2">
-              © {new Date().getFullYear()} Lohamandi Services Pvt. Ltd. All
+              © {new Date().getFullYear()} D Y Lohakart Pvt. Ltd.
+
+
               rights reserved.
             </p>
           </div>
@@ -169,13 +171,46 @@ const Footer = () => {
 
               <div>
                 <h4 className="font-semibold text-sm mb-2">FOLLOW US</h4>
-                <div className="flex space-x-3 text-gray-300 text-lg mt-1">
-                  <FaFacebookF />
-                  <FaInstagram />
-                  <FaTwitter />
-                  <FaLinkedinIn />
-                  <FaYoutube />
-                </div>
+                <div className="flex gap-3 text-xl">
+                         <a
+                           href="https://www.facebook.com/"
+                           className="hover:text-[#1877F2] hover:scale-110 transition duration-300"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                         >
+                           <FaFacebookF />
+                         </a>
+                         <a
+                           href="https://www.youtube.com/"
+                           className="hover:text-[#FF0000] hover:scale-110 transition duration-300"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                         >
+                           <FaYoutube />
+                         </a>
+                         <a
+                           href="https://www.instagram.com/lohamandicom?igsh=MWRzZmVvNDRhYTd4bg=="
+                           className="hover:text-[#E1306C] hover:scale-110 transition duration-300"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                         >
+                           <FaInstagram />
+                         </a>
+                         <a
+                           href="https://www.linkedin.com/company/lohamandicom/"
+                           className="hover:text-[#0077B5] hover:scale-110 transition duration-300"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                         >
+                           <FaLinkedinIn />
+                         </a>
+                         <a
+                           href="mailto:info@lohamandi.com"
+                           className="hover:text-[#EA4335] hover:scale-110 transition duration-300"
+                         >
+                           <FaEnvelope />
+                         </a>
+                       </div>
               </div>
             </div>
           </div>

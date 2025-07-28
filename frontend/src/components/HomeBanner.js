@@ -23,6 +23,16 @@ const HomeBanner = () => {
   ];
 
   const [isFading, setIsFading] = useState(false);
+  const [contact, setContact] = useState("");
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const message = `Hi, I am interested in buying TMT steel. My contact: ${contact}`;
+    window.open(
+      `https://wa.me/919910025184?text=${encodeURIComponent(message)}`,
+      "_blank"
+    );
+  };
 
   return (
     <div>
@@ -31,14 +41,14 @@ const HomeBanner = () => {
         {/* Swiper Background */}
         <Swiper
           modules={[Autoplay, Pagination, EffectFade]}
-          autoplay={{ delay: 5000 }}
+          autoplay={{ delay: 2000 }}
           loop={true}
           effect="fade"
           pagination={{ clickable: true }}
           className="h-full w-full absolute top-0 left-0"
           onSlideChangeTransitionStart={() => setIsFading(true)}
           onSlideChangeTransitionEnd={() =>
-            setTimeout(() => setIsFading(false), 2000)
+            setTimeout(() => setIsFading(false), 1000)
           }
         >
           {bannerImages.map((img, i) => (
@@ -51,14 +61,14 @@ const HomeBanner = () => {
           ))}
         </Swiper>
 
-        {/* === Black Fade Overlay === */}
+        {/* Black Fade Overlay */}
         <div
-          className={`absolute top-0 left-0 w-full h-full z-20 bg-black/20 transition-opacity duration-500 pointer-events-none ${
+          className={`absolute top-0 left-0 w-full h-full z-20 bg-black/10 transition-opacity duration-500 pointer-events-none ${
             isFading ? "opacity-100" : "opacity-0"
           }`}
         />
 
-        {/* === Overlay Content: Mobile & Desktop === */}
+        {/* Overlay Content */}
         <div className="absolute top-0 left-0 w-full h-full z-10">
           {/* Mobile Text */}
           <div className="md:hidden w-full h-full bg-black/60 py-40 px-4 text-white space-y-2">
@@ -113,13 +123,19 @@ const HomeBanner = () => {
                     Special Discounts on
                   </h2>
                   <p>Get today's best price & more</p>
-                  <form className="flex flex-col gap-4">
+                  <form className="flex flex-col gap-4" onSubmit={handleFormSubmit}>
                     <input
                       type="text"
+                      value={contact}
+                      onChange={(e) => setContact(e.target.value)}
                       placeholder="Enter your Contact Details"
                       className="p-3 border border-gray-400 rounded"
+                      required
                     />
-                    <button className="bg-gradient-to-r from-[#F17556] to-[#D61349] text-white py-3 px-6 rounded-lg">
+                    <button
+                      type="submit"
+                      className="bg-gradient-to-r from-[#F17556] to-[#D61349] text-white py-3 px-6 rounded-lg"
+                    >
                       Get Steel at Best Price
                     </button>
                     <div className="text-center text-sm text-gray-500">or</div>
@@ -138,7 +154,7 @@ const HomeBanner = () => {
           </div>
         </div>
 
-        {/* === Mobile Fixed Bottom CTA === */}
+        {/* Mobile Fixed Bottom CTA */}
         <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-300 shadow-xl">
           <div className="text-center py-2 px-3">
             <h2 className="text-sm font-semibold text-black">
@@ -149,12 +165,20 @@ const HomeBanner = () => {
             </p>
           </div>
           <div className="flex justify-between px-3 pb-3 gap-2">
-            <button className="flex items-center justify-center gap-1 bg-[#0AC1F5] text-white text-sm font-semibold px-2 py-2 rounded-md w-1/2">
+            <a
+              href="tel:+919910025184"
+              className="flex items-center justify-center gap-1 bg-[#0AC1F5] text-white text-sm font-semibold px-2 py-2 rounded-md w-1/2"
+            >
               <FaPhoneAlt className="text-lg" /> Call
-            </button>
-            <button className="flex items-center justify-center gap-1 bg-[#25D366] text-white text-sm font-semibold px-2 py-2 rounded-md w-1/2">
+            </a>
+            <a
+              href="https://wa.me/919910025184"
+              className="flex items-center justify-center gap-1 bg-[#25D366] text-white text-sm font-semibold px-2 py-2 rounded-md w-1/2"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FaWhatsapp className="text-lg" /> WhatsApp
-            </button>
+            </a>
           </div>
         </div>
       </section>
