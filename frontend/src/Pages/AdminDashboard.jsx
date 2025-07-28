@@ -6,6 +6,7 @@ import axios from "axios";
 const AdminDashboard = () => {
   const [blogs, setBlogs] = useState([]);
   const [editingBlog, setEditingBlog] = useState(null);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const fetchBlogs = async () => {
     try {
@@ -21,16 +22,21 @@ const AdminDashboard = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleDelete = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this blog?")) return;
 
-    try {
-      await axios.delete(`https://lohamandi.com/api/blog/${id}`);
-      fetchBlogs();
-    } catch (err) {
-      console.error("Delete failed", err);
-    }
-  };
+const handleDelete = async (id) => {
+  if (!window.confirm("Are you sure you want to delete this blog?")) return;
+
+  try {
+    setIsDeleting(true); // Start loading
+    await axios.delete(`https://lohamandi.com/api/blog/${id}`);
+    await fetchBlogs(); // Re-fetch blogs
+  } catch (err) {
+    console.error("Delete failed", err);
+  } finally {
+    setIsDeleting(false); // Stop loading
+  }
+};
+
 
   const handleFormSubmit = () => {
     fetchBlogs();
