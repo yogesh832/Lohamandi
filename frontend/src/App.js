@@ -23,19 +23,21 @@ const MessageList = lazy(() => import("./components/MessageList"));
 const SeoList = lazy(() => import("./components/SeoList"));
 
 // Not lazy-loaded: stays in memory for immediate access
-const ProtectedRoute = "./Pages/ProtectedRoute";
-
+const ProtectedRoute = lazy(() => import("./Pages/ProtectedRoute"));
 function App() {
   return (
     <Router>
-      <Suspense fallback={  
-        <div className="flex items-center justify-center h-screen bg-white dark:bg-gray-900">
-      <img
-        src="/enquire.png"
-        alt="Loading..."
-        className="w-20 h-20 animate-spin"
-      />
-    </div>}>
+      <Suspense
+        fallback={
+          <div className="flex items-center justify-center h-screen bg-white dark:bg-gray-900">
+            <img
+              src="/enquire.png"
+              alt="Loading..."
+              className="w-20 h-20 animate-spin"
+            />
+          </div>
+        }
+      >
         <Routes>
           {/* Public Routes */}
           <Route element={<Layout />}>
