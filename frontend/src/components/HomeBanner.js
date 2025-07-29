@@ -14,6 +14,7 @@ import { Autoplay, Pagination, EffectFade } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
+import axios from "axios";
 
 const HomeBanner = () => {
   const bannerImages = [
@@ -24,14 +25,26 @@ const HomeBanner = () => {
 
   const [isFading, setIsFading] = useState(false);
   const [contact, setContact] = useState("");
+  const [showPopup, setShowPopup] = useState(false);
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
-    const message = `Hi, I am interested in buying TMT steel. My contact: ${contact}`;
-    window.open(
-      `https://wa.me/919910025184?text=${encodeURIComponent(message)}`,
-      "_blank"
-    );
+    if (!/^[6-9]\d{9}$/.test(contact)) {
+      return;
+    }
+
+    try {
+      await axios.post("https://lohamandi.com/api/data", { mobile: contact });
+      setContact("");
+      setShowPopup(true);
+
+      // Auto close after 3 seconds
+      setTimeout(() => {
+        setShowPopup(false);
+      }, 3000);
+    } catch (err) {
+      console.error("Submission error:", err);
+    }
   };
 
   return (
@@ -123,12 +136,17 @@ const HomeBanner = () => {
                     Special Discounts on
                   </h2>
                   <p>Get today's best price & more</p>
-                  <form className="flex flex-col gap-4" onSubmit={handleFormSubmit}>
+                  <form
+                    className="flex flex-col gap-4"
+                    onSubmit={handleFormSubmit}
+                  >
                     <input
-                      type="text"
+                      type="tel"
                       value={contact}
                       onChange={(e) => setContact(e.target.value)}
-                      placeholder="Enter your Contact Details"
+                      placeholder="Enter your 10-digit Mobile No."
+                      pattern="[6-9]{1}[0-9]{9}"
+                      maxLength="10"
                       className="p-3 border border-gray-400 rounded"
                       required
                     />
@@ -212,6 +230,41 @@ const HomeBanner = () => {
           </div>
         </div>
       </section>
+
+      {/* ✅ Popup Modal */}
+      {showPopup && (
+  <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-40">
+    <div className="bg-white rounded-2xl p-8 max-w-md w-full text-center shadow-2xl animate-fadeIn">
+      <div className="flex justify-center mb-4">
+        <svg
+          className="w-14 h-14 text-green-500"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M5 13l4 4L19 7"
+          />
+        </svg>
+      </div>
+      <h2 className="text-2xl font-bold text-gray-800">Thank You!</h2>
+      <p className="mt-2 text-gray-600">
+        Your contact has been submitted successfully. <br />
+        We'll get back to you shortly.
+      </p>
+      <button
+        onClick={() => setShowPopup(false)}
+        className="mt-6 bg-gradient-to-r from-[#F17556] to-[#D61349] text-white py-2 px-6 rounded-lg hover:opacity-90 transition"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+)}
+
     </div>
   );
 };

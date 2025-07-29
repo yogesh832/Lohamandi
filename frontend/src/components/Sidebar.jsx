@@ -27,6 +27,11 @@ const navLinks = [
     label: "Messages",
     icon: <FaEnvelope size={18} />,
   },
+  {
+    path: "/admin/data",
+    label: "User Data",
+    icon: <FaEnvelope size={18} />,
+  },
 ];
 
 const Sidebar = () => {

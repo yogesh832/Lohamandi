@@ -14,6 +14,7 @@ dbConnection();
 app.use("/api/seo", require("./routes/seoRoutes"));      // ✅ Slug-safe
 app.use("/api/blog", require("./routes/blogRoutes"));    // ✅ Blog endpoint
 app.use("/api/contact", require("./routes/contactRoutes")); // ✅ Contact messages
+app.use("/api/data", require("./routes/dataRoutes"));
 
 // Start Server
 app.listen(8000, () => console.log("Server running on port 8000"));

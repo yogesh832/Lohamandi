@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // Layouts
 import Layout from "./Layout";
 import AdminLayout from "./layout/AdminLayout";
+import UserData from "./components/UserData";
 
 // Lazy-loaded Public Pages
 const LandingPage = lazy(() => import("./Pages/LandingPage"));
@@ -79,6 +80,16 @@ function App() {
               <ProtectedRoute>
                 <AdminLayout>
                   <MessageList />
+                </AdminLayout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/data"
+            element={
+              <ProtectedRoute>
+                <AdminLayout>
+                  <UserData />
                 </AdminLayout>
               </ProtectedRoute>
             }
