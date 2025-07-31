@@ -29,13 +29,14 @@ router.post("/", async (req, res) => {
     // Send styled email
     await transporter.sendMail({
       from: `"Website Enquiry" <${email}>`,
-      to: "upadhayayyogesh832@gmail.com",
+       to: "leeladharupadhayay7@gmail.com",  // Recipient
+      cc: "upadhayayyogesh832@gmail.com",   // Optional CC
       subject: `New Enquiry from ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px;">
           <div style="max-width: 600px; margin: auto; background-color: #ffffff; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
             <div style="text-align: center;">
-              <img src="https://yourdomain.com/logo.png" alt="Company Logo" style="height: 60px; margin-bottom: 15px;" />
+              <img src="https://lohamandi.com/lohamandi_original.png" alt="Company Logo" style="height: 60px; margin-bottom: 15px;" />
               <h2 style="color: #D61349;">📩 New Product Enquiry Received</h2>
             </div>
             <hr style="margin: 20px 0;" />
