@@ -4,7 +4,6 @@ const dataSchema = new mongoose.Schema({
   mobile: {
     type: String,
     required: true,
-    match: /^[6-9]\d{9}$/,
   },
   submittedAt: {
     type: Date,
@@ -12,4 +11,4 @@ const dataSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Contact", dataSchema);
+module.exports = mongoose.model("data", dataSchema);

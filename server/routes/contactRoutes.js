@@ -3,16 +3,16 @@ const router = express.Router();
 const ContactMessage = require("../models/ContactMessage");
 const nodemailer = require("nodemailer");
 
-// Email setup (Gmail)
+// Email transporter
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
     user: "upadhayayyogesh832@gmail.com",
-    pass: "exzl urpm udfq kzsq", // Secure this in .env file
+    pass: "exzl urpm udfq kzsq", // Move to .env in production
   },
 });
 
-// POST: Save and Send Email
+// POST /api/contact
 router.post("/", async (req, res) => {
   const { name, email, message } = req.body;
   if (!name || !email || !message) {
@@ -24,14 +24,45 @@ router.post("/", async (req, res) => {
     await newMessage.save();
 
     await transporter.sendMail({
-      from: `"Website Contact" <${email}>`,
+      from: `"Lohamandi Enquiry" <${email}>`,
       to: "upadhayayyogesh832@gmail.com",
-      subject: `New Message from ${name}`,
-      html: `
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong><br/>${message}</p>
-      `,
+      subject: `📩 New Enquiry from ${name}`,
+     html: `
+  <div style="max-width: 600px; margin: auto; border: 1px solid #e0e0e0; border-radius: 10px; padding: 24px; font-family: Arial, sans-serif; background-color: #fff;">
+    <div style="text-align: center;">
+      <img src="https://lohamandi.com/logo.png" alt="Lohamandi Logo" style="width: 120px; margin-bottom: 12px;" />
+      <h2 style="margin: 0; color: #D61349;">You’ve received a new enquiry!</h2>
+      <p style="color: #555; font-size: 14px; margin-top: 4px;">From Lohamandi.com contact form</p>
+    </div>
+
+    <hr style="margin: 20px 0; border: none; border-top: 1px solid #eee;" />
+
+    <table style="width: 100%; font-size: 15px; color: #333;">
+      <tr>
+        <td style="padding: 8px 0;"><strong>Name:</strong></td>
+        <td style="padding: 8px 0;">${name}</td>
+      </tr>
+      <tr>
+        <td style="padding: 8px 0;"><strong>Email:</strong></td>
+        <td style="padding: 8px 0;">${email}</td>
+      </tr>
+    </table>
+
+    <div style="margin-top: 16px;">
+      <strong>Message:</strong>
+      <div style="margin-top: 8px; background-color: #f9f9f9; padding: 12px; border-left: 4px solid #D61349; color: #444; line-height: 1.6;">
+        ${message}
+      </div>
+    </div>
+
+    <hr style="margin: 24px 0; border: none; border-top: 1px solid #eee;" />
+
+    <footer style="font-size: 12px; text-align: center; color: #999;">
+      <p>This message was submitted from <a href="https://lohamandi.com" style="color: #D61349; text-decoration: none;">lohamandi.com</a></p>
+    </footer>
+  </div>
+`,
+
     });
 
     res.status(201).json({ message: "Message saved and email sent!" });
@@ -41,7 +72,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-// GET: All Messages
+// GET all messages
 router.get("/", async (req, res) => {
   try {
     const messages = await ContactMessage.find().sort({ createdAt: -1 });
@@ -51,7 +82,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// GET: Single Message
+// GET single message by ID
 router.get("/:id", async (req, res) => {
   try {
     const message = await ContactMessage.findById(req.params.id);

@@ -54,9 +54,10 @@ export default function MoreProducts() {
             <img src={product.image} alt={product.title} className="w-full h-40 object-contain mb-4" />
             <h3 className="text-lg font-semibold mb-2">{product.title}</h3>
             <p className="text-sm text-gray-600 mb-4">{product.description}</p>
-            <button className="border border-black px-4 py-2 rounded hover:bg-black hover:text-white transition text-sm">
+           <a href="/about"> <button className="border border-black px-4 py-2 rounded hover:bg-black hover:text-white transition text-sm">
               Learn more
             </button>
+            </a>
           </div>
         ))}
       </div>

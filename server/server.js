@@ -3,18 +3,28 @@ const cors = require("cors");
 const dbConnection = require("./config/db");
 
 const app = express();
+const PORT = 8000;
 
+// Middlewares
 app.use(cors());
 app.use(express.json());
 
-// Connect DB
+// Connect to DB
 dbConnection();
 
-// Mount Routes
-app.use("/api/seo", require("./routes/seoRoutes"));      // ✅ Slug-safe
-app.use("/api/blog", require("./routes/blogRoutes"));    // ✅ Blog endpoint
-app.use("/api/contact", require("./routes/contactRoutes")); // ✅ Contact messages
+// Routes
+app.use("/api/seo", require("./routes/seoRoutes"));
+app.use("/api/blog", require("./routes/blogRoutes"));
+app.use("/api/contact", require("./routes/contactRoutes"));
 app.use("/api/data", require("./routes/dataRoutes"));
+app.use("/api/enquiry", require("./routes/enquireRoutes")); // Enquiry route
 
-// Start Server
-app.listen(8000, () => console.log("Server running on port 8000"));
+// Root route for testing
+app.get("/", (req, res) => {
+  res.send("🚀 API is up and running.");
+});
+
+// Start server
+app.listen(PORT, () => {
+  console.log(`✅ Server running on http://localhost:${PORT}`);
+});
