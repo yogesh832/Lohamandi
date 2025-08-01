@@ -26,7 +26,7 @@ router.post("/", async (req, res) => {
 
     // Send email notification
     await transporter.sendMail({
-      from: `"Lohamandi Enquiry" <upadhayayyogesh832@gmail.com>`,
+      from: `"Lohamandi Enquiry" info@lohamandi.com`,
       to: "info@lohamandi.com",
       cc: "upadhayayyogesh832@gmail.com",
       subject: `📩 New Mobile Enquiry Received`,
