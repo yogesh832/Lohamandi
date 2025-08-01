@@ -16,8 +16,8 @@ dbConnection();
 app.use("/api/seo", require("./routes/seoRoutes"));
 app.use("/api/blog", require("./routes/blogRoutes"));
 app.use("/api/contact", require("./routes/contactRoutes"));
-app.use("/api/data", require("./routes/dataRoutes"));
 app.use("/api/enquiry", require("./routes/enquireRoutes")); // Enquiry route
+app.use("/api/quickLead", require("./routes/quickLead")); // Enquiry route
 
 // Root route for testing
 app.get("/", (req, res) => {
