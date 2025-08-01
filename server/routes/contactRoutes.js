@@ -25,10 +25,10 @@ router.post("/", async (req, res) => {
 
     await transporter.sendMail({
       from: `"Lohamandi Enquiry" <${email}>`,
-      to: "leeladharupadhayay7@gmail.com",  // Recipient
-      cc: "upadhayayyogesh832@gmail.com",   // Optional CC
+      to: "info@lohamandi.com", // Recipient
+      cc: "upadhayayyogesh832@gmail.com", // Optional CC
       subject: `📩 New Enquiry from ${name}`,
-     html: `
+      html: `
   <div style="max-width: 600px; margin: auto; border: 1px solid #e0e0e0; border-radius: 10px; padding: 24px; font-family: Arial, sans-serif; background-color: #fff;">
     <div style="text-align: center;">
       <img src="https://lohamandi.com/lohamandi_original.png" alt="Lohamandi Logo" style="width: 120px; margin-bottom: 12px;" />
@@ -63,7 +63,6 @@ router.post("/", async (req, res) => {
     </footer>
   </div>
 `,
-
     });
 
     res.status(201).json({ message: "Message saved and email sent!" });

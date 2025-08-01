@@ -18,19 +18,27 @@ router.post("/", async (req, res) => {
 
   // Validate required fields
   if (!name || !email || !message) {
-    return res.status(400).json({ message: "Name, email, and message are required" });
+    return res
+      .status(400)
+      .json({ message: "Name, email, and message are required" });
   }
 
   try {
     // Save message in DB
-    const newEnquiry = new EnquiryMessage({ name, email, phone, product, message });
+    const newEnquiry = new EnquiryMessage({
+      name,
+      email,
+      phone,
+      product,
+      message,
+    });
     await newEnquiry.save();
 
     // Send styled email
     await transporter.sendMail({
       from: `"Website Enquiry" <${email}>`,
-       to: "leeladharupadhayay7@gmail.com",  // Recipient
-      cc: "upadhayayyogesh832@gmail.com",   // Optional CC
+      to: "info@lohamandi.com", // Recipient
+      cc: "upadhayayyogesh832@gmail.com", // Optional CC
       subject: `New Enquiry from ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px;">

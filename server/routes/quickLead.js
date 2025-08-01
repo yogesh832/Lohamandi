@@ -27,14 +27,16 @@ router.post("/", async (req, res) => {
     // Send email notification
     await transporter.sendMail({
       from: `"Lohamandi Enquiry" <upadhayayyogesh832@gmail.com>`,
-      to: "leeladharupadhayay7@gmail.com",
+      to: "info@lohamandi.com",
       cc: "upadhayayyogesh832@gmail.com",
       subject: `📩 New Mobile Enquiry Received`,
       html: `
         <div>
           <h2>📱 New Lead Received</h2>
           <p><strong>Mobile:</strong> ${phone}</p>
-          <p><strong>Time:</strong> ${new Date(lead.submittedAt).toLocaleString()}</p>
+          <p><strong>Time:</strong> ${new Date(
+            lead.submittedAt
+          ).toLocaleString()}</p>
         </div>
       `,
     });

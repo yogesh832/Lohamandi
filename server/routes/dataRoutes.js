@@ -28,7 +28,7 @@ router.post("/", async (req, res) => {
     // Send email
     await transporter.sendMail({
       from: `"Lohamandi Enquiry" <upadhayayyogesh832@gmail.com>`,
-      to: "leeladharupadhayay7@gmail.com",
+      to: "info@lohamandi.com",
       cc: "upadhayayyogesh832@gmail.com",
       subject: `📞 New Mobile Number Submitted`,
       html: `
@@ -58,11 +58,10 @@ router.post("/", async (req, res) => {
     });
 
     res.status(201).json({ message: "Mobile number saved and email sent" });
-} catch (err) {
-  console.error("❌ Email or DB Error:", err);
-  res.status(500).json({ error: "Server error" });
-}
-
+  } catch (err) {
+    console.error("❌ Email or DB Error:", err);
+    res.status(500).json({ error: "Server error" });
+  }
 });
 
 // @route   GET /api/data
