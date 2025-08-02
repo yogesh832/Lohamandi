@@ -1,4 +1,3 @@
-// --- SeoForm.jsx ---
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -10,7 +9,7 @@ const SeoForm = ({ slug, onSave }) => {
     ogImage: "",
     canonicalUrl: "",
     robots: "index,follow",
-    slug: "", // ✅ add slug field here
+    slug: "",
   });
 
   const isNew = slug === "/new-slug";
@@ -20,7 +19,10 @@ const SeoForm = ({ slug, onSave }) => {
       axios
         .get(`https://lohamandi.com/api/seo${slug}`)
         .then((res) => setForm(res.data))
-        .catch((err) => console.error("Fetch error:", err));
+        .catch((err) => {
+          console.error("Fetch error:", err);
+          alert("Failed to load SEO page.");
+        });
     } else {
       setForm({
         title: "",
@@ -29,7 +31,7 @@ const SeoForm = ({ slug, onSave }) => {
         ogImage: "",
         canonicalUrl: "",
         robots: "index,follow",
-        slug: "", // ✅ reset slug
+        slug: "",
       });
     }
   }, [slug]);
@@ -41,17 +43,26 @@ const SeoForm = ({ slug, onSave }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const normalizedSlug = form.slug.trim().startsWith("/")
+        ? form.slug.trim()
+        : "/" + form.slug.trim();
+
       const payload = {
         ...form,
-        slug: form.slug.trim().startsWith("/")
-          ? form.slug.trim()
-          : "/" + form.slug.trim(), // ✅ normalize slug
+        slug: normalizedSlug,
       };
 
-      await axios.post("https://lohamandi.com/api/seo", payload);
+      if (isNew) {
+        await axios.post("https://lohamandi.com/api/seo", payload);
+      } else {
+        const encoded = encodeURIComponent(slug);
+        await axios.put(`https://lohamandi.com/api/seo/${encoded}`, payload);
+      }
+
       onSave();
     } catch (err) {
-      console.error("Save error:", err);
+      console.error("Save error:", err.response?.data || err.message);
+      alert(err.response?.data?.message || "Something went wrong");
     }
   };
 
@@ -91,7 +102,7 @@ const SeoForm = ({ slug, onSave }) => {
       />
       <input
         name="ogImage"
-        placeholder="Enter og image URL"
+        placeholder="Enter og:image URL"
         value={form.ogImage}
         onChange={handleChange}
         className="w-full p-2 border rounded"

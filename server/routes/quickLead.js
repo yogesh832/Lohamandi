@@ -3,7 +3,7 @@ const router = express.Router();
 const QuickLead = require("../models/QuickLead");
 const nodemailer = require("nodemailer");
 
-// Email transporter setup
+// Email transporter setupp
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {

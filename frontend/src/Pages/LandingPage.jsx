@@ -29,7 +29,7 @@ const LandingPage = () => {
   return (
     <>
       <Helmet>
-        <title>{"Lohamandi"}</title>
+        <title>{seo?.title || "Lohamandi"}</title>
         <meta
           name="description"
           content={seo?.description || "Default description"}

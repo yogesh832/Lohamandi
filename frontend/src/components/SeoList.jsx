@@ -1,4 +1,3 @@
-// --- SeoList.jsx ---
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import SeoForm from "./SeoForm";
@@ -9,7 +8,7 @@ const SeoList = () => {
 
   const fetchPages = async () => {
     try {
-      const res = await axios.get(`https://lohamandi.com/api/seo`);
+      const res = await axios.get("https://lohamandi.com/api/seo");
       setPages(res.data);
     } catch (err) {
       console.error("Failed to fetch SEO pages", err);
@@ -21,10 +20,27 @@ const SeoList = () => {
   }, []);
 
   const handleDelete = async (slug) => {
+    if (!slug || slug === "/") {
+      alert("Cannot delete root or empty slug.");
+      return;
+    }
+
     if (!window.confirm(`Delete ${slug}?`)) return;
-    await axios.delete(`https://lohamandi.com/api/seo${slug}`);
-    fetchPages();
-    setSelectedSlug(null);
+
+    let normalized = slug.trim();
+    if (!normalized.startsWith("/")) normalized = "/" + normalized;
+    if (normalized.length > 1 && normalized.endsWith("/"))
+      normalized = normalized.slice(0, -1);
+
+    const encoded = encodeURIComponent(normalized);
+    try {
+      await axios.delete(`https://lohamandi.com/api/seo/${encoded}`);
+      fetchPages();
+      setSelectedSlug(null);
+    } catch (err) {
+      console.error("❌ Delete failed:", err.response?.data || err.message);
+      alert(err.response?.data?.message || "Delete failed");
+    }
   };
 
   return (
