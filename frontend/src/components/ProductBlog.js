@@ -17,10 +17,12 @@ const ProductBlog = () => {
           <p className="text-lg font-semibold mb-6 max-w-xl">
             Get in touch now for custom quotes, or explore our product range.
           </p>
+          <a href="/about">
           <button className="px-6 py-3 border border-white text-white
            rounded-md text-xl  hover:bg-white hover:text-black transition duration-300">
             Get Started Now
           </button>
+          </a>
         </div>
       </div>
     </section>

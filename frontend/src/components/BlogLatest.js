@@ -30,9 +30,11 @@ const BlogLatest = () => {
             <h2 className="text-lg sm:text-xl font-semibold leading-tight">
               5 Reasons Why Custom-Length TMT Bars Save You Time & Money
             </h2>
+            <a href="blog">
             <button className="mt-4 px-6 py-3 bg-white text-black text-sm font-semibold rounded-md">
               Read more →
             </button>
+            </a>
           </div>
         </div>
 
