@@ -32,6 +32,11 @@ const navLinks = [
     label: "User Data",
     icon: <FaEnvelope size={18} />,
   },
+  {
+    path: "/admin/product",
+    label: "Product Category",
+    icon: <FaEnvelope size={18} />,
+  },
 ];
 
 const Sidebar = () => {

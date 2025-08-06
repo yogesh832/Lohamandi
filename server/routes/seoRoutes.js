@@ -46,10 +46,10 @@ router.post("/", async (req, res) => {
   }
 });
 
-// ✅ GET: Single SEO page by slug
-router.get("/*", async (req, res) => {
+// ✅ GET: Single SEO page by slug (handles any slug depth)
+router.get("/:slug(*)", async (req, res) => {
   try {
-    const slug = normalizeSlug("/" + req.params[0]);
+    const slug = normalizeSlug("/" + req.params.slug);
     console.log("🔍 Looking up SEO page:", slug);
 
     const page = await SeoPage.findOne({ slug });
@@ -66,9 +66,9 @@ router.get("/*", async (req, res) => {
 });
 
 // ✅ PUT: Update SEO page by slug
-router.put("/*", async (req, res) => {
+router.put("/:slug(*)", async (req, res) => {
   try {
-    const slug = normalizeSlug("/" + req.params[0]);
+    const slug = normalizeSlug("/" + req.params.slug);
     const updated = await SeoPage.findOneAndUpdate({ slug }, req.body, {
       new: true,
     });
@@ -85,9 +85,9 @@ router.put("/*", async (req, res) => {
 });
 
 // ✅ DELETE: Delete SEO page by slug
-router.delete("/*", async (req, res) => {
+router.delete("/:slug(*)", async (req, res) => {
   try {
-    const slug = normalizeSlug("/" + req.params[0]);
+    const slug = normalizeSlug("/" + req.params.slug);
     const deleted = await SeoPage.findOneAndDelete({ slug });
 
     if (!deleted) {

@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "./Layout";
 import AdminLayout from "./layout/AdminLayout";
 import UserData from "./components/UserData";
+import ProductForm from "./components/ProductForm";
 
 // Lazy-loaded Public Pages
 const LandingPage = lazy(() => import("./Pages/LandingPage"));
@@ -90,6 +91,16 @@ function App() {
               <ProtectedRoute>
                 <AdminLayout>
                   <UserData />
+                </AdminLayout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/admin/product"
+            element={
+              <ProtectedRoute>
+                <AdminLayout>
+                  <ProductForm />
                 </AdminLayout>
               </ProtectedRoute>
             }
