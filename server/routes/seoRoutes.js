@@ -4,13 +4,13 @@ const SeoPage = require("../models/SeoPage");
 
 // 🔧 Normalize slug: trims, ensures leading '/', removes trailing '/', lowercases
 const normalizeSlug = (slug) => {
-  if (!slug) return "";
-  slug = slug.trim();
+  if (!slug) return "/";
+  slug = slug.trim().toLowerCase();
 
   if (!slug.startsWith("/")) slug = "/" + slug;
   if (slug.length > 1 && slug.endsWith("/")) slug = slug.slice(0, -1);
 
-  return slug.toLowerCase(); // Optional: for consistent matching
+  return slug;
 };
 
 // ✅ GET all SEO pages
@@ -34,7 +34,8 @@ router.post("/", async (req, res) => {
     req.body.slug = slug;
 
     const existing = await SeoPage.findOne({ slug });
-    if (existing) return res.status(409).json({ message: "Slug already exists" });
+    if (existing)
+      return res.status(409).json({ message: "Slug already exists" });
 
     const newPage = new SeoPage(req.body);
     await newPage.save();
@@ -46,10 +47,10 @@ router.post("/", async (req, res) => {
   }
 });
 
-// ✅ GET: Single SEO page by slug (handles any slug depth)
-router.get("/:slug(*)", async (req, res) => {
+// ✅ GET: Single SEO page by slug (supports deep paths like /products/item)
+router.get("/", async (req, res) => {
   try {
-    const slug = normalizeSlug("/" + req.params.slug);
+    const slug = normalizeSlug(req.path); // uses full path from root
     console.log("🔍 Looking up SEO page:", slug);
 
     const page = await SeoPage.findOne({ slug });
@@ -66,9 +67,9 @@ router.get("/:slug(*)", async (req, res) => {
 });
 
 // ✅ PUT: Update SEO page by slug
-router.put("/:slug(*)", async (req, res) => {
+router.put("/", async (req, res) => {
   try {
-    const slug = normalizeSlug("/" + req.params.slug);
+    const slug = normalizeSlug(req.path);
     const updated = await SeoPage.findOneAndUpdate({ slug }, req.body, {
       new: true,
     });
@@ -85,9 +86,9 @@ router.put("/:slug(*)", async (req, res) => {
 });
 
 // ✅ DELETE: Delete SEO page by slug
-router.delete("/:slug(*)", async (req, res) => {
+router.delete("/", async (req, res) => {
   try {
-    const slug = normalizeSlug("/" + req.params.slug);
+    const slug = normalizeSlug(req.path);
     const deleted = await SeoPage.findOneAndDelete({ slug });
 
     if (!deleted) {

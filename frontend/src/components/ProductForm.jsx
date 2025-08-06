@@ -1,114 +1,235 @@
-// components/ProductForm.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
 
-const CLOUDINARY_UPLOAD_PRESET = "blog_upload";
-const CLOUDINARY_CLOUD_NAME = "dil5x4cxh";
+const ProductForm = () => {
+  const [title, setTitle] = useState("");
+  const [slug, setSlug] = useState("");
+  const [content, setContent] = useState("");
+  const [additional, setAdditional] = useState("");
+  const [imageFile, setImageFile] = useState(null);
 
-const ProductForm = ({ isEdit = false, productData = {}, onSubmit }) => {
-  const [title, setTitle] = useState(productData.title || "");
-  const [slug, setSlug] = useState(productData.slug || "");
-  const [content, setContent] = useState(productData.content || "");
-  const [additional, setAdditional] = useState(productData.additional || "");
-  const [image, setImage] = useState(productData.image || "");
+  const [metaTitle, setMetaTitle] = useState("");
+  const [metaKeywords, setMetaKeywords] = useState("");
+  const [metaDescription, setMetaDescription] = useState("");
+
+  const [editingProductId, setEditingProductId] = useState(null);
   const [allProducts, setAllProducts] = useState([]);
-
-  const handleImageUpload = async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    const form = new FormData();
-    form.append("file", file);
-    form.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
-
-    const res = await axios.post(
-      `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
-      form
-    );
-
-    setImage(res.data.secure_url);
-  };
+  const [uploading, setUploading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (typeof onSubmit === 'function') {
-      onSubmit({ title, slug, content, additional, image });
-    } else {
-      try {
-        const res = await axios.post("http://localhost:8000/api/products", {
-          title,
-          slug,
-          content,
-          additional,
-          image,
-        });
-        alert("Product created successfully");
-        fetchProducts();
-      } catch (error) {
-        console.error("Create product error", error);
-      }
+
+    const form = new FormData();
+    form.append("title", title);
+    form.append("slug", slug);
+    form.append("content", content);
+    form.append("additional", additional);
+    form.append("metaTitle", metaTitle);
+    form.append("metaKeywords", metaKeywords);
+    form.append("metaDescription", metaDescription);
+
+    if (imageFile) {
+      form.append("img", imageFile);
     }
+
+    try {
+      setUploading(true);
+
+      if (editingProductId) {
+        await axios.put(`http://localhost:8000/api/products/${editingProductId}`, form, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+        alert("✅ Product updated");
+      } else {
+        await axios.post("http://localhost:8000/api/products", form, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+        alert("✅ Product created");
+      }
+
+      resetForm();
+      fetchProducts();
+    } catch (err) {
+      console.error("❌ Error submitting product:", err.response?.data || err.message);
+      alert("❌ Error submitting product");
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    const confirmed = window.confirm("Are you sure you want to delete this product?");
+    if (!confirmed) return;
+
+    try {
+      await axios.delete(`http://localhost:8000/api/products/${id}`);
+      alert("🗑️ Product deleted");
+      fetchProducts();
+    } catch (err) {
+      console.error("Delete error:", err);
+    }
+  };
+
+  const resetForm = () => {
+    setTitle("");
+    setSlug("");
+    setContent("");
+    setAdditional("");
+    setImageFile(null);
+    setMetaTitle("");
+    setMetaKeywords("");
+    setMetaDescription("");
+    setEditingProductId(null);
   };
 
   const fetchProducts = async () => {
     try {
       const res = await axios.get("http://localhost:8000/api/products");
-      setAllProducts(res.data);
+      setAllProducts(res.data.data || []);
     } catch (error) {
-      console.error("Fetch products error", error);
+      console.error("Fetch error:", error);
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetchProducts();
   }, []);
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="space-y-4 p-4">
+      <form onSubmit={handleSubmit} className="space-y-4 p-4 border-b max-w-2xl mx-auto">
+        <h2 className="text-2xl font-bold">
+          {editingProductId ? "Edit Product" : "Add Product"}
+        </h2>
+
         <input
           type="text"
-          placeholder="Product Title"
+          placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="w-full border p-2"
+          className="w-full border p-2 rounded"
           required
         />
+
         <input
           type="text"
           placeholder="Slug (e.g. tmt-bars)"
           value={slug}
           onChange={(e) => setSlug(e.target.value)}
-          className="w-full border p-2"
+          className="w-full border p-2 rounded"
           required
         />
+
         <textarea
-          placeholder="Additional Content (optional)"
+          placeholder="Additional Info"
           value={additional}
           onChange={(e) => setAdditional(e.target.value)}
-          className="w-full border p-2"
+          className="w-full border p-2 rounded"
         />
+
         <ReactQuill value={content} onChange={setContent} theme="snow" />
-        <input type="file" onChange={handleImageUpload} className="mt-2" />
-        {image && <img src={image} alt="Product" className="h-24" />}
-        <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">
-          {isEdit ? "Update Product" : "Add Product"}
-        </button>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 pt-2">
+          <input
+            type="text"
+            placeholder="Meta Title"
+            value={metaTitle}
+            onChange={(e) => setMetaTitle(e.target.value)}
+            className="border p-2 rounded"
+          />
+          <input
+            type="text"
+            placeholder="Meta Keywords"
+            value={metaKeywords}
+            onChange={(e) => setMetaKeywords(e.target.value)}
+            className="border p-2 rounded"
+          />
+          <textarea
+            placeholder="Meta Description"
+            value={metaDescription}
+            onChange={(e) => setMetaDescription(e.target.value)}
+            className="col-span-2 border p-2 rounded"
+          />
+        </div>
+
+        <input
+          type="file"
+          onChange={(e) => setImageFile(e.target.files[0])}
+          className="mt-2"
+          accept="image/*"
+        />
+        {uploading && <p className="text-sm text-gray-500">Uploading...</p>}
+
+        <div className="flex justify-between">
+          <button
+            type="submit"
+            className="bg-blue-600 text-white px-4 py-2 rounded w-full"
+          >
+            {editingProductId ? "Update Product" : "Add Product"}
+          </button>
+          {editingProductId && (
+            <button
+              type="button"
+              onClick={resetForm}
+              className="ml-2 text-sm underline text-gray-600"
+            >
+              Cancel Edit
+            </button>
+          )}
+        </div>
       </form>
 
-      <div className="p-4 mt-8 border-t">
-        <h2 className="text-lg font-semibold mb-4">All Products</h2>
-        <ul className="space-y-2">
-          {allProducts.map((prod) => (
-            <li key={prod._id} className="border p-2 rounded">
-              <h3 className="font-bold">{prod.title}</h3>
-              <p className="text-sm text-gray-600">Slug: {prod.slug}</p>
-              <img src={prod.image} alt={prod.title} className="h-20 mt-2" />
-            </li>
+      {/* Product Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 max-w-6xl mx-auto">
+        {Array.isArray(allProducts) &&
+          allProducts.map((prod) => (
+            <div key={prod._id} className="border rounded-lg p-4 shadow-sm bg-white relative">
+              {prod.image ? (
+                <img
+                  src={prod.image}
+                  alt={prod.title}
+                  className="w-full h-40 object-cover rounded mb-2"
+                />
+              ) : (
+                <div className="w-full h-40 bg-gray-200 flex items-center justify-center rounded mb-2">
+                  <span className="text-gray-500">No Image</span>
+                </div>
+              )}
+
+              <h3 className="text-lg font-bold">{prod.title}</h3>
+              <p className="text-sm text-gray-600 mb-2">{prod.slug}</p>
+              <div
+                className="text-sm text-gray-800 mb-3"
+                dangerouslySetInnerHTML={{ __html: prod.content?.slice(0, 100) + "..." }}
+              />
+
+              <div className="flex justify-between">
+                <button
+                  onClick={() => {
+                    setTitle(prod.title);
+                    setSlug(prod.slug);
+                    setContent(prod.content);
+                    setAdditional(prod.additional);
+                    setMetaTitle(prod.metaTitle);
+                    setMetaKeywords(prod.metaKeywords);
+                    setMetaDescription(prod.metaDescription);
+                    setEditingProductId(prod._id);
+                  }}
+                  className="text-blue-600 hover:underline text-sm"
+                >
+                  ✏️ Edit
+                </button>
+                <button
+                  onClick={() => handleDelete(prod._id)}
+                  className="text-red-600 hover:underline text-sm"
+                >
+                  🗑️ Delete
+                </button>
+              </div>
+            </div>
           ))}
-        </ul>
       </div>
     </>
   );
