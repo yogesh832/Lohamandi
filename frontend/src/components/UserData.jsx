@@ -42,7 +42,7 @@ const UserData = () => {
                   <td className="border px-4 py-2">{idx + 1}</td>
                   <td className="border px-4 py-2">{user.phone}</td>
                   <td className="border px-4 py-2">
-                    {new Date(user.createdAt).toLocaleString("en-IN")}
+                    {new Date(user.submittedAt).toLocaleString("en-IN")}
                   </td>
                 </tr>
               ))}

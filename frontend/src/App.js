@@ -6,6 +6,7 @@ import Layout from "./Layout";
 import AdminLayout from "./layout/AdminLayout";
 import UserData from "./components/UserData";
 import ProductForm from "./components/ProductForm";
+import CategoryPage from "./Pages/CategoryPage";
 
 // Lazy-loaded Public Pages
 const LandingPage = lazy(() => import("./Pages/LandingPage"));
@@ -44,6 +45,8 @@ function App() {
           {/* Public Routes */}
           <Route element={<Layout />}>
             <Route path="/" element={<LandingPage />} />
+                    <Route path="/:categorySlug" element={<CategoryPage />} />
+
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/blog" element={<BlogPage />} />

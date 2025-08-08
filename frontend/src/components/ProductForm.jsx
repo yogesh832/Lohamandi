@@ -7,6 +7,7 @@ const ProductForm = () => {
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
   const [content, setContent] = useState("");
+  const [price, setPrice] = useState("");
   const [additional, setAdditional] = useState("");
   const [imageFile, setImageFile] = useState(null);
 
@@ -25,6 +26,7 @@ const ProductForm = () => {
     form.append("title", title);
     form.append("slug", slug);
     form.append("content", content);
+    form.append("price", price);
     form.append("additional", additional);
     form.append("metaTitle", metaTitle);
     form.append("metaKeywords", metaKeywords);
@@ -75,6 +77,7 @@ const ProductForm = () => {
   const resetForm = () => {
     setTitle("");
     setSlug("");
+    setPrice("");
     setContent("");
     setAdditional("");
     setImageFile(null);
@@ -121,6 +124,15 @@ const ProductForm = () => {
           className="w-full border p-2 rounded"
           required
         />
+      <input
+  type="number"
+  placeholder="(Price in ₹)"
+  value={price}
+  onChange={(e) => setPrice(e.target.value)} // ✅ Correct
+  className="w-full border p-2 rounded"
+  required
+/>
+
 
         <textarea
           placeholder="Additional Info"
@@ -209,8 +221,9 @@ const ProductForm = () => {
                 <button
                   onClick={() => {
                     setTitle(prod.title);
-                    setSlug(prod.slug);
                     setContent(prod.content);
+                    setSlug(prod.slug);
+                    setPrice(prod.price);
                     setAdditional(prod.additional);
                     setMetaTitle(prod.metaTitle);
                     setMetaKeywords(prod.metaKeywords);

@@ -30,6 +30,26 @@ router.get("/", async (req, res) => {
 /* ----------------------------
    GET SINGLE PRODUCT
 ---------------------------- */
+/* ----------------------------
+   GET PRODUCTS BY CATEGORY SLUG
+---------------------------- */
+router.get("/:slug", async (req, res) => {
+  try {
+    const categorySlug = req.params.slug;
+
+    const products = await Product.find({ slug: categorySlug }).sort({ createdAt: -1 });
+
+    if (!products || products.length === 0) {
+      return res.status(404).json({ message: "No products found for this category" });
+    }
+
+    res.json(products);
+  } catch (err) {
+    console.error("Category fetch error:", err);
+    res.status(500).json({ message: "Failed to fetch category products" });
+  }
+});
+
 router.get("/:id", async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
@@ -45,15 +65,16 @@ router.get("/:id", async (req, res) => {
 ---------------------------- */
 router.post("/", upload.single("img"), async (req, res) => {
   try {
-    const {
-      title,
-      slug,
-      content,
-      additional,
-      metaTitle,
-      metaKeywords,
-      metaDescription,
-    } = req.body;
+ const {
+  title,
+  slug,
+  price,
+  content,
+  additional,
+  metaTitle,
+  metaKeywords,
+  metaDescription,
+} = req.body;
 
     if (!title || !slug || !content) {
       return res.status(400).json({ message: "Missing required fields" });
@@ -76,15 +97,16 @@ router.post("/", upload.single("img"), async (req, res) => {
     }
 
     const newProduct = new Product({
-      title,
-      slug,
-      content,
-      additional,
-      image: imageUrl,
-      metaTitle,
-      metaKeywords,
-      metaDescription,
-    });
+  title,
+  slug,
+  price, // ✅ Add here
+  content,
+  additional,
+  image: imageUrl,
+  metaTitle,
+  metaKeywords,
+  metaDescription,
+});
 
     await newProduct.save();
     res.status(201).json({ message: "Product created", data: newProduct });
@@ -99,25 +121,27 @@ router.post("/", upload.single("img"), async (req, res) => {
 ---------------------------- */
 router.put("/:id", upload.single("img"), async (req, res) => {
   try {
-    const {
-      title,
-      slug,
-      content,
-      additional,
-      metaTitle,
-      metaKeywords,
-      metaDescription,
-    } = req.body;
+ const {
+  title,
+  slug,
+  price,
+  content,
+  additional,
+  metaTitle,
+  metaKeywords,
+  metaDescription,
+} = req.body;
 
-    const updateFields = {
-      title,
-      slug,
-      content,
-      additional,
-      metaTitle,
-      metaKeywords,
-      metaDescription,
-    };
+  const updateFields = {
+  title,
+  slug,
+  price,
+  content,
+  additional,
+  metaTitle,
+  metaKeywords,
+  metaDescription,
+};
 
     if (req.file) {
       const result = await new Promise((resolve, reject) => {
