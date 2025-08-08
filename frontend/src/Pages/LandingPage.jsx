@@ -15,6 +15,7 @@ import BlogLatest from "../components/BlogLatest";
 import BlogQuestion from "../components/BlogQuestion";
 import BlogContact from "../components/BlogContact";
 import Footer from "../components/Footer";
+import HomeProductCategory from "../components/HomeProductCategory";
 
 const LandingPage = () => {
   const [seo, setSeo] = useState({});
@@ -44,7 +45,8 @@ const LandingPage = () => {
 
       <HomeBanner />
       <HomeAbout />
-      <HomeProducts />
+      {/* <HomeProducts /> */}
+      <HomeProductCategory></HomeProductCategory>
       <Homeblog />
       <BlogReview />
       <BlogContent />
