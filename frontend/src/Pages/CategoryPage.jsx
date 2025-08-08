@@ -9,6 +9,8 @@ import {
   BsChatDots,
 } from "react-icons/bs";
 import { MdOutlineLocalShipping, MdPayment } from "react-icons/md";
+import HomeProducts from "../components/HomeProducts";
+
 const CategoryPage = () => {
   const { categorySlug } = useParams();
   const [products, setProducts] = useState([]);
@@ -17,6 +19,7 @@ const CategoryPage = () => {
   const [loading, setLoading] = useState(true);
   const [contact, setContact] = useState("");
   const [showPopup, setShowPopup] = useState(false);
+
   useEffect(() => {
     const fetchCategoryProducts = async () => {
       try {
@@ -67,7 +70,6 @@ const CategoryPage = () => {
         setShowPopup(true);
         setContact("");
 
-        // Auto-close popup after 5 seconds (optional)
         setTimeout(() => setShowPopup(false), 5000);
       }
     } catch (error) {
@@ -75,6 +77,7 @@ const CategoryPage = () => {
       alert("Something went wrong. Please try again later.");
     }
   };
+
   if (loading) return <p className="text-center py-10">Loading...</p>;
   if (error)
     return (
@@ -84,7 +87,7 @@ const CategoryPage = () => {
   const formattedCategory = categorySlug.replace(/-/g, " ");
   const product = products[0];
 
-  // Just show all except current slug
+  // Show all products except current slug
   const relatedProducts = Array.isArray(allProducts)
     ? allProducts.filter((p) => p.slug !== categorySlug)
     : [];
@@ -99,8 +102,7 @@ const CategoryPage = () => {
           </Link>{" "}
           /
           <Link to="/category" className="mx-1 hover:underline text-blue-600">
-            {" "}
-            Materials{" "}
+            Materials
           </Link>{" "}
           /
           <span className="text-gray-700 font-medium capitalize">
@@ -152,8 +154,11 @@ const CategoryPage = () => {
             </div>
           )}
 
-        {/* Guide + Why SteelonCall */}
-        <div className="flex  gap-6 ">
+        {/* HomeProducts only for tmt-bar */}
+        {categorySlug === "tmt-bar" && <HomeProducts />}
+
+        {/* Guide + Related Products + Why Section */}
+        <div className="flex gap-6">
           {/* Related Products */}
           {relatedProducts.length > 0 && (
             <div className="space-y-4 max-h-[400px] overflow-y-auto">
@@ -164,7 +169,7 @@ const CategoryPage = () => {
                 {relatedProducts.map((prod) => (
                   <div
                     key={prod._id}
-                    className="border rounded-lg p-4 shadow-sm bg-white flex flex-wrap flex-col"
+                    className="border rounded-lg p-4 shadow-sm bg-white flex flex-col"
                   >
                     {prod.image ? (
                       <img
@@ -191,6 +196,7 @@ const CategoryPage = () => {
             </div>
           )}
 
+          {/* Why Lohamandi Section */}
           <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg shadow-md w-full max-w-xl mx-auto">
             <h3 className="text-lg font-semibold text-gray-800 mb-4">
               Why Lohamandi.com
@@ -218,7 +224,6 @@ const CategoryPage = () => {
               </li>
             </ul>
 
-            {/* WhatsApp Button */}
             <a href="/enquiry">
               <button
                 type="submit"
@@ -228,7 +233,6 @@ const CategoryPage = () => {
               </button>
             </a>
 
-            {/* WhatsApp Button */}
             <a href="https://wa.me/919910025184">
               <button className="mt-2 w-full flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded">
                 <svg
@@ -244,38 +248,42 @@ const CategoryPage = () => {
             </a>
           </div>
         </div>
+
         <div className="flex flex-row w-full justify-between items-center">
-          <div className="lg:col-span-2 bg-white p-6 rounded-lg shadow space-y-4">
-            <h2 className="text-xl font-semibold text-blue-600">
-              📘 Guide to Choosing TMT Bars for Construction
-            </h2>
-            <ul className="space-y-4 text-gray-700 list-disc pl-6">
-              <li>
-                <strong>Understand Your Project Needs:</strong> Assess
-                project-specific requirements...
-              </li>
-              <li>
-                <strong>Choose the Right TMT Grade:</strong> Fe415, Fe500, Fe550
-                – choose based on application...
-              </li>
-              <li>
-                <strong>Verify IS Certification:</strong> Ensure BIS-certified
-                (IS 1786:2008)...
-              </li>
-              <li>
-                <strong>Consider Corrosion Resistance:</strong> Especially for
-                coastal/humid environments...
-              </li>
-              <li>
-                <strong>Check Bendability and Weldability:</strong> Especially
-                for intricate structures...
-              </li>
-              <li>
-                <strong>Conclusion:</strong> Choosing the right TMT is critical
-                for longevity and safety...
-              </li>
-            </ul>
-          </div>
+          {categorySlug === "tmt-bar" && (
+            <div className="lg:col-span-2 bg-white p-6 rounded-lg shadow space-y-4">
+              <h2 className="text-xl font-semibold text-blue-600">
+                📘 Guide to Choosing TMT Bars for Construction
+              </h2>
+              <ul className="space-y-4 text-gray-700 list-disc pl-6">
+                <li>
+                  <strong>Understand Your Project Needs:</strong> Assess
+                  project-specific requirements...
+                </li>
+                <li>
+                  <strong>Choose the Right TMT Grade:</strong> Fe415, Fe500,
+                  Fe550 – choose based on application...
+                </li>
+                <li>
+                  <strong>Verify IS Certification:</strong> Ensure BIS-certified
+                  (IS 1786:2008)...
+                </li>
+                <li>
+                  <strong>Consider Corrosion Resistance:</strong> Especially for
+                  coastal/humid environments...
+                </li>
+                <li>
+                  <strong>Check Bendability and Weldability:</strong> Especially
+                  for intricate structures...
+                </li>
+                <li>
+                  <strong>Conclusion:</strong> Choosing the right TMT is
+                  critical for longevity and safety...
+                </li>
+              </ul>
+            </div>
+          )}
+
           {/* Call Back Section */}
           <div className="bg-white p-6 rounded-lg shadow space-y-3">
             <div className="flex items-center justify-between">
