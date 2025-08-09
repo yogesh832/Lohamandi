@@ -41,7 +41,7 @@ const ProductForm = () => {
 
       if (editingProductId) {
         await axios.put(
-          `https://lohamandi.com//api/products/${editingProductId}`,
+          `https://lohamandi.com/api/products/${editingProductId}`,
           form,
           {
             headers: { "Content-Type": "multipart/form-data" },
@@ -49,7 +49,7 @@ const ProductForm = () => {
         );
         alert("✅ Product updated");
       } else {
-        await axios.post("https://lohamandi.com//api/products", form, {
+        await axios.post("https://lohamandi.com/api/products", form, {
           headers: { "Content-Type": "multipart/form-data" },
         });
         alert("✅ Product created");
@@ -75,7 +75,7 @@ const ProductForm = () => {
     if (!confirmed) return;
 
     try {
-      await axios.delete(`https://lohamandi.com//api/products/${id}`);
+      await axios.delete(`https://lohamandi.com/api/products/${id}`);
       alert("🗑️ Product deleted");
       fetchProducts();
     } catch (err) {
@@ -98,7 +98,7 @@ const ProductForm = () => {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("https://lohamandi.com//api/products");
+      const res = await axios.get("https://lohamandi.com/api/products");
       setAllProducts(res.data.data || []);
     } catch (error) {
       console.error("Fetch error:", error);

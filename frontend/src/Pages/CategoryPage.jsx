@@ -20,7 +20,7 @@ const CategoryPage = () => {
     const fetchCategoryProducts = async () => {
       try {
         const res = await axios.get(
-          `https://lohamandi.com//api/products/${categorySlug}`
+          `https://lohamandi.com/api/products/${categorySlug}`
         );
         setProducts(Array.isArray(res.data) ? res.data : []);
       } catch (err) {
@@ -33,7 +33,7 @@ const CategoryPage = () => {
 
     const fetchAllProducts = async () => {
       try {
-        const res = await axios.get(`https://lohamandi.com//api/products`);
+        const res = await axios.get(`https://lohamandi.com/api/products`);
         setAllProducts(Array.isArray(res.data.data) ? res.data.data : []);
       } catch (err) {
         console.error("Error fetching all products:", err);
@@ -55,7 +55,7 @@ const CategoryPage = () => {
 
     try {
       const response = await axios.post(
-        "https://lohamandi.com//api/quicklead",
+        "https://lohamandi.com/api/quicklead",
         {
           phone: contact,
         }

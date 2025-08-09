@@ -37,7 +37,7 @@ const HomeBanner = () => {
 
     try {
       const response = await axios.post(
-        "https://lohamandi.com//api/quicklead",
+        "https://lohamandi.com/api/quicklead",
         {
           phone: contact,
         }

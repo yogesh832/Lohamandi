@@ -69,7 +69,7 @@ const HomeProductCategory = () => {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("https://lohamandi.com//api/products");
+      const res = await axios.get("https://lohamandi.com/api/products");
       setProducts(res.data.data || []);
     } catch (error) {
       console.error("Fetch error:", error);

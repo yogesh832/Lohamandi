@@ -7,7 +7,7 @@ const UserData = () => {
 
   useEffect(() => {
     axios
-      .get("https://lohamandi.com//api/quicklead") // GET all quick leads
+      .get("https://lohamandi.com/api/quicklead") // GET all quick leads
       .then((res) => {
         setUsers(res.data);
         setLoading(false);

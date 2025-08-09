@@ -42,7 +42,7 @@ const ProductEnquiry = () => {
         Message: ${formData.message}
       `;
 
-      await axios.post("https://lohamandi.com//api/enquiry", {
+      await axios.post("https://lohamandi.comapi/enquiry", {
         name: formData.name,
         email: formData.email,
         message: fullMessage,
