@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ReactQuill from "react-quill";
-import 'react-quill/dist/quill.snow.css';
+import "react-quill/dist/quill.snow.css";
 
 const ProductForm = () => {
   const [title, setTitle] = useState("");
@@ -40,12 +40,16 @@ const ProductForm = () => {
       setUploading(true);
 
       if (editingProductId) {
-        await axios.put(`http://localhost:8000/api/products/${editingProductId}`, form, {
-          headers: { "Content-Type": "multipart/form-data" },
-        });
+        await axios.put(
+          `https://lohamandi.com//api/products/${editingProductId}`,
+          form,
+          {
+            headers: { "Content-Type": "multipart/form-data" },
+          }
+        );
         alert("✅ Product updated");
       } else {
-        await axios.post("http://localhost:8000/api/products", form, {
+        await axios.post("https://lohamandi.com//api/products", form, {
           headers: { "Content-Type": "multipart/form-data" },
         });
         alert("✅ Product created");
@@ -54,7 +58,10 @@ const ProductForm = () => {
       resetForm();
       fetchProducts();
     } catch (err) {
-      console.error("❌ Error submitting product:", err.response?.data || err.message);
+      console.error(
+        "❌ Error submitting product:",
+        err.response?.data || err.message
+      );
       alert("❌ Error submitting product");
     } finally {
       setUploading(false);
@@ -62,11 +69,13 @@ const ProductForm = () => {
   };
 
   const handleDelete = async (id) => {
-    const confirmed = window.confirm("Are you sure you want to delete this product?");
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this product?"
+    );
     if (!confirmed) return;
 
     try {
-      await axios.delete(`http://localhost:8000/api/products/${id}`);
+      await axios.delete(`https://lohamandi.com//api/products/${id}`);
       alert("🗑️ Product deleted");
       fetchProducts();
     } catch (err) {
@@ -89,7 +98,7 @@ const ProductForm = () => {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/api/products");
+      const res = await axios.get("https://lohamandi.com//api/products");
       setAllProducts(res.data.data || []);
     } catch (error) {
       console.error("Fetch error:", error);
@@ -102,7 +111,10 @@ const ProductForm = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="space-y-4 p-4 border-b max-w-2xl mx-auto">
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-4 p-4 border-b max-w-2xl mx-auto"
+      >
         <h2 className="text-2xl font-bold">
           {editingProductId ? "Edit Product" : "Add Product"}
         </h2>
@@ -124,15 +136,14 @@ const ProductForm = () => {
           className="w-full border p-2 rounded"
           required
         />
-      <input
-  type="number"
-  placeholder="(Price in ₹)"
-  value={price}
-  onChange={(e) => setPrice(e.target.value)} // ✅ Correct
-  className="w-full border p-2 rounded"
-  required
-/>
-
+        <input
+          type="number"
+          placeholder="(Price in ₹)"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)} // ✅ Correct
+          className="w-full border p-2 rounded"
+          required
+        />
 
         <textarea
           placeholder="Additional Info"
@@ -197,7 +208,10 @@ const ProductForm = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 max-w-6xl mx-auto">
         {Array.isArray(allProducts) &&
           allProducts.map((prod) => (
-            <div key={prod._id} className="border rounded-lg p-4 shadow-sm bg-white relative">
+            <div
+              key={prod._id}
+              className="border rounded-lg p-4 shadow-sm bg-white relative"
+            >
               {prod.image ? (
                 <img
                   src={prod.image}
@@ -214,7 +228,9 @@ const ProductForm = () => {
               <p className="text-sm text-gray-600 mb-2">{prod.slug}</p>
               <div
                 className="text-sm text-gray-800 mb-3"
-                dangerouslySetInnerHTML={{ __html: prod.content?.slice(0, 100) + "..." }}
+                dangerouslySetInnerHTML={{
+                  __html: prod.content?.slice(0, 100) + "...",
+                }}
               />
 
               <div className="flex justify-between">

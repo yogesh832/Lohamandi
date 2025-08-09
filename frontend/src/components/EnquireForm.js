@@ -42,7 +42,7 @@ const ProductEnquiry = () => {
         Message: ${formData.message}
       `;
 
-      await axios.post("http://localhost:8000/api/enquiry", {
+      await axios.post("https://lohamandi.com//api/enquiry", {
         name: formData.name,
         email: formData.email,
         message: fullMessage,
@@ -71,15 +71,25 @@ const ProductEnquiry = () => {
           <div className="flex items-center justify-center">
             <img src="/enquire.png" alt="enquire" className="h-20 w-20" />
           </div>
-          <h2 className="text-3xl font-bold text-center text-black">Quick Enquire</h2>
+          <h2 className="text-3xl font-bold text-center text-black">
+            Quick Enquire
+          </h2>
 
           <form onSubmit={handleSubmit} className="space-y-4 text-lg">
             {/* Form Fields */}
             {["name", "email", "phone", "product"].map((field) => (
               <div key={field}>
-                <label className="block font-semibold mb-1 capitalize">{field}</label>
+                <label className="block font-semibold mb-1 capitalize">
+                  {field}
+                </label>
                 <input
-                  type={field === "email" ? "email" : field === "phone" ? "tel" : "text"}
+                  type={
+                    field === "email"
+                      ? "email"
+                      : field === "phone"
+                      ? "tel"
+                      : "text"
+                  }
                   name={field}
                   placeholder={`Enter your ${field}`}
                   value={formData[field]}
@@ -112,7 +122,8 @@ const ProductEnquiry = () => {
               />
               <label className="text-sm text-gray-600">
                 I have read and accepted the{" "}
-                <span className="underline cursor-pointer">Privacy Policy</span>.
+                <span className="underline cursor-pointer">Privacy Policy</span>
+                .
               </label>
             </div>
 
@@ -134,7 +145,9 @@ const ProductEnquiry = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
           <div className="bg-white rounded-2xl p-8 w-full max-w-sm shadow-xl text-center space-y-4">
             <CheckCircle size={48} className="text-green-600 mx-auto" />
-            <h3 className="text-2xl font-semibold text-gray-800">Enquiry Sent!</h3>
+            <h3 className="text-2xl font-semibold text-gray-800">
+              Enquiry Sent!
+            </h3>
             <p className="text-gray-600">
               Thank you for your interest. We will get back to you shortly.
             </p>

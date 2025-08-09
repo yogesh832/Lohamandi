@@ -17,7 +17,7 @@ const Header = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await axios.get("http://localhost:8000/api/products");
+        const res = await axios.get("https://lohamandi.com//api/products");
         setCategories(res.data.data || []);
         console.log(categories);
       } catch (err) {
@@ -151,13 +151,14 @@ const Header = () => {
         )}
 
         {/* SubHeader (Categories) */}
-        <div className="sticky top-[140px] z-40 bg-white shadow-sm border-t border-b text-sm sm:text-base">
+        {/* SubHeader (Categories) */}
+        <div className="hidden md:block sticky top-[140px] z-40 bg-white shadow-sm border-t border-b text-sm sm:text-base">
           <div className="flex flex-wrap items-center justify-start px-4 sm:px-6 py-2 overflow-x-auto gap-4">
             {categories.map((cat) => (
               <a
                 key={cat.href}
                 href={cat.slug}
-                className="text-black font-large px-8  hover:text-red-600 transition whitespace-nowrap"
+                className="text-black font-large px-8 hover:text-red-600 transition whitespace-nowrap"
               >
                 {cat.title}
               </a>
