@@ -24,7 +24,7 @@ app.use("/api/contact", require("./routes/contactRoutes"));
 app.use("/api/enquiry", require("./routes/enquireRoutes")); // Enquiry route
 app.use("/api/quickLead", require("./routes/quickLead"));   // Quick lead route
 app.use("/api/products", require("./routes/productsRoutes"));   // Quick lead route
-
+// added product route
 // ✅ Root route
 app.get("/", (req, res) => {
   res.send("🚀 API is up and running.");
