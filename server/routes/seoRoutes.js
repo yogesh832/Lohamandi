@@ -48,7 +48,7 @@ router.post("/", async (req, res) => {
 });
 
 // ✅ GET: Single SEO page by slug (supports deep paths like /products/item)
-router.get("/", async (req, res) => {
+router.get("/:slug", async (req, res) => {
   try {
     const slug = normalizeSlug(req.path); // uses full path from root
     console.log("🔍 Looking up SEO page:", slug);
