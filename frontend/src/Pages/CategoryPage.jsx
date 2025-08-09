@@ -108,8 +108,8 @@ const CategoryPage = () => {
         />
       </Helmet>
 
-      <div className="bg-gray-50 min-h-screen py-10 px-4 sm:px-6 lg:px-8">
-<div className="bg-gray-50 min-h-screen py-10 px-4 sm:px-6 lg:px-8">
+      <div className="bg-gray-50 min-h-screen py-2 px-4 sm:px-6 lg:px-8">
+<div className="bg-gray-50 min-h-screen py-2 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500">
@@ -204,7 +204,7 @@ const CategoryPage = () => {
                     <div
                       className="text-sm text-gray-800"
                       dangerouslySetInnerHTML={{
-                        __html: (prod.content || "").slice(0, 100) + "...",
+                        __html: (prod.content || "").slice(0, 100) ,
                       }}
                     />
                   </div>
@@ -215,7 +215,7 @@ const CategoryPage = () => {
           )}
 
           {/* Why Lohamandi Section */}
-          <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg shadow-md w-full max-w-xl mx-auto">
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg shadow-md w-full max-w-2xl mx-auto">
             <h3 className="text-lg font-semibold text-gray-800 mb-4">
               Why Lohamandi.com
             </h3>
@@ -267,7 +267,7 @@ const CategoryPage = () => {
           </div>
         </div>
 
-        <div className="flex flex-row w-full justify-between items-center">
+        <div className="flex flex-row w-full gap-10 items-center justify-center">
           {categorySlug === "tmt-bar" && (
             <div className="lg:col-span-2 bg-white p-6 rounded-lg shadow space-y-4">
               <h2 className="text-xl font-semibold text-blue-600">
@@ -303,7 +303,7 @@ const CategoryPage = () => {
           )}
 
           {/* Call Back Section */}
-          <div className="bg-white p-6 rounded-lg shadow space-y-3">
+          <div className="bg-white p-6 rounded-lg shadow space-y-3 w-full max-w-xl mx-auto">
             <div className="flex items-center justify-between">
               <h4 className="font-semibold text-gray-800">
                 Talk to a Steel Expert
