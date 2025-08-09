@@ -1,12 +1,13 @@
+
+
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
+import { Helmet } from "react-helmet"; // ✅ Add Helmet
 import { FaCheckCircle } from "react-icons/fa";
 import {
-  BsTruck,
   BsShieldCheck,
-  BsCashStack,
-  BsChatDots,
+  BsChatDots
 } from "react-icons/bs";
 import { MdOutlineLocalShipping, MdPayment } from "react-icons/md";
 import HomeProducts from "../components/HomeProducts";
@@ -85,7 +86,7 @@ const CategoryPage = () => {
     );
 
   const formattedCategory = categorySlug.replace(/-/g, " ");
-  const product = products[0];
+  const product = products[0] || {};
 
   // Show all products except current slug
   const relatedProducts = Array.isArray(allProducts)
@@ -93,7 +94,22 @@ const CategoryPage = () => {
     : [];
 
   return (
-    <div className="bg-gray-50 min-h-screen py-10 px-4 sm:px-6 lg:px-8">
+    <>
+      {/* ✅ Helmet for Meta Tags */}
+      <Helmet>
+        <title>{product.metaTitle || formattedCategory}</title>
+        <meta
+          name="description"
+          content={product.metaDescription || `${formattedCategory} at best prices`}
+        />
+        <meta
+          name="keywords"
+          content={product.metaKeywords || `${formattedCategory}, steel, materials`}
+        />
+      </Helmet>
+
+      <div className="bg-gray-50 min-h-screen py-10 px-4 sm:px-6 lg:px-8">
+<div className="bg-gray-50 min-h-screen py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Breadcrumb */}
         <nav className="text-sm text-gray-500">
@@ -165,11 +181,12 @@ const CategoryPage = () => {
               <h2 className="text-xl font-semibold text-gray-800">
                 Related Products
               </h2>
-              <div className="flex flex-wrap gap-6">
+<div className="flex flex-wrap gap-6 ">
                 {relatedProducts.map((prod) => (
-                  <div
+<a href={`/${prod.slug}`} className="w-full sm:w-1/2 lg:w-1/3">
+                 <div
                     key={prod._id}
-                    className="border rounded-lg p-4 shadow-sm bg-white flex flex-col"
+                    className="border transition-transform duration-300 hover:scale-105 rounded-lg p-4 shadow-sm bg-white flex flex-col"
                   >
                     {prod.image ? (
                       <img
@@ -191,6 +208,7 @@ const CategoryPage = () => {
                       }}
                     />
                   </div>
+                  </a>
                 ))}
               </div>
             </div>
@@ -360,7 +378,8 @@ const CategoryPage = () => {
           )}
         </div>
       </div>
-    </div>
+    </div>      </div>
+    </>
   );
 };
 

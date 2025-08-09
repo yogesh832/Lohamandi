@@ -26,37 +26,41 @@ const HomeProducts = () => {
         {products.map((product, index) => (
           <div
             key={index}
-            className="bg-[#1E1E1E]/10 text-black rounded-xl overflow-hidden shadow-md w-full max-w-[280px] h-[380px] p-4"
+            className="bg-[#1E1E1E]/10 text-black rounded-xl overflow-hidden shadow-md w-full max-w-[280px] h-[380px] p-4 
+                       transform transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-red-300/40"
           >
-            <img
-              src={product.image}
-              alt={product.name}
-              className="w-full h-60 object-cover rounded-lg"
-            />
+            <div className="overflow-hidden rounded-lg">
+              <img
+                src={product.image}
+                alt={product.name}
+                className="w-full h-60 object-cover rounded-lg transition-transform duration-300 hover:scale-110"
+              />
+            </div>
             <div className="mt-4">
               <h3 className="text-xl font-semibold mb-3 text-center">
                 {product.name}
               </h3>
               <div className="flex justify-center items-center gap-2">
                 <a
-  href="/enquiry"
-  className="block bg-gradient-to-r from-[#F17556] to-[#D61349] hover:bg-[#c94524] text-white px-4 py-2 rounded-lg text-center"
->
-  Enquire Now
-</a>
+                  href="/enquiry"
+                  className="bg-gradient-to-r from-[#F17556] to-[#D61349] hover:opacity-90 text-white px-4 py-2 rounded-lg text-center transition-all duration-300"
+                >
+                  Enquire Now
+                </a>
 
                 <a
                   href="https://wa.me/+919910025184"
-                  className="bg-green-500 text-white p-2 rounded-md hover:bg-green-600 transition"
+                  className="bg-green-500 text-white p-2 rounded-md hover:bg-green-600 transition-all duration-300"
                   title="WhatsApp"
-                target="_blank"
-                  rel=" noreferrer"
+                  target="_blank"
+                  rel="noreferrer"
                 >
                   <FaWhatsapp size={18} />
                 </a>
+
                 <a
                   href="tel:+9910025184"
-                  className="bg-[#1E1E1E]/2 text-black p-2 rounded-md hover:bg-gray-100 transition"
+                  className="bg-gray-200 text-black p-2 rounded-md hover:bg-gray-300 transition-all duration-300"
                   title="Call"
                 >
                   <FaPhone size={18} />

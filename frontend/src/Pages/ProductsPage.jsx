@@ -11,6 +11,7 @@ import BlogReview from "../components/BlogReview";
 import BlogQuestion from "../components/BlogQuestion";
 import Footer from "../components/Footer";
 import ProductBlog from "../components/ProductBlog";
+import HomeProductCategory from "../components/HomeProductCategory";
 
 const ProductsPage = () => {
   const [seo, setSeo] = useState(null);
@@ -37,7 +38,7 @@ const ProductsPage = () => {
       </Helmet>
 
       <ProductBanner />
-      <HomeProducts />
+      <HomeProductCategory></HomeProductCategory>
       <BlogBrand />
       <BlogReview />
       <TextSection />
