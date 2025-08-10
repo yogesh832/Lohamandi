@@ -2,8 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Product = require("../models/Products");
 const multer = require("multer");
-const { v2: cloudinary } = require("cloudinary");
-
+const { v2: cloudinary } = require("cloudinary")
 // Cloudinary Config
 cloudinary.config({
   cloud_name: "dil5x4cxh",

@@ -4,6 +4,8 @@ import { FaWhatsapp, FaPhone } from "react-icons/fa";
 const HomeProducts = () => {
   const products = [
     { name: "TMT ProMax 500D", image: "/product1.webp" },
+    { name: "TMT Bars 0.5 MM", image: "/product5.webp" },
+    { name: "TMT Bars 8 MM", image: "/product8.webp" },
     { name: "TMT Bars 10 MM", image: "/product2.webp" },
     { name: "TMT Bars 12 MM", image: "/product3.webp" },
     { name: "TMT Bars 16 MM", image: "/product4.webp" },
