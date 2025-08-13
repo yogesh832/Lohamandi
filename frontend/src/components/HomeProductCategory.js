@@ -65,23 +65,54 @@ const ProductCard = ({ product }) => {
 };
 
 const HomeProductCategory = () => {
-  const [products, setProducts] = useState([]);
+    const [categories, setCategories] = useState([]);
 
-  const fetchProducts = async () => {
-    try {
-      const res = await axios.get("https://lohamandi.com/api/products");
-      setProducts(res.data.data || []);
-    } catch (error) {
-      console.error("Fetch error:", error);
-    }
-  };
+ // ✅ Your desired order (use title exactly as from API)
+  const customOrder = [
+    "TMT Bar ", // First priority
+    "Angles",
+    "Channels",
+    "Squares",
+    "Flats",
+    "binding wire"
+  ];
 
   useEffect(() => {
-    fetchProducts();
-  }, []);
+  const fetchCategories = async () => {
+    try {
+      const res = await axios.get("https://lohamandi.com/api/products");
+      const fetchedCategories = res.data.data || [];
+
+      // ✅ Normalize titles in lookup
+      const lookup = {};
+      fetchedCategories.forEach(cat => {
+        lookup[cat.title.trim().toLowerCase()] = cat;
+      });
+
+      // ✅ Arrange according to customOrder (case-insensitive, trim spaces)
+      const arranged = customOrder.map(item => {
+        if (item === "|") return "|";
+        return lookup[item.trim().toLowerCase()] || null;
+      }).filter(item => item !== null);
+
+      // ✅ Add any remaining categories not in customOrder
+      const remaining = fetchedCategories.filter(
+        cat => !customOrder
+          .map(i => i.trim().toLowerCase())
+          .includes(cat.title.trim().toLowerCase())
+      );
+
+      setCategories([...arranged, ...remaining]);
+    } catch (err) {
+      console.error("Failed to fetch categories", err);
+    }
+  };
+  fetchCategories();
+}, []);
+
 
   return (
-    <div className="bg-white min-h-screen py-12 px-4 sm:px-8">
+    <div className="bg-[#F9FAFB] min-h-screen py-12 px-4 sm:px-8">
       {/* Title */}
       <div className="text-center mb-12">
         <h4 className="text-[#A01F16] text-xl font-semibold">Products</h4>
@@ -92,12 +123,12 @@ const HomeProductCategory = () => {
 
       {/* Product Cards - Flex Layout */}
       <div className="flex flex-wrap justify-center gap-6">
-        {Array.isArray(products) && products.length > 0 ? (
-          products.map((product, index) => (
+        {Array.isArray(categories) && categories.length > 0 ? (
+          categories.map((product, index) => (
             <ProductCard key={index} product={product} />
           ))
         ) : (
-          <p className="text-center text-gray-500">No products available</p>
+          <p className="text-center text-gray-500">No categories available</p>
         )}
       </div>
     </div>

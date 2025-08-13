@@ -16,6 +16,7 @@ import BlogQuestion from "../components/BlogQuestion";
 import BlogContact from "../components/BlogContact";
 import Footer from "../components/Footer";
 import HomeProductCategory from "../components/HomeProductCategory";
+import TmtCalculator from "../components/TmtCalculator";
 
 const LandingPage = () => {
   const [seo, setSeo] = useState({});

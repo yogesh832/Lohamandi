@@ -14,18 +14,55 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [categories, setCategories] = useState([]);
 
+ // ✅ Your desired order (use title exactly as from API)
+  const customOrder = [
+    "TMT Bar ", // First priority
+     "|",  
+    "Angles",
+       "|",  
+    "Channels",
+    "|",         // Separator
+    "Squares",
+       "|",  
+    "Flats",
+       "|",  
+    "binding wire"
+  ];
+
   useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const res = await axios.get("https://lohamandi.com/api/products");
-        setCategories(res.data.data || []);
-        console.log(categories);
-      } catch (err) {
-        console.error("Failed to fetch categories", err);
-      }
-    };
-    fetchCategories();
-  }, []);
+  const fetchCategories = async () => {
+    try {
+      const res = await axios.get("https://lohamandi.com/api/products");
+      const fetchedCategories = res.data.data || [];
+
+      // ✅ Normalize titles in lookup
+      const lookup = {};
+      fetchedCategories.forEach(cat => {
+        lookup[cat.title.trim().toLowerCase()] = cat;
+      });
+
+      // ✅ Arrange according to customOrder (case-insensitive, trim spaces)
+      const arranged = customOrder.map(item => {
+        if (item === "|") return "|";
+        return lookup[item.trim().toLowerCase()] || null;
+      }).filter(item => item !== null);
+
+      // ✅ Add any remaining categories not in customOrder
+      const remaining = fetchedCategories.filter(
+        cat => !customOrder
+          .map(i => i.trim().toLowerCase())
+          .includes(cat.title.trim().toLowerCase())
+      );
+
+      setCategories([...arranged, ...remaining]);
+    } catch (err) {
+      console.error("Failed to fetch categories", err);
+    }
+  };
+  fetchCategories();
+}, []);
+
+
   console.log(categories);
 
   return (
@@ -152,20 +189,27 @@ const Header = () => {
 
         {/* SubHeader (Categories) */}
       {/* SubHeader (Categories) */}
-<div className="hidden md:block sticky top-[140px] z-40 bg-white shadow-sm border-t border-b text-sm sm:text-base">
-  <div className="flex flex-wrap items-center justify-start px-4 sm:px-6 py-2 overflow-x-auto gap-4">
-    {categories.map((cat) => (
+   {/* SubHeader (Categories) */}
+      <div className="hidden md:block sticky top-[140px] z-40 bg-white shadow-sm border-t border-b text-sm sm:text-base">
+     <div className="flex flex-wrap items-center px-2 sm:px-4 md:px-6 lg:px-8 xl:px-10 py-2 overflow-x-auto">
+  {categories.map((cat, index) =>
+    cat === "|" ? (
+      <span key={index} className="mx-2 sm:mx-3 md:mx-4 text-gray-300">
+        |
+      </span>
+    ) : (
       <a
-        key={cat.href}
-        href={cat.slug}
-        className="text-black font-large px-8 hover:text-red-600 transition whitespace-nowrap"
+        key={cat._id}
+        href={`/${cat.slug}`}
+        className="px-3 sm:px-4 md:px-6 lg:px-8 text-black hover:text-red-600 transition whitespace-nowrap"
       >
         {cat.title}
       </a>
-    ))}
-  </div>
+    )
+  )}
 </div>
 
+      </div>
       </header>
     </>
   );
