@@ -14,54 +14,56 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [categories, setCategories] = useState([]);
 
- // ✅ Your desired order (use title exactly as from API)
+  // ✅ Your desired order (use title exactly as from API)
   const customOrder = [
     "TMT Bar ", // First priority
-     "|",  
+    "|",
     "Angles",
-       "|",  
+    "|",
     "Channels",
-    "|",         // Separator
+    "|", // Separator
     "Squares",
-       "|",  
+    "|",
     "Flats",
-       "|",  
-    "binding wire"
+    "|",
+    "binding wire",
   ];
 
   useEffect(() => {
-  const fetchCategories = async () => {
-    try {
-      const res = await axios.get("https://lohamandi.com/api/products");
-      const fetchedCategories = res.data.data || [];
+    const fetchCategories = async () => {
+      try {
+        const res = await axios.get("https://lohamandi.com/api/products");
+        const fetchedCategories = res.data.data || [];
 
-      // ✅ Normalize titles in lookup
-      const lookup = {};
-      fetchedCategories.forEach(cat => {
-        lookup[cat.title.trim().toLowerCase()] = cat;
-      });
+        // ✅ Normalize titles in lookup
+        const lookup = {};
+        fetchedCategories.forEach((cat) => {
+          lookup[cat.title.trim().toLowerCase()] = cat;
+        });
 
-      // ✅ Arrange according to customOrder (case-insensitive, trim spaces)
-      const arranged = customOrder.map(item => {
-        if (item === "|") return "|";
-        return lookup[item.trim().toLowerCase()] || null;
-      }).filter(item => item !== null);
+        // ✅ Arrange according to customOrder (case-insensitive, trim spaces)
+        const arranged = customOrder
+          .map((item) => {
+            if (item === "|") return "|";
+            return lookup[item.trim().toLowerCase()] || null;
+          })
+          .filter((item) => item !== null);
 
-      // ✅ Add any remaining categories not in customOrder
-      const remaining = fetchedCategories.filter(
-        cat => !customOrder
-          .map(i => i.trim().toLowerCase())
-          .includes(cat.title.trim().toLowerCase())
-      );
+        // ✅ Add any remaining categories not in customOrder
+        const remaining = fetchedCategories.filter(
+          (cat) =>
+            !customOrder
+              .map((i) => i.trim().toLowerCase())
+              .includes(cat.title.trim().toLowerCase())
+        );
 
-      setCategories([...arranged, ...remaining]);
-    } catch (err) {
-      console.error("Failed to fetch categories", err);
-    }
-  };
-  fetchCategories();
-}, []);
-
+        setCategories([...arranged, ...remaining]);
+      } catch (err) {
+        console.error("Failed to fetch categories", err);
+      }
+    };
+    fetchCategories();
+  }, []);
 
   console.log(categories);
 
@@ -170,46 +172,62 @@ const Header = () => {
           </div>
         </nav>
 
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div className="sm:hidden px-4 pb-6 space-y-4 bg-white shadow-inner">
-            <a href="/">Home</a>
-            <a href="/about">About Us</a>
-            <a href="/products">Products</a>
-            <a href="/blog">Blog</a>
-            <a href="/contact">Contact</a>
-            <a
-              href="/enquiry"
-              className="block bg-gradient-to-r from-[#F17556] to-[#D61349] text-white px-4 py-2 rounded-lg text-center"
-            >
-              Enquire Now
-            </a>
-          </div>
-        )}
+      
+{/* Mobile Menu */}
+{isOpen && (
+  <div className="sm:hidden px-4 pb-6 space-y-2 bg-white shadow-inner">
+    {[
+      { name: "Home", link: "/" },
+      { name: "About Us", link: "/about" },
+      { name: "Products", link: "/products" },
+      { name: "Blog", link: "/blog" },
+      { name: "Contact", link: "/contact" },
+    ].map((item) => (
+      <a
+        key={item.name}
+        href={item.link}
+        className="block w-full py-2 border-b border-gray-200 hover:text-red-600 transition"
+      >
+        {item.name}
+      </a>
+    ))}
+
+    <a
+      href="/enquiry"
+      className="block bg-gradient-to-r from-[#F17556] to-[#D61349] text-white px-4 py-2 rounded-lg text-center mt-2"
+    >
+      Enquire Now
+    </a>
+  </div>
+)}
+
+
 
         {/* SubHeader (Categories) */}
-      {/* SubHeader (Categories) */}
-   {/* SubHeader (Categories) */}
-      <div className="hidden md:block sticky top-[140px] z-40 bg-white shadow-sm border-t border-b text-sm sm:text-base">
-     <div className="flex flex-wrap items-center px-2 sm:px-4 md:px-6 lg:px-8 xl:px-10 py-2 overflow-x-auto">
-  {categories.map((cat, index) =>
-    cat === "|" ? (
-      <span key={index} className="mx-2 sm:mx-3 md:mx-4 text-gray-300">
-        |
-      </span>
-    ) : (
-      <a
-        key={cat._id}
-        href={`/${cat.slug}`}
-        className="px-3 sm:px-4 md:px-6 lg:px-8 text-black hover:text-red-600 transition whitespace-nowrap"
-      >
-        {cat.title}
-      </a>
-    )
-  )}
-</div>
-
-      </div>
+        {/* SubHeader (Categories) */}
+        {/* SubHeader (Categories) */}
+        <div className="hidden md:block sticky top-[140px] z-40 bg-white shadow-sm border-t border-b text-sm sm:text-base">
+          <div className="flex flex-wrap items-center px-2 sm:px-4 md:px-6 lg:px-8 xl:px-10 py-2 overflow-x-auto">
+            {categories.map((cat, index) =>
+              cat === "|" ? (
+                <span
+                  key={index}
+                  className="mx-2 sm:mx-3 md:mx-4 text-gray-300"
+                >
+                  |
+                </span>
+              ) : (
+                <a
+                  key={cat._id}
+                  href={`/${cat.slug}`}
+                  className="px-3 sm:px-4 md:px-6 lg:px-8 text-black hover:text-red-600 transition whitespace-nowrap"
+                >
+                  {cat.title}
+                </a>
+              )
+            )}
+          </div>
+        </div>
       </header>
     </>
   );

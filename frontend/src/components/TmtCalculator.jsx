@@ -45,7 +45,7 @@ export default function TmtCalculator() {
   }
 
   return (
-    <div className="max-w-xl pt-40 h-full mx-auto p-6 bg-[#F9FAFB] rounded-xl shadow-lg font-[font-libertinus] mb-20">
+    <div className="max-w-xl phdat-40 h-full mx-auto p-6 bg-[#F9FAFB] rounded-xl shadow-lg font-[font-libertinus] mb-20">
       <h2 className="font-bold text-xl md:text-2xl mb-4 text-center mt-10 truncate">
         <span className="flex justify-center items-center gap-2"><FcCalculator className="inline"/>
          TMT Bar Calculator
