@@ -15,6 +15,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import axios from "axios";
+import AnimatedMessages from "./AnimatedMessages";
 
 const HomeBanner = () => {
   const bannerImages = [
@@ -26,6 +27,7 @@ const HomeBanner = () => {
   const [isFading, setIsFading] = useState(false);
   const [contact, setContact] = useState("");
   const [showPopup, setShowPopup] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,12 +38,11 @@ const HomeBanner = () => {
     }
 
     try {
-      const response = await axios.post(
-        "https://lohamandi.com/api/quicklead",
-        {
-          phone: contact,
-        }
-      );
+      setLoading(true); // ✅ start loading
+
+      const response = await axios.post("https://lohamandi.com/api/quicklead", {
+        phone: contact,
+      });
 
       if (
         response?.data?.success ||
@@ -57,6 +58,8 @@ const HomeBanner = () => {
     } catch (error) {
       console.error("Error submitting mobile number:", error);
       alert("Something went wrong. Please try again later.");
+    } finally {
+      setLoading(false); // ✅ stop loading
     }
   };
 
@@ -115,26 +118,30 @@ const HomeBanner = () => {
             <div className="flex items-center justify-between w-full max-w-7xl">
               {/* Left Section */}
               <div className="flex flex-col justify-center gap-6 w-1/2">
-                <h1 className="text-5xl font-bold leading-tight">
-                  Smart Steel Solutions
-                </h1>
-                <h1 className="text-5xl font-bold leading-tight">
-                  Delivered Your Way
-                </h1>
+                <h1 className="text-5xl font-bold leading-[0.8]">
+  Smart Steel Procurement,
+</h1>
+<h1 className="text-5xl font-bold leading-[0.8]">
+  Made Simple
+</h1>
+
+                  <AnimatedMessages />
+
                 <p className="text-lg max-w-md">
-                  From customized length sariya to eco-friendly transport, steel
+                   From customized length sariya to eco-friendly transport, steel
                   buying made easy.
                 </p>
                 <div className="flex gap-4">
                   <a
                     href="/enquiry"
-                    className="bg-gradient-to-r from-[#F17556] to-[#D61349] text-white py-3 px-6 rounded-lg"
+                    className="bg-gradient-to-r from-[#F17556] to-[#D61349] text-white py-3 px-6 rounded-lg shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg"
                   >
                     Request Quote
                   </a>
+
                   <a
                     href="/moreproducts"
-                    className="bg-white text-black py-3 px-6 rounded-lg"
+                    className="bg-white text-black py-3 px-6 rounded-lg shadow-md border border-gray-200 transition-all duration-300 hover:bg-gray-100 hover:text-[#D61349] hover:scale-105 hover:shadow-lg"
                   >
                     Explore Products
                   </a>
@@ -145,34 +152,45 @@ const HomeBanner = () => {
               <div className="w-1/2 flex justify-center">
                 <div className="bg-white text-black p-8 rounded-lg w-full max-w-sm space-y-6 shadow-lg">
                   <h2 className="text-2xl font-semibold">
-                    Special Discounts on
+                    Your Steel, Your Expert
                   </h2>
-                  <p>Get today's best price & more</p>
+                  <p>From price to supply – we’ve got you covered.</p>
+
                   <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
                     <input
                       type="tel"
                       value={contact}
                       onChange={(e) => setContact(e.target.value)}
-                      placeholder="Enter your 10-digit Mobile No."
+                      placeholder="Talk to a Steel Expert"
                       pattern="[6-9]{1}[0-9]{9}"
                       maxLength="10"
                       className="p-3 border border-gray-400 rounded"
                       required
                     />
+
                     <button
                       type="submit"
-                      className="bg-gradient-to-r from-[#F17556] to-[#D61349] text-white py-3 px-6 rounded-lg"
+                      disabled={loading}
+                      className={`py-3 px-6 rounded-lg text-white transition-all duration-300
+    ${
+      loading
+        ? "bg-gradient-to-r from-[#F17556] to-[#D61349] opacity-50 cursor-not-allowed"
+        : "bg-gradient-to-r from-[#F17556] to-[#D61349] hover:scale-105 shadow-md"
+    }`}
                     >
-                      Get Steel at Best Price
+                      {loading ? "Saving..." : "Connect Now"}
                     </button>
+
                     <div className="text-center text-sm text-gray-500">or</div>
+
                     <a
                       href="https://wa.me/919910025184"
-                      className="flex justify-center items-center gap-2 bg-[#25D366] text-white py-3 px-6 rounded-lg"
+                      className="flex justify-center items-center gap-2 bg-[#25D366] text-white py-3 px-6 rounded-lg hover:scale-105 transition-all duration-300"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <FaWhatsapp /> Chat on WhatsApp
+                      <FaWhatsapp />
+                      Chat with Steel Expert
                     </a>
                   </form>
                 </div>
@@ -211,34 +229,45 @@ const HomeBanner = () => {
       </section>
 
       {/* Feature Section */}
-      <section className="bg-[#A01F16] text-white px-4 py-8">
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
-          <div className="flex flex-col items-center">
-            <FaBoxOpen className="text-2xl mb-2" />
-            <span className="text-sm sm:text-base font-semibold">
-              Custom Lengths - No Wastage
-            </span>
-          </div>
-          <div className="flex flex-col items-center">
-            <FaRecycle className="text-2xl mb-2" />
-            <span className="text-sm sm:text-base font-semibold">
-              Eco-Friendly Delivery
-            </span>
-          </div>
-          <div className="flex flex-col items-center">
-            <FaClock className="text-2xl mb-2" />
-            <span className="text-sm sm:text-base font-semibold">
-              Time and Cost Efficient
-            </span>
-          </div>
-          <div className="flex flex-col items-center">
-            <FaShoppingCart className="text-2xl mb-2" />
-            <span className="text-sm sm:text-base font-semibold">
-              Hassle-Free Ordering
-            </span>
-          </div>
+     <section className="bg-[#A01F16] px-6 py-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Card 1 */}
+        <div className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center">
+          <FaBoxOpen className="text-3xl text-gray-700 mb-3" />
+          <h3 className="text-[#A01F16] font-semibold text-lg">
+            Custom Lengths
+          </h3>
+          <p className="text-sm text-gray-600">Zero Wastage</p>
         </div>
-      </section>
+
+        {/* Card 2 */}
+        <div className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center">
+          <FaRecycle className="text-3xl text-green-600 mb-3" />
+          <h3 className="text-[#A01F16] font-semibold text-lg">
+            Eco-Friendly Delivery
+          </h3>
+          <p className="text-sm text-gray-600">Greener & Smarter</p>
+        </div>
+
+        {/* Card 3 */}
+        <div className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center">
+          <FaClock className="text-3xl text-gray-700 mb-3" />
+          <h3 className="text-[#A01F16] font-semibold text-lg">
+            Save Time & Cost
+          </h3>
+          <p className="text-sm text-gray-600">Efficient Procurement</p>
+        </div>
+
+        {/* Card 4 */}
+        <div className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center">
+          <FaShoppingCart className="text-3xl text-gray-700 mb-3" />
+          <h3 className="text-[#A01F16] font-semibold text-lg">
+            Hands-Free Ordering
+          </h3>
+          <p className="text-sm text-gray-600">Click. Order. Build.</p>
+        </div>
+      </div>
+    </section>
 
       {/* ✅ Popup Modal */}
       {showPopup && (

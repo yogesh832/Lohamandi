@@ -9,7 +9,7 @@ const BlogContent = () => {
             What We Offer
           </p>
           <h1 className="text-4xl sm:text-5xl font-semibold text-black mt-2">
-            Smart steel solutions, built for efficiency.
+          solutions, built for efficiency.
           </h1>
           <p className="text-gray-600 text-lg sm:text-xl mt-4 max-w-3xl mx-auto">
             We provide innovative and reliable steel solutions tailored to your
