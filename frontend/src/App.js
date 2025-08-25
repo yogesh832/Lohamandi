@@ -7,6 +7,8 @@ import AdminLayout from "./layout/AdminLayout";
 import UserData from "./components/UserData";
 import ProductForm from "./components/ProductForm";
 import CategoryPage from "./Pages/CategoryPage";
+import ReturnPolicy from "./components/ReturnPolicyPage";
+import CancellationPolicy from "./components/CancelationPolicyPage";
 
 // Lazy-loaded Public Pages
 const LandingPage = lazy(() => import("./Pages/LandingPage"));
@@ -55,6 +57,8 @@ function App() {
             <Route path="/enquiry" element={<EnquirePage />} />
             <Route path="/moreproducts" element={<MoreProducts />} />
             <Route path="/productenquiry" element={<ProductEnquiry />} />
+            <Route path="/return" element={<ReturnPolicy />} />
+            <Route path="/cancellation" element={<CancellationPolicy />} />
           </Route>
 
           {/* Admin Routes */}

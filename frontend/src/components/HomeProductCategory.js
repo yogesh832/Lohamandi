@@ -28,6 +28,11 @@ const ProductCard = ({ product }) => {
         <h3 className="text-xl font-semibold mb-3 text-center line-clamp-2">
           {product.title}
         </h3>
+   <p
+  className="text-sm mb-3 text-center line-clamp-2"
+  dangerouslySetInnerHTML={{ __html: product.content }}
+></p>
+
 
         {/* Buttons */}
         <div className="mt-auto flex justify-center items-center gap-2">

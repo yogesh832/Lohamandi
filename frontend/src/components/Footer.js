@@ -151,8 +151,8 @@ const Footer = () => {
                 <ul className="space-y-2 text-sm text-gray-300">
                   <li>FAQs</li>
                   <li>Privacy Policy</li>
-                  <li>Returns</li>
-                  <li>Cancellations</li>
+                 <a href="/return"> <li>Returns</li></a>
+                 <a href="/cancellation"> <li>Cancellations</li></a>
                 </ul>
               </div>
             </div>

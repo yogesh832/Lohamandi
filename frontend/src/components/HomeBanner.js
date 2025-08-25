@@ -99,11 +99,11 @@ const HomeBanner = () => {
         {/* Overlay Content */}
         <div className="absolute top-0 left-0 w-full h-full z-10">
           {/* Mobile View */}
-          <div className="md:hidden w-full h-full bg-black/60 py-40 px-4 text-white space-y-2">
-            <p className="text-xl font-semibold">
-              At Lohamandi, we simplify your steel sourcing, from order to
-              delivery.
-            </p>
+          <div className=" w-full h-full py-20 bg-black/60 px-4 text-white space-y-2">
+            <h1 className="text-4xl font-bold ">Smart Steel Procurement,</h1>
+            <h1 className="text-3xl font-bold ">Made Simple</h1>
+            <AnimatedMessages />
+          
             <p className="text-sm text-gray-200">
               Buy top-brand TMT bars at competitive prices, ensure no wastage
               with custom lengths, and track your order in real-time...
@@ -119,16 +119,16 @@ const HomeBanner = () => {
               {/* Left Section */}
               <div className="flex flex-col justify-center gap-6 w-1/2">
                 <h1 className="text-5xl font-bold leading-[0.8]">
-  Smart Steel Procurement,
-</h1>
-<h1 className="text-5xl font-bold leading-[0.8]">
-  Made Simple
-</h1>
+                  Smart Steel Procurement,
+                </h1>
+                <h1 className="text-5xl font-bold leading-[0.8]">
+                  Made Simple
+                </h1>
 
-                  <AnimatedMessages />
+                <AnimatedMessages />
 
                 <p className="text-lg max-w-md">
-                   From customized length sariya to eco-friendly transport, steel
+                  From customized length sariya to eco-friendly transport, steel
                   buying made easy.
                 </p>
                 <div className="flex gap-4">
@@ -228,46 +228,49 @@ const HomeBanner = () => {
         </div>
       </section>
 
-      {/* Feature Section */}
-     <section className="bg-[#A01F16] px-10 py-10">
-      <div className="grid  max-w-7xl items-center justify-center mx-auto grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {/* Card 1 */}
-        <div className="bg-[#fff3f4] rounded-xl shadow-md p-6 flex flex-col items-center text-center">
-          <FaBoxOpen className="text-3xl text-gray-700 mb-3" />
-          <h3 className="text-[#A01F16] font-semibold text-lg">
-            Custom Lengths
-          </h3>
-          <p className="text-sm text-gray-600">Zero Wastage</p>
-        </div>
+{/* Feature Section */}
+<section className="bg-[#A01F16] px-6 sm:px-10 py-12">
+  <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    {/* Card 1 */}
+    <div className="bg-[#fff3f4] rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 flex flex-col items-center text-center">
+      <FaBoxOpen className="text-4xl text-gray-700 mb-3" />
+      <h3 className="text-[#A01F16] font-semibold text-lg sm:text-xl">
+        Custom Lengths
+      </h3>
+      <p className="text-sm sm:text-base text-gray-600">Zero Wastage</p>
+    </div>
 
-        {/* Card 2 */}
-        <div className="bg-[#fff3f4] rounded-xl shadow-md p-6 flex flex-col items-center text-center">
-          <FaRecycle className="text-3xl text-green-600 mb-3" />
-          <h3 className="text-[#A01F16] font-semibold text-lg">
-            Eco-Friendly Delivery
-          </h3>
-          <p className="text-sm text-gray-600">Greener & Smarter</p>
-        </div>
+    {/* Card 2 */}
+    <div className="bg-[#fff3f4] rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 flex flex-col items-center text-center">
+      <FaRecycle className="text-4xl text-green-600 mb-3" />
+      <h3 className="text-[#A01F16] font-semibold text-lg sm:text-xl">
+        Eco-Friendly Delivery
+      </h3>
+      <p className="text-sm sm:text-base text-gray-600">Greener & Smarter</p>
+    </div>
 
-        {/* Card 3 */}
-        <div className="bg-[#fff3f4] rounded-xl shadow-md p-6 flex flex-col items-center text-center">
-          <FaClock className="text-3xl text-gray-700 mb-3" />
-          <h3 className="text-[#A01F16] font-semibold text-lg">
-            Save Time & Cost
-          </h3>
-          <p className="text-sm text-gray-600">Efficient Procurement</p>
-        </div>
+    {/* Card 3 */}
+    <div className="bg-[#fff3f4] rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 flex flex-col items-center text-center">
+      <FaClock className="text-4xl text-gray-700 mb-3" />
+      <h3 className="text-[#A01F16] font-semibold text-lg sm:text-xl">
+        Save Time & Cost
+      </h3>
+      <p className="text-sm sm:text-base text-gray-600">
+        Efficient Procurement
+      </p>
+    </div>
 
-        {/* Card 4 */}
-        <div className="bg-[#fff3f4] rounded-xl shadow-md p-6 flex flex-col items-center text-center">
-          <FaShoppingCart className="text-3xl text-gray-700 mb-3" />
-          <h3 className="text-[#A01F16] font-semibold text-lg">
-            Hands-Free Ordering
-          </h3>
-          <p className="text-sm text-gray-600">Click. Order. Build.</p>
-        </div>
-      </div>
-    </section>
+    {/* Card 4 */}
+    <div className="bg-[#fff3f4] rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 flex flex-col items-center text-center">
+      <FaShoppingCart className="text-4xl text-gray-700 mb-3" />
+      <h3 className="text-[#A01F16] font-semibold text-lg sm:text-xl">
+        Hands-Free Ordering
+      </h3>
+      <p className="text-sm sm:text-base text-gray-600">Click. Order. Build.</p>
+    </div>
+  </div>
+</section>
+
 
       {/* ✅ Popup Modal */}
       {showPopup && (
