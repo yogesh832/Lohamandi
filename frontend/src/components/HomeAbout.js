@@ -4,13 +4,15 @@ import { BiBlock } from 'react-icons/bi';
 const HomeAbout = () => {
   return (
     <section className="bg-gradient-to-r from-[#FFF5F5] to-[#FFFFFF] py-12 px-4 sm:px-8 md:px-16 rounded-2xl shadow-md">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <div className="grid grid-cols-1 max-w-7xl mx-auto  md:grid-cols-2 gap-10 items-center">
         {/* Left Content */}
         <div className="space-y-6">
           {/* Tag */}
-          <h4 className="text-[#A01F16] bg-[#FEF2F2] text-sm flex gap-2  font-semibold">
-         <FaCut/> <p className="">  Cut-to-Length (CTL) Service </p>
-          </h4>
+        <h4 className="flex items-center gap-2 text-[#A01F16] text-sm font-semibold">
+  <FaCut />
+  <p className="bg-[#FEF2F2] px-1">Cut-to-Length (CTL) Service</p>
+</h4>
+
 
           {/* Title */}
           <h1 className="text-2xl sm:text-3xl font-bold text-[#A01F16] leading-snug">
@@ -80,7 +82,7 @@ const HomeAbout = () => {
           </div>
 
           {/* Footer Note */}
-          <p className="text-sm flex text-gray-500 mt-4">
+          <p className="text-sm flex items-center text-red-500 mt-4">
         <span className="text-red-500 pr-2"> <BiBlock/> </span>  No extra cutting charges · Transparent pricing
           </p>
         </div>

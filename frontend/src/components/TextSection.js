@@ -19,7 +19,7 @@ const TextSection = () => {
           <p className="text-[#A01F16] text-lg sm:text-xl font-semibold">
             Lower emissions. Higher impact.
           </p>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl  text-black leading-tight">
             Sustainable Steel. <br /> Seriously.
           </h2>
           <p className="text-gray-600 text-base sm:text-lg lg:text-xl max-w-2xl mx-auto lg:mx-0">

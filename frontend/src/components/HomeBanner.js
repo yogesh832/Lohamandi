@@ -229,10 +229,10 @@ const HomeBanner = () => {
       </section>
 
       {/* Feature Section */}
-     <section className="bg-[#A01F16] px-6 py-10">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+     <section className="bg-[#A01F16] px-10 py-10">
+      <div className="grid  max-w-7xl items-center justify-center mx-auto grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {/* Card 1 */}
-        <div className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center">
+        <div className="bg-[#fff3f4] rounded-xl shadow-md p-6 flex flex-col items-center text-center">
           <FaBoxOpen className="text-3xl text-gray-700 mb-3" />
           <h3 className="text-[#A01F16] font-semibold text-lg">
             Custom Lengths
@@ -241,7 +241,7 @@ const HomeBanner = () => {
         </div>
 
         {/* Card 2 */}
-        <div className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center">
+        <div className="bg-[#fff3f4] rounded-xl shadow-md p-6 flex flex-col items-center text-center">
           <FaRecycle className="text-3xl text-green-600 mb-3" />
           <h3 className="text-[#A01F16] font-semibold text-lg">
             Eco-Friendly Delivery
@@ -250,7 +250,7 @@ const HomeBanner = () => {
         </div>
 
         {/* Card 3 */}
-        <div className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center">
+        <div className="bg-[#fff3f4] rounded-xl shadow-md p-6 flex flex-col items-center text-center">
           <FaClock className="text-3xl text-gray-700 mb-3" />
           <h3 className="text-[#A01F16] font-semibold text-lg">
             Save Time & Cost
@@ -259,7 +259,7 @@ const HomeBanner = () => {
         </div>
 
         {/* Card 4 */}
-        <div className="bg-white rounded-xl shadow-md p-6 flex flex-col items-center text-center">
+        <div className="bg-[#fff3f4] rounded-xl shadow-md p-6 flex flex-col items-center text-center">
           <FaShoppingCart className="text-3xl text-gray-700 mb-3" />
           <h3 className="text-[#A01F16] font-semibold text-lg">
             Hands-Free Ordering

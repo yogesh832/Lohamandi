@@ -4,7 +4,7 @@ const BlogBrand = () => {
   return (
     <section className="bg-gradient-to-b from-white to-[#FFF3F3] py-4 px-4 sm:px-10">
       <div className="max-w-7xl mx-auto text-center space-y-6 overflow-hidden">
-        <h2 className="text-4xl sm:text-5xl font-bold text-black">
+        <h2 className="text-4xl sm:text-5xl  text-black">
           Trusted Steel Brands
         </h2>
         <p className="text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto">

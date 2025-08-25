@@ -3,6 +3,7 @@ import React from "react";
 const BlogLatest = () => {
   return (
     <section className="bg-[#E7F0DD] py-8 px-4 sm:px-12">
+      <div className="max-w-6xl mx-auto">
       {/* Header Section */}
       <div className="text-center mb-8">
         <p className="text-[#A01F16] text-lg sm:text-xl font-medium">
@@ -75,6 +76,7 @@ const BlogLatest = () => {
               </h3>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </section>

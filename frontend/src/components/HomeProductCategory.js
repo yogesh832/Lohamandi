@@ -113,10 +113,11 @@ const HomeProductCategory = () => {
 
   return (
     <div className="bg-[#F9FAFB] min-h-screen py-12 px-4 sm:px-8">
+      <div className=" max-w-7xl mx-auto">
       {/* Title */}
       <div className="text-center mb-12">
         <h4 className="text-[#A01F16] text-xl font-semibold">Products</h4>
-        <h1 className="text-black text-3xl sm:text-4xl font-bold">
+        <h1 className="text-black text-3xl sm:text-4xl ">
           Explore Our Steel Products
         </h1>
       </div>
@@ -130,6 +131,7 @@ const HomeProductCategory = () => {
         ) : (
           <p className="text-center text-gray-500">No categories available</p>
         )}
+      </div>
       </div>
     </div>
   );

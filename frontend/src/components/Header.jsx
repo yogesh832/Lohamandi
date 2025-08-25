@@ -147,7 +147,7 @@ const Header = () => {
               )
             )}
               {/* Contact Info */}
-          <div className="flex items-center gap-6 font-medium">
+          <div className="flex items-center gap-6 ">
             <a
               href="tel:+919910025184"
               className="hover:text-[#EA4335] transition flex items-center gap-2 bg-red-50 px-3 py-1 rounded"
