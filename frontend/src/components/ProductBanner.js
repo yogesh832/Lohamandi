@@ -25,7 +25,7 @@ const ProductBanner = () => {
         <a href="/enquiry">Request Quote</a>
       </button>
       <button className="flex-1 sm:flex-initial flex items-center justify-center gap-2 bg-white text-black py-3 px-6 rounded-lg hover:opacity-90 transition duration-300">
-        Explore Products
+     <a href="/enquiry">   Explore Products</a>
       </button>
     </div>
   </div>

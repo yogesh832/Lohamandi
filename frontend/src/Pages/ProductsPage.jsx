@@ -38,7 +38,7 @@ const ProductsPage = () => {
       </Helmet>
 
       <ProductBanner />
-      <HomeProductCategory></HomeProductCategory>
+    <HomeProductCategory></HomeProductCategory>
       <BlogBrand />
       <BlogReview />
       <TextSection />

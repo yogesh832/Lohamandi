@@ -99,7 +99,7 @@ const HomeBanner = () => {
         {/* Overlay Content */}
         <div className="absolute top-0 left-0 w-full h-full z-10">
           {/* Mobile View */}
-          <div className=" w-full h-full py-20 bg-black/60 px-4 text-white space-y-2">
+          <div className="md:hidden w-full h-full py-20 bg-black/60 px-4 text-white space-y-2">
             <h1 className="text-4xl font-bold ">Smart Steel Procurement,</h1>
             <h1 className="text-3xl font-bold ">Made Simple</h1>
             <AnimatedMessages />
@@ -109,7 +109,8 @@ const HomeBanner = () => {
               with custom lengths, and track your order in real-time...
             </p>
             <p className="text-sm text-gray-200">
-              Trusted by contractors, engineers, and suppliers across India.
+              Trusted b
+              ey contractors, engineers, and suppliers across India.
             </p>
           </div>
 

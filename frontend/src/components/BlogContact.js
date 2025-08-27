@@ -20,7 +20,7 @@ const BlogContact = () => {
           {/* <button className="px-6 py-3 border border-white text-white
            rounded-md text-xl  hover:bg-white hover:text-black transition duration-300">
             Get Started Now
-          </button> */}
+          </button> */} 
         </div>
       </div>
     </section>
