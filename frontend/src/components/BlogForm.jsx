@@ -7,6 +7,7 @@ const BlogForm = ({ onBlogPosted, editingBlog, setEditingBlog }) => {
   const [form, setForm] = useState({
     title: "",
     content: "",
+    desc: "",
     tag: "",
     date: "",
     month: "",
@@ -21,6 +22,7 @@ const BlogForm = ({ onBlogPosted, editingBlog, setEditingBlog }) => {
       setForm({
         title: editingBlog.title || "",
         content: editingBlog.content || "",
+        desc: editingBlog.desc || "",
         tag: editingBlog.tag || "",
         date: editingBlog.date || "",
         month: editingBlog.month || "",
@@ -45,9 +47,15 @@ const BlogForm = ({ onBlogPosted, editingBlog, setEditingBlog }) => {
     e.preventDefault();
     const formData = new FormData();
 
-    Object.keys(form).forEach((key) => {
-      if (form[key]) formData.append(key, form[key]);
-    });
+    // Append fields to FormData
+   Object.keys(form).forEach((key) => {
+  if (key === "img") {
+    if (form.img) formData.append("img", form.img);
+  } else {
+    formData.append(key, form[key] ?? "");
+  }
+});
+
 
     try {
       if (editingBlog) {
@@ -63,6 +71,7 @@ const BlogForm = ({ onBlogPosted, editingBlog, setEditingBlog }) => {
       setForm({
         title: "",
         content: "",
+        desc: "",
         tag: "",
         date: "",
         month: "",
@@ -94,15 +103,36 @@ const BlogForm = ({ onBlogPosted, editingBlog, setEditingBlog }) => {
       />
 
       {/* CKEditor */}
-      <CKEditor
-        editor={ClassicEditor}
-        data={form.content}
-        onChange={(event, editor) => {
-          const data = editor.getData();
-          setForm((prev) => ({ ...prev, content: data }));
-        }}
-      />
+      <div className="mb-6">
+        <label
+          htmlFor="content"
+          className="block text-sm font-medium text-gray-700 mb-2"
+        >
+          Blog Content
+        </label>
+        <CKEditor
+          editor={ClassicEditor}
+          data={form.content}
+          id="content" // unique ID
+          placeholder="Enter your blog content here..."
+          onChange={(event, editor) => {
+            const data = editor.getData();
+            setForm((prev) => ({ ...prev, content: data }));
+          }}
+        />
+      </div>
 
+      {/* Blog Description */}
+     
+
+      <input
+        type="text"
+        name="tag"
+        placeholder="Blog Description"
+        value={form.desc}
+        onChange={handleChange}
+        className="w-full border p-2 rounded"
+      />
       <input
         type="text"
         name="tag"

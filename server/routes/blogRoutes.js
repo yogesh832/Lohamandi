@@ -40,7 +40,6 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-
 /* ----------------------------
    CREATE BLOG
 ---------------------------- */
@@ -49,6 +48,7 @@ router.post("/", upload.single("img"), async (req, res) => {
     const {
       title,
       content,
+      desc,
       tag,
       date,
       month,
@@ -58,25 +58,27 @@ router.post("/", upload.single("img"), async (req, res) => {
     } = req.body;
 
     if (!title || !content || !tag || !date || !month || !req.file) {
-      return res.status(400).json({ message: "All required fields must be filled" });
+      return res
+        .status(400)
+        .json({ message: "All required fields must be filled" });
     }
 
-    // Upload to Cloudinary
+    // Upload image to Cloudinary
     const result = await new Promise((resolve, reject) => {
-      cloudinary.uploader.upload_stream({ folder: "blog_images" }, (err, result) => {
-        if (err) reject(err);
-        else resolve(result);
-      }).end(req.file.buffer);
+      cloudinary.uploader
+        .upload_stream({ folder: "blog_images" }, (err, result) => {
+          if (err) reject(err);
+          else resolve(result);
+        })
+        .end(req.file.buffer);
     });
 
-    // Auto-generate desc from first 200 characters of plain text
-    const plainText = content.replace(/<[^>]*>/g, "");
-    const desc = plainText.substring(0, 200);
-
+    // Use desc from frontend, else auto-generate from content
+   
     const newBlog = new Blog({
       title,
-      desc,
       content,
+      desc,
       tag,
       img: result.secure_url,
       date,
@@ -102,6 +104,7 @@ router.put("/:id", upload.single("img"), async (req, res) => {
     const {
       title,
       content,
+      desc,
       tag,
       date,
       month,
@@ -110,33 +113,40 @@ router.put("/:id", upload.single("img"), async (req, res) => {
       metaDescription,
     } = req.body;
 
+    // Prepare fields to update
     const updateFields = {
       title,
       content,
+      desc:
+        desc && desc.trim() !== ""
+          ? desc
+          : content.replace(/<[^>]*>/g, "").substring(0, 200),
       tag,
       date,
       month,
       metaTitle,
       metaKeywords,
       metaDescription,
-      desc: content.replace(/<[^>]*>/g, "").substring(0, 200),
     };
 
+    // If new image uploaded, upload to Cloudinary
     if (req.file) {
       const result = await new Promise((resolve, reject) => {
-        cloudinary.uploader.upload_stream({ folder: "blog_images" }, (err, result) => {
-          if (err) return reject(err);
-          resolve(result);
-        }).end(req.file.buffer);
+        cloudinary.uploader
+          .upload_stream({ folder: "blog_images" }, (err, result) => {
+            if (err) return reject(err);
+            resolve(result);
+          })
+          .end(req.file.buffer);
       });
-
       updateFields.img = result.secure_url;
     }
 
-    const updatedBlog = await Blog.findByIdAndUpdate(req.params.id, updateFields, {
-      new: true,
-    });
-
+    const updatedBlog = await Blog.findByIdAndUpdate(
+      req.params.id,
+      updateFields,
+      { new: true }
+    );
     res.json(updatedBlog);
   } catch (err) {
     console.error("Update error:", err);
@@ -150,8 +160,8 @@ router.put("/:id", upload.single("img"), async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     const deleted = await Blog.findByIdAndDelete(req.params.id);
-    if (!deleted) return res.status(404).json({ message: "Blog not found to delete" });
-
+    if (!deleted)
+      return res.status(404).json({ message: "Blog not found to delete" });
     res.json({ message: "Blog deleted", data: deleted });
   } catch (err) {
     console.error("Delete error:", err);
