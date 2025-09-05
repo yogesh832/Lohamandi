@@ -33,7 +33,7 @@ const BlogForm = ({ onBlogPosted, editingBlog, setEditingBlog }) => {
       });
     }
   }, [editingBlog]);
-
+  
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     if (name === "img") {

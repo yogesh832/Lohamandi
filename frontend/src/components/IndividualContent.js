@@ -127,7 +127,7 @@ export default function IndividualContent() {
             <img
               src={item.img}
               alt={item.title}
-              className="w-full h-32 object-cover"
+              className="w-full h-48 object-cover"
             />
             <div className="p-4">
               <h3 className="text-lg font-semibold mb-1">{item.title}</h3>
