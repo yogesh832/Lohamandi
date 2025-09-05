@@ -47,15 +47,14 @@ const BlogForm = ({ onBlogPosted, editingBlog, setEditingBlog }) => {
     e.preventDefault();
     const formData = new FormData();
 
-    // Append fields to FormData
-   Object.keys(form).forEach((key) => {
-  if (key === "img") {
-    if (form.img) formData.append("img", form.img);
-  } else {
-    formData.append(key, form[key] ?? "");
-  }
-});
-
+    // Always append all fields, avoid skipping desc
+    Object.keys(form).forEach((key) => {
+      if (key === "img") {
+        if (form.img) formData.append("img", form.img);
+      } else {
+        formData.append(key, form[key] ?? "");
+      }
+    });
 
     try {
       if (editingBlog) {
@@ -68,6 +67,7 @@ const BlogForm = ({ onBlogPosted, editingBlog, setEditingBlog }) => {
         await axios.post(`https://lohamandi.com/api/blog`, formData);
       }
 
+      // Reset form
       setForm({
         title: "",
         content: "",
@@ -92,6 +92,7 @@ const BlogForm = ({ onBlogPosted, editingBlog, setEditingBlog }) => {
       onSubmit={handleSubmit}
       className="space-y-6 bg-white p-6 rounded shadow-md max-w-2xl mx-auto"
     >
+      {/* Blog Title */}
       <input
         type="text"
         name="title"
@@ -102,7 +103,7 @@ const BlogForm = ({ onBlogPosted, editingBlog, setEditingBlog }) => {
         required
       />
 
-      {/* CKEditor */}
+      {/* Blog Content */}
       <div className="mb-6">
         <label
           htmlFor="content"
@@ -113,7 +114,7 @@ const BlogForm = ({ onBlogPosted, editingBlog, setEditingBlog }) => {
         <CKEditor
           editor={ClassicEditor}
           data={form.content}
-          id="content" // unique ID
+          id="content"
           placeholder="Enter your blog content here..."
           onChange={(event, editor) => {
             const data = editor.getData();
@@ -123,16 +124,25 @@ const BlogForm = ({ onBlogPosted, editingBlog, setEditingBlog }) => {
       </div>
 
       {/* Blog Description */}
-     
+      <div className="mb-6">
+        <label
+          htmlFor="desc"
+          className="block text-sm font-medium text-gray-700 mb-2"
+        >
+          Blog Description
+        </label>
+        <input
+          type="text"
+          name="desc"
+          id="desc"
+          placeholder="Enter short blog description"
+          value={form.desc}
+          onChange={handleChange}
+          className="w-full border p-2 rounded"
+        />
+      </div>
 
-      <input
-        type="text"
-        name="tag"
-        placeholder="Blog Description"
-        value={form.desc}
-        onChange={handleChange}
-        className="w-full border p-2 rounded"
-      />
+      {/* Blog Tag */}
       <input
         type="text"
         name="tag"
@@ -142,6 +152,7 @@ const BlogForm = ({ onBlogPosted, editingBlog, setEditingBlog }) => {
         className="w-full border p-2 rounded"
       />
 
+      {/* Date + Month */}
       <div className="flex gap-4">
         <input
           type="text"
@@ -161,6 +172,7 @@ const BlogForm = ({ onBlogPosted, editingBlog, setEditingBlog }) => {
         />
       </div>
 
+      {/* Blog Image */}
       <input
         type="file"
         name="img"
@@ -170,7 +182,7 @@ const BlogForm = ({ onBlogPosted, editingBlog, setEditingBlog }) => {
         required={!editingBlog}
       />
 
-      {/* SEO */}
+      {/* SEO Options */}
       <div className="border-t pt-6">
         <h3 className="font-bold mb-4">SEO Options</h3>
         <input
@@ -198,6 +210,7 @@ const BlogForm = ({ onBlogPosted, editingBlog, setEditingBlog }) => {
         />
       </div>
 
+      {/* Buttons */}
       <div className="flex gap-2">
         <button
           type="submit"
