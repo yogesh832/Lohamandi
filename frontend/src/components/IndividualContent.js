@@ -99,13 +99,13 @@ export default function IndividualContent() {
 
           {/* Short Description */}
         
-  {blog.desc && (
+  {/* {blog.desc && (
             <p className="text-base mb-6 text-gray-700 leading-relaxed"
                         dangerouslySetInnerHTML={{ __html: blog.desc }}
 
             >
             </p>
-          )}
+          )} */}
           {/* Full Blog Content */}
           <div
             className="prose prose-lg max-w-none text-gray-900"
